@@ -23,7 +23,12 @@ if ! aws iam get-open-id-connect-provider --open-id-connect-provider-arn "$OIDC_
   echo "Created OIDC provider for GitHub Actions"
 fi
 
-TRUST=$(jq -n --arg oidc "$OIDC_ARN" --arg sub "repo:$GITHUB_REPO:ref:refs/heads/main" '{
+# GitHub's subject claim may use immutable owner/repo ids (repo:owner@123/name@456), which
+# can't be matched by a renamed or re-created repo. Ask GitHub which format this repo uses.
+SUB_PREFIX=$(gh api "repos/$GITHUB_REPO/actions/oidc/customization/sub" -q .sub_claim_prefix 2>/dev/null || true)
+SUB_PREFIX="${SUB_PREFIX:-repo:$GITHUB_REPO}"
+
+TRUST=$(jq -n --arg oidc "$OIDC_ARN" --arg sub "$SUB_PREFIX:ref:refs/heads/main" '{
   Version: "2012-10-17",
   Statement: [{
     Effect: "Allow",
