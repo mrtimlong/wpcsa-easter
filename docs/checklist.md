@@ -106,7 +106,7 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [ ] | Sponsors section (tiers, logos, links) | Tim | Feb 2027 |
 | [ ] | Advert slot component and placement on most pages (once sizes are agreed) | Tim | Feb 2027 |
 | [ ] | Home page: "Happening now / next up", countdown before the event, quick links | Tim | Jan 2027 |
-| [ ] | "My teams" favourites (stored on the phone) to filter schedule and results | Tim | Jan 2027 |
+| [x] | "My teams" favourites (stored on the phone) to filter schedule and results | Tim | Jan 2027 |
 | [ ] | Bottom tab bar on phones (the top nav no longer fits) | Tim | Dec 2026 |
 | [ ] | Venues page with map links and which sports are where | Tim | Feb 2027 |
 | [ ] | Bracket view for knockouts (nice to have) | Tim | Feb 2027 |

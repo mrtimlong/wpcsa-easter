@@ -1,3 +1,4 @@
+import { MyNextGames } from '../components/my-next-games.tsx'
 import { Picture } from '../components/picture.tsx'
 import { useI18n } from '../i18n/index.tsx'
 
@@ -20,7 +21,7 @@ export function Home() {
           <p>{t('home.dates')}</p>
         </div>
       </section>
-      <p>{t('home.comingSoon')}</p>
+      <MyNextGames />
     </>
   )
 }

@@ -1,10 +1,12 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
-import { DemoNotice, SportFilter, type SportChoice } from '../components/sport-filter.tsx'
+import { DemoNotice, NoTeamsYet, SportFilter, type SportChoice } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay } from '../data/format.ts'
 import { DEMO, results } from '../data/live.ts'
+import { fixtureTeams } from '../data/resolve.ts'
 import type { Fixture } from '../data/schema.ts'
+import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
 
 const timeZone = content.tournament.timezone
@@ -13,10 +15,17 @@ const sportOf = new Map(content.competitions.map((c) => [c.id, c.sport]))
 export function Results() {
   const { t, locale } = useI18n()
   const [sport, setSport] = useState<SportChoice>('all')
+  const { favourites } = useFavourites()
 
   const withResults = content.fixtures
     .filter((f) => results.has(f.id))
-    .filter((f) => sport === 'all' || sportOf.get(f.competition) === sport)
+    .filter((f) =>
+      sport === 'all'
+        ? true
+        : sport === 'mine'
+          ? fixtureTeams(f, content, results).some((id) => favourites.has(id))
+          : sportOf.get(f.competition) === sport,
+    )
     .sort((a, b) => Date.parse(b.start) - Date.parse(a.start)) // most recent first
 
   const live = withResults.filter((f) => results.get(f.id)?.status === 'live')
@@ -32,8 +41,11 @@ export function Results() {
     <section>
       <h1>{t('results.title')}</h1>
       {DEMO && <DemoNotice />}
-      <SportFilter value={sport} onChange={setSport} />
-      {withResults.length === 0 && <p class="muted">{t('results.empty')}</p>}
+      <SportFilter value={sport} onChange={setSport} includeMine />
+      {sport === 'mine' && favourites.size === 0 && <NoTeamsYet />}
+      {withResults.length === 0 && !(sport === 'mine' && favourites.size === 0) && (
+        <p class="muted">{sport === 'mine' ? t('myTeams.noResults') : t('results.empty')}</p>
+      )}
       {live.length > 0 && (
         <>
           <h2 class="day-heading">{t('results.live')}</h2>

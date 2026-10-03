@@ -4,7 +4,9 @@ import { results } from '../data/live.ts'
 import { outcome } from '../data/outcome.ts'
 import { resolveSlot } from '../data/resolve.ts'
 import type { Fixture, Slot } from '../data/schema.ts'
+import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
+import { SportIcon } from './sport-icon.tsx'
 
 const fixtureById = new Map(content.fixtures.map((f) => [f.id, f]))
 const teamById = new Map(content.teams.map((t) => [t.id, t]))
@@ -14,9 +16,9 @@ const venueById = new Map(content.venues.map((v) => [v.id, v]))
 /** Team name for a slot, or a description of who it will be ("Winner of Game 49"). */
 export function useSlotName() {
   const { t, l } = useI18n()
-  return (slot: Slot, fixture: Fixture): { name: string; known: boolean } => {
+  return (slot: Slot, fixture: Fixture): { name: string; known: boolean; teamId?: string } => {
     const teamId = resolveSlot(slot, fixture, content, results)
-    if (teamId) return { name: teamById.get(teamId)?.name ?? teamId, known: true }
+    if (teamId) return { name: teamById.get(teamId)?.name ?? teamId, known: true, teamId }
     if ('tbc' in slot) return { name: l(slot.tbc), known: false }
     if ('winnerOf' in slot || 'loserOf' in slot) {
       const ref = fixtureById.get('winnerOf' in slot ? slot.winnerOf : slot.loserOf)
@@ -45,6 +47,7 @@ export function FixtureCard({
 }) {
   const { t, l, locale } = useI18n()
   const slotName = useSlotName()
+  const { isFavourite } = useFavourites()
   const competition = competitionById.get(fixture.competition)
   const venue = venueById.get(fixture.venue)
   const court = venue?.courts.find((c) => c.id === fixture.court)
@@ -56,7 +59,9 @@ export function FixtureCard({
   const sides = (['home', 'away'] as const).map((side) => ({ side, ...slotName(fixture[side], fixture) }))
 
   return (
-    <article class={`fixture${result?.status === 'live' ? ' is-live' : ''}`}>
+    <article
+      class={`fixture${competition ? ` sport-${competition.sport}` : ''}${result?.status === 'live' ? ' is-live' : ''}`}
+    >
       <div class="fixture-meta">
         {showTime && (
           <time dateTime={fixture.start}>
@@ -69,6 +74,7 @@ export function FixtureCard({
         {result && <span class={`badge badge-${result.status}`}>{t(`status.${result.status}`)}</span>}
       </div>
       <div class="fixture-comp">
+        {competition && <SportIcon sport={competition.sport} />}
         {competition && t(`sport.${competition.sport}`)}
         {/* Skip the competition name when it just repeats the sport ("Volleyball · Volleyball"). */}
         {competition && l(competition.name) !== t(`sport.${competition.sport}`) && ` · ${l(competition.name)}`}
@@ -76,9 +82,16 @@ export function FixtureCard({
         {fixture.label && ` · ${l(fixture.label)}`}
       </div>
       <div class="fixture-teams">
-        {sides.map(({ side, name, known }) => (
+        {sides.map(({ side, name, known, teamId }) => (
           <div key={side} class={`fixture-team${winner === side ? ' is-winner' : ''}${known ? '' : ' is-tbc'}`}>
-            <span class="fixture-team-name">{name}</span>
+            <span class="fixture-team-name">
+              {name}
+              {teamId && isFavourite(teamId) && (
+                <span class="star-mark" title={t('myTeams.followed')} aria-label={t('myTeams.followed')}>
+                  {' ★'}
+                </span>
+              )}
+            </span>
             {score && <span class="fixture-score">{score[side]}</span>}
           </div>
         ))}

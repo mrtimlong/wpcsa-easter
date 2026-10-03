@@ -5,6 +5,7 @@ import { content } from '../data/content.ts'
 import { DEMO, results } from '../data/live.ts'
 import type { Competition } from '../data/schema.ts'
 import { standings } from '../data/standings.ts'
+import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
 
 const teamName = new Map(content.teams.map((t) => [t.id, t.name]))
@@ -28,6 +29,7 @@ export function Standings() {
 
 function CompetitionStandings({ competition }: { competition: Competition }) {
   const { t, l } = useI18n()
+  const { isFavourite, toggle } = useFavourites()
   const groups: (string | undefined)[] = competition.groups ?? [undefined]
   const knockouts = content.fixtures
     .filter((f) => f.competition === competition.id && f.stage === 'knockout')
@@ -55,9 +57,20 @@ function CompetitionStandings({ competition }: { competition: Competition }) {
               </thead>
               <tbody>
                 {table.rows.map((row, i) => (
-                  <tr key={row.team}>
+                  <tr key={row.team} class={isFavourite(row.team) ? 'is-mine' : undefined}>
                     <td class="num">{i + 1}</td>
-                    <td class="team">{teamName.get(row.team) ?? row.team}</td>
+                    <td class="team">
+                      <button
+                        type="button"
+                        class="star-button"
+                        aria-pressed={isFavourite(row.team)}
+                        aria-label={t('myTeams.follow', { team: teamName.get(row.team) ?? row.team })}
+                        onClick={() => toggle(row.team)}
+                      >
+                        {isFavourite(row.team) ? '★' : '☆'}
+                      </button>
+                      {teamName.get(row.team) ?? row.team}
+                    </td>
                     <td class="num">{row.played}</td>
                     <td class="num">{row.won}</td>
                     <td class="num">{row.lost}</td>

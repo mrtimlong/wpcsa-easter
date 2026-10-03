@@ -1,6 +1,8 @@
 import { LocationProvider, Route, Router, useLocation } from 'preact-iso'
+import { FavouritesProvider } from './favourites.tsx'
 import { I18nProvider, useI18n } from './i18n/index.tsx'
 import { Home } from './pages/home.tsx'
+import { MyTeams } from './pages/my-teams.tsx'
 import { NotFound } from './pages/not-found.tsx'
 import { Results } from './pages/results.tsx'
 import { Schedule } from './pages/schedule.tsx'
@@ -34,13 +36,18 @@ function Header() {
         <a class="header-title" href="/">
           {t('app.title')}
         </a>
-        <button
-          type="button"
-          class="lang-toggle"
-          onClick={() => setLocale(locale === 'en' ? 'zh-Hant' : 'en')}
-        >
-          {t('lang.toggle')}
-        </button>
+        <div class="header-actions">
+          <a class="header-icon" href="/my-teams" title={t('myTeams.title')} aria-label={t('myTeams.title')}>
+            ★
+          </a>
+          <button
+            type="button"
+            class="lang-toggle"
+            onClick={() => setLocale(locale === 'en' ? 'zh-Hant' : 'en')}
+          >
+            {t('lang.toggle')}
+          </button>
+        </div>
       </div>
       <nav class="nav">
         {links.map((link) => (
@@ -56,20 +63,23 @@ function Header() {
 export function App() {
   return (
     <I18nProvider>
-      <LocationProvider>
-        <Logos />
-        <Header />
-        <main class="main">
-          <Router>
-            <Route path="/" component={Home} />
-            <Route path="/schedule" component={Schedule} />
-            <Route path="/results" component={Results} />
-            <Route path="/standings" component={Standings} />
-            <Route path="/visit" component={Visit} />
-            <Route default component={NotFound} />
-          </Router>
-        </main>
-      </LocationProvider>
+      <FavouritesProvider>
+        <LocationProvider>
+          <Logos />
+          <Header />
+          <main class="main">
+            <Router>
+              <Route path="/" component={Home} />
+              <Route path="/schedule" component={Schedule} />
+              <Route path="/results" component={Results} />
+              <Route path="/standings" component={Standings} />
+              <Route path="/visit" component={Visit} />
+              <Route path="/my-teams" component={MyTeams} />
+              <Route default component={NotFound} />
+            </Router>
+          </main>
+        </LocationProvider>
+      </FavouritesProvider>
     </I18nProvider>
   )
 }

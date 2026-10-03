@@ -32,3 +32,8 @@ export function resolveSlot(
   if (!table.complete) return null
   return table.rows[slot.position - 1]?.team ?? null
 }
+
+/** The teams known to be playing in a fixture (knockout slots count once resolved). */
+export function fixtureTeams(fixture: Fixture, content: Content, results: Map<string, Result>): string[] {
+  return [fixture.home, fixture.away].flatMap((slot) => resolveSlot(slot, fixture, content, results) ?? [])
+}

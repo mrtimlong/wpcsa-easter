@@ -1,10 +1,12 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
-import { DemoNotice, SportFilter, type SportChoice } from '../components/sport-filter.tsx'
+import { DemoNotice, NoTeamsYet, SportFilter, type SportChoice } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay, formatTime } from '../data/format.ts'
-import { DEMO, now } from '../data/live.ts'
+import { DEMO, now, results } from '../data/live.ts'
+import { fixtureTeams } from '../data/resolve.ts'
 import type { Fixture, ProgrammeItem } from '../data/schema.ts'
+import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
 
 const timeZone = content.tournament.timezone
@@ -20,15 +22,17 @@ export function Schedule() {
   const today = dayKey(new Date(now).toISOString(), timeZone)
   const [day, setDay] = useState(days.includes(today) ? today : days[0])
   const [sport, setSport] = useState<SportChoice>('all')
+  const { favourites } = useFavourites()
+  const isMine = (f: Fixture) => fixtureTeams(f, content, results).some((id) => favourites.has(id))
 
   const entries: Entry[] = [
     ...content.programme
       .filter((p) => dayKey(p.start, timeZone) === day)
-      .filter((p) => sport === 'all' || p.sports?.includes(sport))
+      .filter((p) => sport === 'all' || (sport !== 'mine' && p.sports?.includes(sport)))
       .map((item): Entry => ({ start: item.start, item })),
     ...content.fixtures
       .filter((f) => dayKey(f.start, timeZone) === day)
-      .filter((f) => sport === 'all' || sportOf.get(f.competition) === sport)
+      .filter((f) => sport === 'all' || (sport === 'mine' ? isMine(f) : sportOf.get(f.competition) === sport))
       .map((fixture): Entry => ({ start: fixture.start, fixture })),
   ].sort((a, b) => Date.parse(a.start) - Date.parse(b.start) || (a.item ? -1 : 1)) // events before games
 
@@ -49,9 +53,12 @@ export function Schedule() {
           </button>
         ))}
       </div>
-      <SportFilter value={sport} onChange={setSport} />
+      <SportFilter value={sport} onChange={setSport} includeMine />
+      {sport === 'mine' && favourites.size === 0 && <NoTeamsYet />}
       <h2 class="day-heading">{formatDay(day, locale)}</h2>
-      {entries.length === 0 && <p class="muted">{t('schedule.empty')}</p>}
+      {entries.length === 0 && !(sport === 'mine' && favourites.size === 0) && (
+        <p class="muted">{sport === 'mine' ? t('myTeams.noGamesThisDay') : t('schedule.empty')}</p>
+      )}
       {[...byTime].map(([time, group]) => (
         <div key={time} class="time-group">
           <h3 class="time-heading">{time}</h3>
