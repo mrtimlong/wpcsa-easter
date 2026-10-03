@@ -111,6 +111,41 @@ export const Sponsor = z.object({
   tier: z.enum(['headline', 'gold', 'supporter']),
 })
 
+/** A photo with the attribution its licence requires (most stock photos are CC BY-SA). */
+export const Photo = z.object({
+  src: z.string().startsWith('/images/'),
+  alt: Text,
+  credit: z.string(),
+  license: z.string(),
+  licenseUrl: z.url().optional(),
+  sourceUrl: z.url().optional(),
+})
+
+/** Travel info for out-of-town visitors: where to stay, getting around, things to do. */
+export const VisitorGuide = z.object({
+  /** Shows a "draft / example content" notice while true. */
+  draft: z.boolean().optional(),
+  hero: Photo.optional(),
+  intro: Text,
+  sections: z.array(
+    z.object({
+      id,
+      title: Text,
+      intro: Text.optional(),
+      items: z.array(
+        z.object({
+          id,
+          name: Text,
+          description: Text,
+          photo: Photo.optional(),
+          url: z.url().optional(),
+          mapUrl: z.url().optional(),
+        }),
+      ),
+    }),
+  ),
+})
+
 export const Content = z.object({
   tournament: Tournament,
   venues: z.array(Venue),
@@ -120,6 +155,7 @@ export const Content = z.object({
   fixtures: z.array(Fixture),
   programme: z.array(ProgrammeItem),
   sponsors: z.array(Sponsor),
+  guide: VisitorGuide.optional(),
 })
 
 const scorePair = z.tuple([z.number().int().min(0), z.number().int().min(0)])
@@ -157,6 +193,8 @@ export type Slot = z.infer<typeof Slot>
 export type Fixture = z.infer<typeof Fixture>
 export type ProgrammeItem = z.infer<typeof ProgrammeItem>
 export type Sponsor = z.infer<typeof Sponsor>
+export type Photo = z.infer<typeof Photo>
+export type VisitorGuide = z.infer<typeof VisitorGuide>
 export type Content = z.infer<typeof Content>
 export type Result = z.infer<typeof Result>
 export type Results = z.infer<typeof Results>

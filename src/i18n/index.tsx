@@ -34,10 +34,17 @@ function initialLocale(): Locale {
   return navigator.language.toLowerCase().startsWith('zh') ? 'zh-Hant' : 'en'
 }
 
+/** Bilingual content text ({ en, zh? }) in the given locale, falling back to English. */
+export function localize(locale: Locale, text: { en: string; zh?: string }): string {
+  return (locale === 'zh-Hant' && text.zh) || text.en
+}
+
 type I18nContextValue = {
   locale: Locale
   setLocale: (locale: Locale) => void
   t: (key: MessageKey, params?: Record<string, string | number>) => string
+  /** Localizes content text from content/<year>/*.json. */
+  l: (text: { en: string; zh?: string }) => string
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null)
@@ -57,8 +64,10 @@ export function I18nProvider({ children }: { children: ComponentChildren }) {
   const t = (key: MessageKey, params?: Record<string, string | number>) =>
     translate(locale, key, params)
 
+  const l = (text: { en: string; zh?: string }) => localize(locale, text)
+
   return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>{children}</I18nContext.Provider>
+    <I18nContext.Provider value={{ locale, setLocale, t, l }}>{children}</I18nContext.Provider>
   )
 }
 

@@ -4,6 +4,7 @@
 import associations from '../../content/2025/associations.json'
 import competitions from '../../content/2025/competitions.json'
 import fixtures from '../../content/2025/fixtures.json'
+import guide from '../../content/2025/visitor-guide.json'
 import programme from '../../content/2025/programme.json'
 import sponsors from '../../content/2025/sponsors.json'
 import teams from '../../content/2025/teams.json'
@@ -20,4 +21,5 @@ export const content = {
   fixtures,
   programme,
   sponsors,
+  guide,
 } as unknown as Content

@@ -46,13 +46,40 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding: 0.75rem 1rem 0;
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.75rem 1rem;
-  background: var(--brand);
-  color: var(--brand-ink);
+}
+
+/* Scrolls sideways when more sections are added. */
+.nav {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav a {
+  padding: 0.4rem 0 0.5rem;
+  border-bottom: 3px solid transparent;
+  color: inherit;
+  opacity: 0.8;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav a[aria-current='page'] {
+  border-bottom-color: currentColor;
+  opacity: 1;
+  font-weight: 600;
 }
 
 .header-title {
@@ -79,4 +106,111 @@ body {
 
 .muted {
   color: var(--muted);
+}
+
+.notice {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #d9a400;
+  border-radius: 0.5rem;
+  background: #fff8e1;
+  color: #5c4500;
+}
+
+.lead {
+  font-size: 1.1rem;
+}
+
+/* Photos always carry their licence credit. */
+.photo {
+  position: relative;
+  margin: 0;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.photo figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  padding: 0.15rem 0.4rem;
+  background: rgb(0 0 0 / 0.55);
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 1.3;
+}
+
+.photo figcaption a {
+  color: inherit;
+}
+
+.visit-hero {
+  position: relative;
+  margin: -1rem -1rem 1rem;
+}
+
+.visit-hero-photo img {
+  aspect-ratio: 16 / 9;
+  max-height: 22rem;
+}
+
+.visit-hero h1 {
+  position: absolute;
+  left: 1rem;
+  bottom: 1.5rem;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
+  text-shadow: 0 2px 12px rgb(0 0 0 / 0.6);
+}
+
+.visit-section {
+  margin-top: 2rem;
+}
+
+.visit-section h2 {
+  margin-bottom: 0.25rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+.card-body {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.card-body h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.card-body p {
+  margin: 0;
+}
+
+.card-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem !important;
+}
+
+.card-links a {
+  color: var(--brand);
+  font-weight: 600;
 }

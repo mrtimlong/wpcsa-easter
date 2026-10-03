@@ -97,6 +97,7 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 ## TODO
 - [ ] Replace header logos (`public/images/sacsa-logo.png`, `wpcsa-logo.png`, extracted from the 2025 brochure PDF) with SVG originals from SACSA / WPCSA.
 - [ ] 2027 theme artwork: Year of the Goat (羊年), not the 2025 snake.
+- [ ] Replace the example content in `content/2025/visitor-guide.json` (marked `draft: true`) with real accommodation/partner-hotel details; check Chinese translations.
 - [ ] Enable auto-renew for `wpcsa.org.za` (expires 2027-10-03).
 
 ## Open questions

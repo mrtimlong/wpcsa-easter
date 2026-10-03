@@ -30,6 +30,17 @@ export default defineConfig({
       workbox: {
         navigateFallback: '/index.html',
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Photos are too big to precache; keep them once viewed so the guide works offline.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.startsWith('/images/') && url.pathname.endsWith('.jpg'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'photos',
+              expiration: { maxEntries: 60, maxAgeSeconds: 30 * 24 * 3600 },
+            },
+          },
+        ],
       },
     }),
   ],

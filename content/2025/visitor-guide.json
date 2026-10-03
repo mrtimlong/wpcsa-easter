@@ -1,0 +1,278 @@
+{
+  "draft": true,
+  "hero": {
+    "src": "/images/visit/table-mountain.jpg",
+    "alt": {
+      "en": "View along the Twelve Apostles from the top of Table Mountain"
+    },
+    "credit": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape_Town_(ZA),_Table_Mountain_--_2024_--_2762%2B64%2B66%2B68%2B70%2B72.jpg"
+  },
+  "intro": {
+    "en": "Coming from out of town? Here's what you need to know about staying in Cape Town for the tournament: where to stay, how to get around, and what to see between games."
+  },
+  "sections": [
+    {
+      "id": "stay",
+      "title": {
+        "en": "Where to stay"
+      },
+      "intro": {
+        "en": "Most games are at the UCT Sports Centre in Rondebosch, so staying in the southern suburbs keeps travel short."
+      },
+      "items": [
+        {
+          "id": "rondebosch",
+          "name": {
+            "en": "Rondebosch & Newlands"
+          },
+          "description": {
+            "en": "Closest to the UCT Sports Centre. Guesthouses, B&Bs and self-catering apartments, with shops and restaurants on Main Road."
+          },
+          "photo": {
+            "src": "/images/visit/uct.jpg",
+            "alt": {
+              "en": "Jameson Hall at the University of Cape Town with Devil’s Peak behind"
+            },
+            "credit": "Vysotsky",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jameson_Hall_at_the_University_of_Cape_Town_in_2014.jpg"
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Rondebosch%2C%20Cape%20Town"
+        },
+        {
+          "id": "city-bowl",
+          "name": {
+            "en": "City Bowl & Bo-Kaap"
+          },
+          "description": {
+            "en": "Central and lively, with plenty of hotels and restaurants. About 15–20 minutes’ drive to UCT outside rush hour."
+          },
+          "photo": {
+            "src": "/images/visit/bo-kaap.jpg",
+            "alt": {
+              "en": "Brightly painted houses in the Bo-Kaap"
+            },
+            "credit": "lumoplank",
+            "license": "CC0",
+            "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bo-Kaap,_Cape_Town_-_BoKaap3893.jpg"
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Cape%20Town%20City%20Centre"
+        },
+        {
+          "id": "atlantic",
+          "name": {
+            "en": "Sea Point & Camps Bay"
+          },
+          "description": {
+            "en": "Beachfront apartments and hotels on the Atlantic side. Great for families making a holiday of it; allow 25–35 minutes to UCT."
+          },
+          "photo": {
+            "src": "/images/visit/camps-bay.jpg",
+            "alt": {
+              "en": "Camps Bay beach with the Twelve Apostles"
+            },
+            "credit": "HelenOnline",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Camps_Bay_beach_4.jpg"
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Camps%20Bay%2C%20Cape%20Town"
+        },
+        {
+          "id": "team-hotel",
+          "name": {
+            "en": "Tournament partner hotel (TBC)"
+          },
+          "description": {
+            "en": "Example entry: we hope to arrange group rates with a partner hotel near UCT. Details and booking code to follow."
+          }
+        }
+      ]
+    },
+    {
+      "id": "getting-around",
+      "title": {
+        "en": "Getting around"
+      },
+      "items": [
+        {
+          "id": "airport",
+          "name": {
+            "en": "From the airport"
+          },
+          "description": {
+            "en": "Cape Town International (CPT) is about 20–30 minutes’ drive from UCT and the city centre. Car hire and e-hailing pick-up points are at the terminal."
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Cape%20Town%20International%20Airport"
+        },
+        {
+          "id": "e-hailing",
+          "name": {
+            "en": "Uber & Bolt"
+          },
+          "description": {
+            "en": "E-hailing is the easiest way to get between venues, hotels and the social events, especially at night."
+          }
+        },
+        {
+          "id": "parking",
+          "name": {
+            "en": "Driving & parking"
+          },
+          "description": {
+            "en": "Example entry: parking at the UCT Sports Centre is limited on finals day. Parking details to be confirmed."
+          }
+        }
+      ]
+    },
+    {
+      "id": "see-and-do",
+      "title": {
+        "en": "Things to do between games"
+      },
+      "items": [
+        {
+          "id": "table-mountain",
+          "name": {
+            "en": "Table Mountain"
+          },
+          "description": {
+            "en": "Take the cableway (or hike) to the top for views over the city and the Atlantic. Check the weather first: the cableway closes in high wind."
+          },
+          "photo": {
+            "src": "/images/visit/table-mountain.jpg",
+            "alt": {
+              "en": "View from the top of Table Mountain"
+            },
+            "credit": "Dietmar Rabich",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape_Town_(ZA),_Table_Mountain_--_2024_--_2762%2B64%2B66%2B68%2B70%2B72.jpg"
+          },
+          "url": "https://www.tablemountain.net/",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Table%20Mountain%20Aerial%20Cableway"
+        },
+        {
+          "id": "waterfront",
+          "name": {
+            "en": "V&A Waterfront"
+          },
+          "description": {
+            "en": "Shops, restaurants and the harbour (look out for the seals). The Saturday social is at the Time Out Market here."
+          },
+          "photo": {
+            "src": "/images/visit/waterfront.jpg",
+            "alt": {
+              "en": "Seals resting on a jetty at the V&A Waterfront harbour"
+            },
+            "credit": "Dietmar Rabich",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape_Town_(ZA),_Waterfront,_Hafen,_Robben_--_2024_--_2876.jpg"
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=V%26A%20Waterfront%2C%20Cape%20Town"
+        },
+        {
+          "id": "kirstenbosch",
+          "name": {
+            "en": "Kirstenbosch Gardens"
+          },
+          "description": {
+            "en": "Botanical gardens on the slopes of Table Mountain, ten minutes from UCT. Good for a morning off with the family."
+          },
+          "photo": {
+            "src": "/images/visit/kirstenbosch.jpg",
+            "alt": {
+              "en": "Kirstenbosch National Botanical Garden"
+            },
+            "credit": "Matti Blume",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kirstenbosch_National_Botanical_Garden,_Cape_Town_(P1060025).jpg"
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Kirstenbosch%20National%20Botanical%20Garden"
+        },
+        {
+          "id": "boulders",
+          "name": {
+            "en": "Boulders Beach penguins"
+          },
+          "description": {
+            "en": "The African penguin colony in Simon’s Town, about 45 minutes from UCT."
+          },
+          "photo": {
+            "src": "/images/visit/boulders.jpg",
+            "alt": {
+              "en": "African penguins at Boulders Beach"
+            },
+            "credit": "Satdeep Gill",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penguins_at_Boulders_Beach_04.jpg"
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Boulders%20Beach%2C%20Simon%E2%80%99s%20Town"
+        },
+        {
+          "id": "cape-point",
+          "name": {
+            "en": "Cape Point"
+          },
+          "description": {
+            "en": "A full-day trip down the peninsula to the lighthouse and cliffs, often combined with Boulders Beach."
+          },
+          "photo": {
+            "src": "/images/visit/cape-point.jpg",
+            "alt": {
+              "en": "Cliffs at Cape Point"
+            },
+            "credit": "Diego Delso",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape_Point,_Sud%C3%A1frica,_2018-07-23,_DD_105.jpg"
+          },
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Cape%20Point%2C%20Cape%20Town"
+        }
+      ]
+    },
+    {
+      "id": "tips",
+      "title": {
+        "en": "Good to know"
+      },
+      "items": [
+        {
+          "id": "weather",
+          "name": {
+            "en": "Weather"
+          },
+          "description": {
+            "en": "Late March is usually warm and dry, but the south-easter wind can be strong. Bring layers for evening games and the social."
+          }
+        },
+        {
+          "id": "safety",
+          "name": {
+            "en": "Staying safe"
+          },
+          "description": {
+            "en": "Don’t leave bags or valuables visible in parked cars, and use e-hailing rather than walking at night."
+          }
+        },
+        {
+          "id": "money",
+          "name": {
+            "en": "Money"
+          },
+          "description": {
+            "en": "South African rand (ZAR). Cards and tap-to-pay are accepted almost everywhere."
+          }
+        }
+      ]
+    }
+  ]
+}
