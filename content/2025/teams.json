@@ -1,0 +1,215 @@
+[
+  {
+    "id": "bb-minis-a-wpa",
+    "competition": "bb-minis-a",
+    "name": "WPA",
+    "association": "wp"
+  },
+  {
+    "id": "bb-minis-a-wpb",
+    "competition": "bb-minis-a",
+    "name": "WPB",
+    "association": "wp"
+  },
+  {
+    "id": "bb-minis-a-sga",
+    "competition": "bb-minis-a",
+    "name": "SGA",
+    "association": "sg"
+  },
+  {
+    "id": "bb-minis-a-sgb",
+    "competition": "bb-minis-a",
+    "name": "SGB",
+    "association": "sg"
+  },
+  {
+    "id": "bb-minis-b-wpc",
+    "competition": "bb-minis-b",
+    "name": "WPC",
+    "association": "wp"
+  },
+  {
+    "id": "bb-minis-b-wpd",
+    "competition": "bb-minis-b",
+    "name": "WPD",
+    "association": "wp"
+  },
+  {
+    "id": "bb-minis-b-sgc",
+    "competition": "bb-minis-b",
+    "name": "SGC",
+    "association": "sg"
+  },
+  {
+    "id": "bb-minis-b-sgd",
+    "competition": "bb-minis-b",
+    "name": "SGD",
+    "association": "sg"
+  },
+  {
+    "id": "bb-jr-mens-wpa",
+    "competition": "bb-jr-mens",
+    "name": "WPA",
+    "association": "wp"
+  },
+  {
+    "id": "bb-jr-mens-wpb",
+    "competition": "bb-jr-mens",
+    "name": "WPB",
+    "association": "wp"
+  },
+  {
+    "id": "bb-jr-mens-ng",
+    "competition": "bb-jr-mens",
+    "name": "NG",
+    "association": "ng"
+  },
+  {
+    "id": "bb-jr-mens-sg",
+    "competition": "bb-jr-mens",
+    "name": "SG",
+    "association": "sg"
+  },
+  {
+    "id": "bb-jr-ladies-wpa",
+    "competition": "bb-jr-ladies",
+    "name": "WPA",
+    "association": "wp"
+  },
+  {
+    "id": "bb-jr-ladies-wpb",
+    "competition": "bb-jr-ladies",
+    "name": "WPB",
+    "association": "wp"
+  },
+  {
+    "id": "bb-jr-ladies-sg",
+    "competition": "bb-jr-ladies",
+    "name": "SG",
+    "association": "sg"
+  },
+  {
+    "id": "bb-jr-ladies-invite",
+    "competition": "bb-jr-ladies",
+    "name": "Invite"
+  },
+  {
+    "id": "bb-ladies-wp",
+    "competition": "bb-ladies",
+    "name": "WP",
+    "association": "wp"
+  },
+  {
+    "id": "bb-ladies-sg",
+    "competition": "bb-ladies",
+    "name": "SG",
+    "association": "sg"
+  },
+  {
+    "id": "bb-ladies-swazi",
+    "competition": "bb-ladies",
+    "name": "Swazi",
+    "association": "swazi"
+  },
+  {
+    "id": "bb-mens-nga",
+    "competition": "bb-mens",
+    "name": "NGA",
+    "association": "ng",
+    "group": "A"
+  },
+  {
+    "id": "bb-mens-wpb",
+    "competition": "bb-mens",
+    "name": "WPB",
+    "association": "wp",
+    "group": "A"
+  },
+  {
+    "id": "bb-mens-ngc",
+    "competition": "bb-mens",
+    "name": "NGC",
+    "association": "ng",
+    "group": "A"
+  },
+  {
+    "id": "bb-mens-hisense",
+    "competition": "bb-mens",
+    "name": "Hisense",
+    "group": "A"
+  },
+  {
+    "id": "bb-mens-wpa",
+    "competition": "bb-mens",
+    "name": "WPA",
+    "association": "wp",
+    "group": "B"
+  },
+  {
+    "id": "bb-mens-sg",
+    "competition": "bb-mens",
+    "name": "SG",
+    "association": "sg",
+    "group": "B"
+  },
+  {
+    "id": "bb-mens-ngb",
+    "competition": "bb-mens",
+    "name": "NGB",
+    "association": "ng",
+    "group": "B"
+  },
+  {
+    "id": "bb-mens-wpc",
+    "competition": "bb-mens",
+    "name": "WPC",
+    "association": "wp",
+    "group": "B"
+  },
+  {
+    "id": "vb-wpa",
+    "competition": "vb",
+    "name": "WPA",
+    "association": "wp"
+  },
+  {
+    "id": "vb-wpb",
+    "competition": "vb",
+    "name": "WPB",
+    "association": "wp"
+  },
+  {
+    "id": "vb-misfits",
+    "competition": "vb",
+    "name": "MISFITS"
+  },
+  {
+    "id": "vb-spiker-roo-sonics",
+    "competition": "vb",
+    "name": "Spiker-Roo Sonics"
+  },
+  {
+    "id": "vb-spiker-roo-vipers",
+    "competition": "vb",
+    "name": "Spiker-Roo Vipers"
+  },
+  {
+    "id": "vb-ng",
+    "competition": "vb",
+    "name": "NG",
+    "association": "ng"
+  },
+  {
+    "id": "bd-wp",
+    "competition": "bd",
+    "name": "WP",
+    "association": "wp"
+  },
+  {
+    "id": "bd-sg",
+    "competition": "bd",
+    "name": "SG",
+    "association": "sg"
+  }
+]

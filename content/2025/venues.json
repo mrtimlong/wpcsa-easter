@@ -1,0 +1,60 @@
+[
+  {
+    "id": "uct",
+    "name": {
+      "en": "UCT Sports Centre"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=UCT%20Sports%20Centre%2C%20Cape%20Town",
+    "courts": [
+      {
+        "id": "a",
+        "name": {
+          "en": "Court A"
+        }
+      },
+      {
+        "id": "b",
+        "name": {
+          "en": "Court B"
+        }
+      },
+      {
+        "id": "hall2-1",
+        "name": {
+          "en": "Hall 2, Court 1"
+        }
+      },
+      {
+        "id": "badminton",
+        "name": {
+          "en": "Badminton"
+        }
+      }
+    ]
+  },
+  {
+    "id": "aura",
+    "name": {
+      "en": "Aura Padel Club"
+    },
+    "address": "1 Ludel Cl, Montague Gardens, Cape Town, 7441",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Aura%20Padel%20Club%2C%201%20Ludel%20Cl%2C%20Montague%20Gardens%2C%20Cape%20Town",
+    "courts": []
+  },
+  {
+    "id": "time-out-market",
+    "name": {
+      "en": "Time Out Market (V&A Waterfront)"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Time%20Out%20Market%2C%20V%26A%20Waterfront%2C%20Cape%20Town",
+    "courts": []
+  },
+  {
+    "id": "ccc",
+    "name": {
+      "en": "Chinese Community Centre"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Chinese%20Community%20Centre%2C%20Cape%20Town",
+    "courts": []
+  }
+]

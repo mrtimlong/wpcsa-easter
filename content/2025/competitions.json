@@ -1,0 +1,71 @@
+[
+  {
+    "id": "bb-minis-a",
+    "sport": "basketball",
+    "name": {
+      "en": "Minis A Division"
+    }
+  },
+  {
+    "id": "bb-minis-b",
+    "sport": "basketball",
+    "name": {
+      "en": "Minis B Division"
+    }
+  },
+  {
+    "id": "bb-jr-mens",
+    "sport": "basketball",
+    "name": {
+      "en": "Junior Mens"
+    }
+  },
+  {
+    "id": "bb-jr-ladies",
+    "sport": "basketball",
+    "name": {
+      "en": "Junior Ladies"
+    }
+  },
+  {
+    "id": "bb-ladies",
+    "sport": "basketball",
+    "name": {
+      "en": "Ladies"
+    }
+  },
+  {
+    "id": "bb-mens",
+    "sport": "basketball",
+    "name": {
+      "en": "Mens"
+    },
+    "groups": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "id": "vb",
+    "sport": "volleyball",
+    "name": {
+      "en": "Volleyball"
+    },
+    "rules": {
+      "win": 2,
+      "loss": 1,
+      "tiebreak": [
+        "headToHead",
+        "diff",
+        "for"
+      ]
+    }
+  },
+  {
+    "id": "bd",
+    "sport": "badminton",
+    "name": {
+      "en": "Badminton Interprovincial"
+    }
+  }
+]

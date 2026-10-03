@@ -1,0 +1,1669 @@
+[
+  {
+    "id": "bb-001",
+    "number": 1,
+    "competition": "bb-minis-a",
+    "stage": "group",
+    "start": "2025-04-18T13:30+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-minis-a-wpb"
+    },
+    "away": {
+      "team": "bb-minis-a-sgb"
+    }
+  },
+  {
+    "id": "bb-002",
+    "number": 2,
+    "competition": "bb-minis-b",
+    "stage": "group",
+    "start": "2025-04-18T13:30+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-minis-b-wpd"
+    },
+    "away": {
+      "team": "bb-minis-b-sgd"
+    }
+  },
+  {
+    "id": "bb-003",
+    "number": 3,
+    "competition": "bb-jr-mens",
+    "stage": "group",
+    "start": "2025-04-18T14:30+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-jr-mens-wpb"
+    },
+    "away": {
+      "team": "bb-jr-mens-ng"
+    }
+  },
+  {
+    "id": "bb-004",
+    "number": 4,
+    "competition": "bb-jr-ladies",
+    "stage": "group",
+    "start": "2025-04-18T14:30+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-jr-ladies-wpa"
+    },
+    "away": {
+      "team": "bb-jr-ladies-wpb"
+    }
+  },
+  {
+    "id": "bb-005",
+    "number": 5,
+    "competition": "bb-minis-a",
+    "stage": "group",
+    "start": "2025-04-18T18:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-minis-a-wpa"
+    },
+    "away": {
+      "team": "bb-minis-a-sga"
+    }
+  },
+  {
+    "id": "bb-006",
+    "number": 6,
+    "competition": "bb-minis-b",
+    "stage": "group",
+    "start": "2025-04-18T18:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-minis-b-wpc"
+    },
+    "away": {
+      "team": "bb-minis-b-sgc"
+    }
+  },
+  {
+    "id": "bb-007",
+    "number": 7,
+    "competition": "bb-ladies",
+    "stage": "group",
+    "start": "2025-04-18T19:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-ladies-wp"
+    },
+    "away": {
+      "team": "bb-ladies-sg"
+    }
+  },
+  {
+    "id": "bb-008",
+    "number": 8,
+    "competition": "bb-jr-mens",
+    "stage": "group",
+    "start": "2025-04-18T19:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-jr-mens-wpa"
+    },
+    "away": {
+      "team": "bb-jr-mens-sg"
+    }
+  },
+  {
+    "id": "bb-009",
+    "number": 9,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "A",
+    "start": "2025-04-18T20:10+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-mens-nga"
+    },
+    "away": {
+      "team": "bb-mens-wpb"
+    }
+  },
+  {
+    "id": "bb-010",
+    "number": 10,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "B",
+    "start": "2025-04-18T20:10+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-mens-wpa"
+    },
+    "away": {
+      "team": "bb-mens-sg"
+    }
+  },
+  {
+    "id": "bb-011",
+    "number": 11,
+    "competition": "bb-minis-a",
+    "stage": "group",
+    "start": "2025-04-19T08:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-minis-a-sga"
+    },
+    "away": {
+      "team": "bb-minis-a-wpb"
+    }
+  },
+  {
+    "id": "bb-012",
+    "number": 12,
+    "competition": "bb-minis-b",
+    "stage": "group",
+    "start": "2025-04-19T08:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-minis-b-sgc"
+    },
+    "away": {
+      "team": "bb-minis-b-wpd"
+    }
+  },
+  {
+    "id": "bb-013",
+    "number": 13,
+    "competition": "bb-jr-ladies",
+    "stage": "group",
+    "start": "2025-04-19T09:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-jr-ladies-sg"
+    },
+    "away": {
+      "team": "bb-jr-ladies-invite"
+    }
+  },
+  {
+    "id": "bb-014",
+    "number": 14,
+    "competition": "bb-jr-mens",
+    "stage": "group",
+    "start": "2025-04-19T09:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-jr-mens-sg"
+    },
+    "away": {
+      "team": "bb-jr-mens-ng"
+    }
+  },
+  {
+    "id": "bb-015",
+    "number": 15,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "A",
+    "start": "2025-04-19T10:10+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-mens-ngc"
+    },
+    "away": {
+      "team": "bb-mens-hisense"
+    }
+  },
+  {
+    "id": "bb-016",
+    "number": 16,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "B",
+    "start": "2025-04-19T10:10+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-mens-ngb"
+    },
+    "away": {
+      "team": "bb-mens-wpc"
+    }
+  },
+  {
+    "id": "bb-017",
+    "number": 17,
+    "competition": "bb-ladies",
+    "stage": "group",
+    "start": "2025-04-19T11:20+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-ladies-wp"
+    },
+    "away": {
+      "team": "bb-ladies-swazi"
+    }
+  },
+  {
+    "id": "bb-018",
+    "number": 18,
+    "competition": "bb-jr-mens",
+    "stage": "group",
+    "start": "2025-04-19T11:20+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-jr-mens-wpa"
+    },
+    "away": {
+      "team": "bb-jr-mens-wpb"
+    }
+  },
+  {
+    "id": "bb-019",
+    "number": 19,
+    "competition": "bb-minis-b",
+    "stage": "group",
+    "start": "2025-04-19T12:30+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-minis-b-wpc"
+    },
+    "away": {
+      "team": "bb-minis-b-sgd"
+    }
+  },
+  {
+    "id": "bb-020",
+    "number": 20,
+    "competition": "bb-jr-ladies",
+    "stage": "group",
+    "start": "2025-04-19T12:30+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-jr-ladies-sg"
+    },
+    "away": {
+      "team": "bb-jr-ladies-wpb"
+    }
+  },
+  {
+    "id": "bb-021",
+    "number": 21,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "A",
+    "start": "2025-04-19T13:40+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-mens-nga"
+    },
+    "away": {
+      "team": "bb-mens-hisense"
+    }
+  },
+  {
+    "id": "bb-022",
+    "number": 22,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "B",
+    "start": "2025-04-19T13:40+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-mens-wpa"
+    },
+    "away": {
+      "team": "bb-mens-ngb"
+    }
+  },
+  {
+    "id": "bb-023",
+    "number": 23,
+    "competition": "bb-jr-mens",
+    "stage": "group",
+    "start": "2025-04-19T14:40+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-jr-mens-wpa"
+    },
+    "away": {
+      "team": "bb-jr-mens-ng"
+    }
+  },
+  {
+    "id": "bb-024",
+    "number": 24,
+    "competition": "bb-ladies",
+    "stage": "group",
+    "start": "2025-04-19T14:40+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-ladies-sg"
+    },
+    "away": {
+      "team": "bb-ladies-swazi"
+    }
+  },
+  {
+    "id": "bb-025",
+    "number": 25,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "A",
+    "start": "2025-04-19T15:50+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-mens-wpb"
+    },
+    "away": {
+      "team": "bb-mens-ngc"
+    }
+  },
+  {
+    "id": "bb-026",
+    "number": 26,
+    "competition": "bb-minis-a",
+    "stage": "group",
+    "start": "2025-04-19T15:50+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-minis-a-wpa"
+    },
+    "away": {
+      "team": "bb-minis-a-sgb"
+    }
+  },
+  {
+    "id": "bb-027",
+    "number": 27,
+    "competition": "bb-jr-ladies",
+    "stage": "group",
+    "start": "2025-04-19T17:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-jr-ladies-wpb"
+    },
+    "away": {
+      "team": "bb-jr-ladies-invite"
+    }
+  },
+  {
+    "id": "bb-028",
+    "number": 28,
+    "competition": "bb-jr-ladies",
+    "stage": "group",
+    "start": "2025-04-19T17:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-jr-ladies-wpa"
+    },
+    "away": {
+      "team": "bb-jr-ladies-sg"
+    }
+  },
+  {
+    "id": "bb-029",
+    "number": 29,
+    "competition": "bb-jr-mens",
+    "stage": "group",
+    "start": "2025-04-19T18:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-jr-mens-sg"
+    },
+    "away": {
+      "team": "bb-jr-mens-wpb"
+    }
+  },
+  {
+    "id": "bb-030",
+    "number": 30,
+    "competition": "bb-ladies",
+    "stage": "group",
+    "start": "2025-04-19T18:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-ladies-wp"
+    },
+    "away": {
+      "team": "bb-ladies-sg"
+    }
+  },
+  {
+    "id": "bb-031",
+    "number": 31,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "B",
+    "start": "2025-04-19T19:10+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-mens-sg"
+    },
+    "away": {
+      "team": "bb-mens-wpc"
+    }
+  },
+  {
+    "id": "bb-033",
+    "number": 33,
+    "competition": "bb-minis-a",
+    "stage": "group",
+    "start": "2025-04-20T08:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-minis-a-sga"
+    },
+    "away": {
+      "team": "bb-minis-a-sgb"
+    }
+  },
+  {
+    "id": "bb-034",
+    "number": 34,
+    "competition": "bb-minis-a",
+    "stage": "group",
+    "start": "2025-04-20T08:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-minis-a-wpa"
+    },
+    "away": {
+      "team": "bb-minis-a-wpb"
+    }
+  },
+  {
+    "id": "bb-035",
+    "number": 35,
+    "competition": "bb-minis-b",
+    "stage": "group",
+    "start": "2025-04-20T09:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-minis-b-wpc"
+    },
+    "away": {
+      "team": "bb-minis-b-wpd"
+    }
+  },
+  {
+    "id": "bb-036",
+    "number": 36,
+    "competition": "bb-minis-b",
+    "stage": "group",
+    "start": "2025-04-20T09:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-minis-b-sgc"
+    },
+    "away": {
+      "team": "bb-minis-b-sgd"
+    }
+  },
+  {
+    "id": "bb-037",
+    "number": 37,
+    "competition": "bb-jr-ladies",
+    "stage": "group",
+    "start": "2025-04-20T10:10+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-jr-ladies-wpa"
+    },
+    "away": {
+      "team": "bb-jr-ladies-invite"
+    }
+  },
+  {
+    "id": "bb-038",
+    "number": 38,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "A",
+    "start": "2025-04-20T10:10+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-mens-nga"
+    },
+    "away": {
+      "team": "bb-mens-ngc"
+    }
+  },
+  {
+    "id": "bb-039",
+    "number": 39,
+    "competition": "bb-jr-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T11:10+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 2
+    },
+    "away": {
+      "position": 3
+    }
+  },
+  {
+    "id": "bb-040",
+    "number": 40,
+    "competition": "bb-ladies",
+    "stage": "group",
+    "start": "2025-04-20T11:10+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-ladies-wp"
+    },
+    "away": {
+      "team": "bb-ladies-swazi"
+    }
+  },
+  {
+    "id": "bb-041",
+    "number": 41,
+    "competition": "bb-minis-b",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T12:20+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 1
+    },
+    "away": {
+      "position": 4
+    }
+  },
+  {
+    "id": "bb-042",
+    "number": 42,
+    "competition": "bb-minis-b",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T12:20+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "position": 2
+    },
+    "away": {
+      "position": 3
+    }
+  },
+  {
+    "id": "bb-043",
+    "number": 43,
+    "competition": "bb-jr-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T13:20+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 1
+    },
+    "away": {
+      "position": 4
+    }
+  },
+  {
+    "id": "bb-044",
+    "number": 44,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "A",
+    "start": "2025-04-20T13:20+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-mens-wpb"
+    },
+    "away": {
+      "team": "bb-mens-hisense"
+    }
+  },
+  {
+    "id": "bb-045",
+    "number": 45,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "B",
+    "start": "2025-04-20T14:30+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-mens-wpa"
+    },
+    "away": {
+      "team": "bb-mens-wpc"
+    }
+  },
+  {
+    "id": "bb-046",
+    "number": 46,
+    "competition": "bb-mens",
+    "stage": "group",
+    "group": "B",
+    "start": "2025-04-20T14:30+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "team": "bb-mens-sg"
+    },
+    "away": {
+      "team": "bb-mens-ngb"
+    }
+  },
+  {
+    "id": "bb-047",
+    "number": 47,
+    "competition": "bb-ladies",
+    "stage": "group",
+    "start": "2025-04-20T15:40+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "team": "bb-ladies-sg"
+    },
+    "away": {
+      "team": "bb-ladies-swazi"
+    }
+  },
+  {
+    "id": "bb-048",
+    "number": 48,
+    "competition": "bb-minis-b",
+    "stage": "knockout",
+    "label": {
+      "en": "3rd place playoff"
+    },
+    "start": "2025-04-20T15:40+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "loserOf": "bb-041"
+    },
+    "away": {
+      "loserOf": "bb-042"
+    }
+  },
+  {
+    "id": "bb-049",
+    "number": 49,
+    "competition": "bb-minis-a",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T16:50+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 1
+    },
+    "away": {
+      "position": 4
+    }
+  },
+  {
+    "id": "bb-050",
+    "number": 50,
+    "competition": "bb-minis-a",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T16:50+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "position": 2
+    },
+    "away": {
+      "position": 3
+    }
+  },
+  {
+    "id": "bb-051",
+    "number": 51,
+    "competition": "bb-jr-ladies",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T17:50+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 1
+    },
+    "away": {
+      "position": 4
+    }
+  },
+  {
+    "id": "bb-052",
+    "number": 52,
+    "competition": "bb-jr-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "3rd place playoff"
+    },
+    "start": "2025-04-20T17:50+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "loserOf": "bb-039"
+    },
+    "away": {
+      "loserOf": "bb-043"
+    }
+  },
+  {
+    "id": "bb-053",
+    "number": 53,
+    "competition": "bb-minis-a",
+    "stage": "knockout",
+    "label": {
+      "en": "3rd place playoff"
+    },
+    "start": "2025-04-20T19:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "loserOf": "bb-049"
+    },
+    "away": {
+      "loserOf": "bb-050"
+    }
+  },
+  {
+    "id": "bb-054",
+    "number": 54,
+    "competition": "bb-jr-ladies",
+    "stage": "knockout",
+    "label": {
+      "en": "Semi-final"
+    },
+    "start": "2025-04-20T19:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "position": 2
+    },
+    "away": {
+      "position": 3
+    }
+  },
+  {
+    "id": "bb-055",
+    "number": 55,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Cup semi-final"
+    },
+    "start": "2025-04-20T20:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 1,
+      "group": "A"
+    },
+    "away": {
+      "position": 2,
+      "group": "B"
+    }
+  },
+  {
+    "id": "bb-056",
+    "number": 56,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Cup semi-final"
+    },
+    "start": "2025-04-20T20:00+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "position": 1,
+      "group": "B"
+    },
+    "away": {
+      "position": 2,
+      "group": "A"
+    }
+  },
+  {
+    "id": "bb-057",
+    "number": 57,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Plate semi-final"
+    },
+    "start": "2025-04-20T21:10+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 3,
+      "group": "A"
+    },
+    "away": {
+      "position": 4,
+      "group": "B"
+    }
+  },
+  {
+    "id": "bb-058",
+    "number": 58,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Plate semi-final"
+    },
+    "start": "2025-04-20T21:10+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "position": 3,
+      "group": "B"
+    },
+    "away": {
+      "position": 4,
+      "group": "A"
+    }
+  },
+  {
+    "id": "bb-059",
+    "number": 59,
+    "competition": "bb-jr-ladies",
+    "stage": "knockout",
+    "label": {
+      "en": "3rd place playoff"
+    },
+    "start": "2025-04-21T07:30+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "loserOf": "bb-051"
+    },
+    "away": {
+      "loserOf": "bb-054"
+    }
+  },
+  {
+    "id": "bb-060",
+    "number": 60,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Plate playoff"
+    },
+    "start": "2025-04-21T07:30+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "loserOf": "bb-057"
+    },
+    "away": {
+      "loserOf": "bb-058"
+    }
+  },
+  {
+    "id": "bb-061",
+    "number": 61,
+    "competition": "bb-minis-a",
+    "stage": "knockout",
+    "label": {
+      "en": "Final"
+    },
+    "start": "2025-04-21T08:30+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "winnerOf": "bb-049"
+    },
+    "away": {
+      "winnerOf": "bb-050"
+    }
+  },
+  {
+    "id": "bb-062",
+    "number": 62,
+    "competition": "bb-minis-b",
+    "stage": "knockout",
+    "label": {
+      "en": "Final"
+    },
+    "start": "2025-04-21T08:30+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "winnerOf": "bb-041"
+    },
+    "away": {
+      "winnerOf": "bb-042"
+    }
+  },
+  {
+    "id": "bb-063",
+    "number": 63,
+    "competition": "bb-jr-ladies",
+    "stage": "knockout",
+    "label": {
+      "en": "Final"
+    },
+    "start": "2025-04-21T09:30+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "winnerOf": "bb-051"
+    },
+    "away": {
+      "winnerOf": "bb-054"
+    }
+  },
+  {
+    "id": "bb-064",
+    "number": 64,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Cup 3rd place playoff"
+    },
+    "start": "2025-04-21T09:30+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "loserOf": "bb-055"
+    },
+    "away": {
+      "loserOf": "bb-056"
+    }
+  },
+  {
+    "id": "bb-065",
+    "number": 65,
+    "competition": "bb-jr-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Final"
+    },
+    "start": "2025-04-21T10:40+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "winnerOf": "bb-039"
+    },
+    "away": {
+      "winnerOf": "bb-043"
+    }
+  },
+  {
+    "id": "bb-066",
+    "number": 66,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Plate final"
+    },
+    "start": "2025-04-21T10:40+02:00",
+    "venue": "uct",
+    "court": "b",
+    "home": {
+      "winnerOf": "bb-057"
+    },
+    "away": {
+      "winnerOf": "bb-058"
+    }
+  },
+  {
+    "id": "bb-067",
+    "number": 67,
+    "competition": "bb-ladies",
+    "stage": "knockout",
+    "label": {
+      "en": "Final"
+    },
+    "start": "2025-04-21T11:50+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "position": 1
+    },
+    "away": {
+      "position": 2
+    }
+  },
+  {
+    "id": "bb-068",
+    "number": 68,
+    "competition": "bb-mens",
+    "stage": "knockout",
+    "label": {
+      "en": "Cup final"
+    },
+    "start": "2025-04-21T13:00+02:00",
+    "venue": "uct",
+    "court": "a",
+    "home": {
+      "winnerOf": "bb-055"
+    },
+    "away": {
+      "winnerOf": "bb-056"
+    }
+  },
+  {
+    "id": "vb-fri-1",
+    "number": 1,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-18T11:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-wpb"
+    },
+    "away": {
+      "team": "vb-misfits"
+    },
+    "officials": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-fri-2",
+    "number": 2,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-18T13:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-wpa"
+    },
+    "away": {
+      "team": "vb-spiker-roo-sonics"
+    },
+    "officials": {
+      "team": "vb-misfits"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-fri-3",
+    "number": 3,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-18T17:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-spiker-roo-sonics"
+    },
+    "away": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "officials": {
+      "team": "vb-wpa"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-fri-4",
+    "number": 4,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-18T19:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-ng"
+    },
+    "away": {
+      "team": "vb-misfits"
+    },
+    "officials": {
+      "team": "vb-spiker-roo-sonics"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sat-1",
+    "number": 1,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-19T08:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-wpa"
+    },
+    "away": {
+      "team": "vb-wpb"
+    },
+    "officials": {
+      "team": "vb-ng"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sat-2",
+    "number": 2,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-19T10:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-misfits"
+    },
+    "away": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "officials": {
+      "team": "vb-wpa"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sat-3",
+    "number": 3,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-19T11:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-ng"
+    },
+    "away": {
+      "team": "vb-wpb"
+    },
+    "officials": {
+      "team": "vb-misfits"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sat-4",
+    "number": 4,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-19T13:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "away": {
+      "team": "vb-wpa"
+    },
+    "officials": {
+      "team": "vb-wpb"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sat-5",
+    "number": 5,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-19T16:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-spiker-roo-sonics"
+    },
+    "away": {
+      "team": "vb-ng"
+    },
+    "officials": {
+      "team": "vb-wpa"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sat-6",
+    "number": 6,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-19T17:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-wpb"
+    },
+    "away": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "officials": {
+      "team": "vb-spiker-roo-sonics"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sat-7",
+    "number": 7,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-19T19:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-ng"
+    },
+    "away": {
+      "team": "vb-wpa"
+    },
+    "officials": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sun-1",
+    "number": 1,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-20T08:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-spiker-roo-sonics"
+    },
+    "away": {
+      "team": "vb-wpb"
+    },
+    "officials": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sun-2",
+    "number": 2,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-20T09:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-wpa"
+    },
+    "away": {
+      "team": "vb-misfits"
+    },
+    "officials": {
+      "team": "vb-wpb"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sun-3",
+    "number": 3,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-20T11:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-spiker-roo-vipers"
+    },
+    "away": {
+      "team": "vb-ng"
+    },
+    "officials": {
+      "team": "vb-misfits"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sun-4",
+    "number": 4,
+    "competition": "vb",
+    "stage": "group",
+    "start": "2025-04-20T12:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "team": "vb-misfits"
+    },
+    "away": {
+      "team": "vb-spiker-roo-sonics"
+    },
+    "officials": {
+      "team": "vb-ng"
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sun-5",
+    "number": 5,
+    "competition": "vb",
+    "stage": "knockout",
+    "label": {
+      "en": "SACSA Global semi-final"
+    },
+    "start": "2025-04-20T14:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "position": 1
+    },
+    "away": {
+      "position": 4
+    },
+    "officials": {
+      "position": 5
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sun-6",
+    "number": 6,
+    "competition": "vb",
+    "stage": "knockout",
+    "label": {
+      "en": "SACSA Global semi-final"
+    },
+    "start": "2025-04-20T15:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "position": 2
+    },
+    "away": {
+      "position": 3
+    },
+    "officials": {
+      "position": 6
+    },
+    "format": {
+      "bestOf": 3
+    }
+  },
+  {
+    "id": "vb-sun-7",
+    "number": 7,
+    "competition": "vb",
+    "stage": "knockout",
+    "label": {
+      "en": "SACSA Global final"
+    },
+    "start": "2025-04-20T17:30+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "winnerOf": "vb-sun-5"
+    },
+    "away": {
+      "winnerOf": "vb-sun-6"
+    },
+    "officials": {
+      "tbc": {
+        "en": "Losers of the semi-finals"
+      }
+    },
+    "format": {
+      "bestOf": 5
+    }
+  },
+  {
+    "id": "vb-mon-1",
+    "number": 1,
+    "competition": "vb",
+    "stage": "knockout",
+    "label": {
+      "en": "SACSA Easter final"
+    },
+    "start": "2025-04-21T08:00+02:00",
+    "venue": "uct",
+    "court": "hall2-1",
+    "home": {
+      "position": 1
+    },
+    "away": {
+      "position": 2
+    },
+    "officials": {
+      "team": "vb-misfits"
+    },
+    "format": {
+      "bestOf": 5
+    }
+  },
+  {
+    "id": "bd-1",
+    "number": 1,
+    "competition": "bd",
+    "stage": "group",
+    "label": {
+      "en": "Ladies singles (W1 v W1)"
+    },
+    "start": "2025-04-20T08:00+02:00",
+    "venue": "uct",
+    "court": "badminton",
+    "home": {
+      "team": "bd-wp"
+    },
+    "away": {
+      "team": "bd-sg"
+    },
+    "format": {
+      "bestOf": 3
+    },
+    "tie": "bd-wp-sg"
+  },
+  {
+    "id": "bd-2",
+    "number": 2,
+    "competition": "bd",
+    "stage": "group",
+    "label": {
+      "en": "Mens singles (M1 v M1)"
+    },
+    "start": "2025-04-20T08:45+02:00",
+    "venue": "uct",
+    "court": "badminton",
+    "home": {
+      "team": "bd-wp"
+    },
+    "away": {
+      "team": "bd-sg"
+    },
+    "format": {
+      "bestOf": 3
+    },
+    "tie": "bd-wp-sg"
+  },
+  {
+    "id": "bd-3",
+    "number": 3,
+    "competition": "bd",
+    "stage": "group",
+    "label": {
+      "en": "Ladies doubles (W2, W3 v W1, W2)"
+    },
+    "start": "2025-04-20T09:30+02:00",
+    "venue": "uct",
+    "court": "badminton",
+    "home": {
+      "team": "bd-wp"
+    },
+    "away": {
+      "team": "bd-sg"
+    },
+    "format": {
+      "bestOf": 3
+    },
+    "tie": "bd-wp-sg"
+  },
+  {
+    "id": "bd-4",
+    "number": 4,
+    "competition": "bd",
+    "stage": "group",
+    "label": {
+      "en": "Mens doubles (M2, M3 v M2, M3)"
+    },
+    "start": "2025-04-20T10:15+02:00",
+    "venue": "uct",
+    "court": "badminton",
+    "home": {
+      "team": "bd-wp"
+    },
+    "away": {
+      "team": "bd-sg"
+    },
+    "format": {
+      "bestOf": 3
+    },
+    "tie": "bd-wp-sg"
+  },
+  {
+    "id": "bd-5",
+    "number": 5,
+    "competition": "bd",
+    "stage": "group",
+    "label": {
+      "en": "Mixed doubles C (M3, W3 v M3, W2)"
+    },
+    "start": "2025-04-20T11:00+02:00",
+    "venue": "uct",
+    "court": "badminton",
+    "home": {
+      "team": "bd-wp"
+    },
+    "away": {
+      "team": "bd-sg"
+    },
+    "format": {
+      "bestOf": 3
+    },
+    "tie": "bd-wp-sg"
+  },
+  {
+    "id": "bd-6",
+    "number": 6,
+    "competition": "bd",
+    "stage": "group",
+    "label": {
+      "en": "Mixed doubles B (M2, W2 v M2, W2)"
+    },
+    "start": "2025-04-20T11:45+02:00",
+    "venue": "uct",
+    "court": "badminton",
+    "home": {
+      "team": "bd-wp"
+    },
+    "away": {
+      "team": "bd-sg"
+    },
+    "format": {
+      "bestOf": 3
+    },
+    "tie": "bd-wp-sg"
+  },
+  {
+    "id": "bd-7",
+    "number": 7,
+    "competition": "bd",
+    "stage": "group",
+    "label": {
+      "en": "Mixed doubles A (M1, W1 v M1, W1)"
+    },
+    "start": "2025-04-20T12:30+02:00",
+    "venue": "uct",
+    "court": "badminton",
+    "home": {
+      "team": "bd-wp"
+    },
+    "away": {
+      "team": "bd-sg"
+    },
+    "format": {
+      "bestOf": 3
+    },
+    "tie": "bd-wp-sg"
+  }
+]

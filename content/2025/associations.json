@@ -1,0 +1,30 @@
+[
+  {
+    "id": "wp",
+    "name": {
+      "en": "Western Province"
+    },
+    "short": "WP"
+  },
+  {
+    "id": "sg",
+    "name": {
+      "en": "Southern Gauteng"
+    },
+    "short": "SG"
+  },
+  {
+    "id": "ng",
+    "name": {
+      "en": "Northern Gauteng"
+    },
+    "short": "NG"
+  },
+  {
+    "id": "swazi",
+    "name": {
+      "en": "Eswatini"
+    },
+    "short": "Swazi"
+  }
+]
