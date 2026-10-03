@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import images from '../generated/images.json'
 import { content } from './content.ts'
 import { Content } from './schema.ts'
 import { validateContent } from './validate.ts'
@@ -7,6 +8,13 @@ describe('bundled content', () => {
   it('matches the schema', () => {
     const parsed = Content.safeParse(content)
     expect(parsed.success ? [] : parsed.error.issues).toEqual([])
+  })
+
+  it('only uses generated images (run `npm run images` after adding originals)', () => {
+    const guide = content.guide
+    const photos = [guide?.hero, ...(guide?.sections.flatMap((s) => s.items.map((i) => i.photo)) ?? [])]
+    const missing = photos.filter((p) => p && !(p.image in images)).map((p) => p!.image)
+    expect(missing).toEqual([])
   })
 
   it('has consistent references and no court clashes', () => {

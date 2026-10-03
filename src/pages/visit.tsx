@@ -11,7 +11,9 @@ export function Visit() {
   return (
     <article class="visit">
       <header class="visit-hero">
-        {guide.hero && <Photo photo={guide.hero} class="visit-hero-photo" eager />}
+        {guide.hero && (
+          <Photo photo={guide.hero} class="visit-hero-photo" sizes="(max-width: 48rem) 100vw, 48rem" eager />
+        )}
         <h1>{t('visit.title', { city: l(content.tournament.host) })}</h1>
       </header>
 
@@ -25,7 +27,9 @@ export function Visit() {
           <div class="cards">
             {section.items.map((item) => (
               <div key={item.id} class="card">
-                {item.photo && <Photo photo={item.photo} />}
+                {item.photo && (
+                  <Photo photo={item.photo} sizes="(max-width: 33rem) 100vw, (max-width: 50rem) 50vw, 15rem" />
+                )}
                 <div class="card-body">
                   <h3>{l(item.name)}</h3>
                   <p>{l(item.description)}</p>

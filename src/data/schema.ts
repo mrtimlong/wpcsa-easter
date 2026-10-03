@@ -113,7 +113,8 @@ export const Sponsor = z.object({
 
 /** A photo with the attribution its licence requires (most stock photos are CC BY-SA). */
 export const Photo = z.object({
-  src: z.string().startsWith('/images/'),
+  /** Name in src/generated/images.json, i.e. the path under images/originals/ without extension. */
+  image: z.string(),
   alt: Text,
   credit: z.string(),
   license: z.string(),

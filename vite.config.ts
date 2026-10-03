@@ -33,7 +33,7 @@ export default defineConfig({
         // Photos are too big to precache; keep them once viewed so the guide works offline.
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => url.pathname.startsWith('/images/') && url.pathname.endsWith('.jpg'),
+            urlPattern: ({ url }) => url.pathname.startsWith('/images/generated/'),
             handler: 'CacheFirst',
             options: {
               cacheName: 'photos',

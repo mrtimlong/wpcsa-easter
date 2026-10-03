@@ -25,6 +25,10 @@ npm run preview    # serve the production build (service worker active)
 - `public/`: static assets and icons. Regenerate PNG icons from `favicon.svg` with `swift scripts/generate-icons.swift` (macOS)
 - `vite.config.ts`: Vite, PWA manifest and service worker config
 
+## Images
+
+Photos and artwork live as originals in `images/originals/` (committed so they can be regenerated). Run `npm run images` (needs ImageMagick 7) after adding or changing one: it writes AVIF + JPEG versions at several widths to `public/images/generated/` and a manifest at `src/generated/images.json`. Commit the generated files too. In code, use `<Picture name="visit/boulders" …>` (or a content `photo.image`), never a raw `<img>` to a photo, so phones get the smallest file that fits.
+
 ## Deployment
 
 Every push to `main` runs typecheck, tests and build, then deploys to https://easter.wpcsa.org.za via GitHub Actions (`.github/workflows/deploy.yml`). Pull requests run the checks only. The workflow assumes the `wpcsa-easter-deploy` AWS role through OIDC (no stored keys); its ARN is the repo variable `AWS_DEPLOY_ROLE_ARN`.

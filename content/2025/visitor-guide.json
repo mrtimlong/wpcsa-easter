@@ -1,7 +1,7 @@
 {
   "draft": true,
   "hero": {
-    "src": "/images/visit/table-mountain.jpg",
+    "image": "visit/table-mountain",
     "alt": {
       "en": "View along the Twelve Apostles from the top of Table Mountain"
     },
@@ -32,7 +32,7 @@
             "en": "Closest to the UCT Sports Centre. Guesthouses, B&Bs and self-catering apartments, with shops and restaurants on Main Road."
           },
           "photo": {
-            "src": "/images/visit/uct.jpg",
+            "image": "visit/uct",
             "alt": {
               "en": "Jameson Hall at the University of Cape Town with Devil’s Peak behind"
             },
@@ -52,7 +52,7 @@
             "en": "Central and lively, with plenty of hotels and restaurants. About 15–20 minutes’ drive to UCT outside rush hour."
           },
           "photo": {
-            "src": "/images/visit/bo-kaap.jpg",
+            "image": "visit/bo-kaap",
             "alt": {
               "en": "Brightly painted houses in the Bo-Kaap"
             },
@@ -72,7 +72,7 @@
             "en": "Beachfront apartments and hotels on the Atlantic side. Great for families making a holiday of it; allow 25–35 minutes to UCT."
           },
           "photo": {
-            "src": "/images/visit/camps-bay.jpg",
+            "image": "visit/camps-bay",
             "alt": {
               "en": "Camps Bay beach with the Twelve Apostles"
             },
@@ -145,7 +145,7 @@
             "en": "Take the cableway (or hike) to the top for views over the city and the Atlantic. Check the weather first: the cableway closes in high wind."
           },
           "photo": {
-            "src": "/images/visit/table-mountain.jpg",
+            "image": "visit/table-mountain",
             "alt": {
               "en": "View from the top of Table Mountain"
             },
@@ -166,7 +166,7 @@
             "en": "Shops, restaurants and the harbour (look out for the seals). The Saturday social is at the Time Out Market here."
           },
           "photo": {
-            "src": "/images/visit/waterfront.jpg",
+            "image": "visit/waterfront",
             "alt": {
               "en": "Seals resting on a jetty at the V&A Waterfront harbour"
             },
@@ -186,7 +186,7 @@
             "en": "Botanical gardens on the slopes of Table Mountain, ten minutes from UCT. Good for a morning off with the family."
           },
           "photo": {
-            "src": "/images/visit/kirstenbosch.jpg",
+            "image": "visit/kirstenbosch",
             "alt": {
               "en": "Kirstenbosch National Botanical Garden"
             },
@@ -206,7 +206,7 @@
             "en": "The African penguin colony in Simon’s Town, about 45 minutes from UCT."
           },
           "photo": {
-            "src": "/images/visit/boulders.jpg",
+            "image": "visit/boulders",
             "alt": {
               "en": "African penguins at Boulders Beach"
             },
@@ -226,7 +226,7 @@
             "en": "A full-day trip down the peninsula to the lighthouse and cliffs, often combined with Boulders Beach."
           },
           "photo": {
-            "src": "/images/visit/cape-point.jpg",
+            "image": "visit/cape-point",
             "alt": {
               "en": "Cliffs at Cape Point"
             },
