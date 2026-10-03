@@ -4,6 +4,8 @@ export const en = {
   'app.edition': '{year} · {city}',
   'nav.home': 'Home',
   'lang.toggle': '中文',
+  'logo.sacsa': 'Southern Africa Chinese Sports Association',
+  'logo.wpcsa': 'WP Chinese Sports Association',
   'home.comingSoon': 'Fixtures, results and tournament info will appear here.',
   'notFound.title': 'Page not found',
   'notFound.back': 'Back to home',
