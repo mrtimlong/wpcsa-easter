@@ -25,6 +25,12 @@ npm run preview    # serve the production build (service worker active)
 - `public/`: static assets and icons. Regenerate PNG icons from `favicon.svg` with `swift scripts/generate-icons.swift` (macOS)
 - `vite.config.ts`: Vite, PWA manifest and service worker config
 
+## Deployment
+
+Every push to `main` runs typecheck, tests and build, then deploys to https://easter.wpcsa.org.za via GitHub Actions (`.github/workflows/deploy.yml`). Pull requests run the checks only. The workflow assumes the `wpcsa-easter-deploy` AWS role through OIDC (no stored keys); its ARN is the repo variable `AWS_DEPLOY_ROLE_ARN`.
+
+Infrastructure is created by the numbered scripts in `infra/` (AWS CLI, profile `wpcsa`), in order: bucket, certificate, CloudFront, GitHub deploy role. `infra/deploy.sh` can also be run locally after `npm run build`.
+
 ## Translations
 
 Add every new UI string to `src/i18n/en.ts` first, then (optionally) to `src/i18n/zh-Hant.ts`. Chinese text is supplied by community translators; until then strings fall back to English.
