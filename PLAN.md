@@ -94,16 +94,6 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 3. Monitor during the event; quick-fix process for schedule changes.
 4. Post-event: archive the year (e.g. `/2027`) and roll over for next year.
 
-## TODO
-- [ ] Replace header logos (`public/images/sacsa-logo.png`, `wpcsa-logo.png`, extracted from the 2025 brochure PDF) with SVG originals from SACSA / WPCSA.
-- [x] 2027 theme artwork: Year of the Goat (羊年) hero, `public/images/goat-hero.jpg` (AI-generated with Nano Banana).
-- [ ] Replace the example content in `content/2025/visitor-guide.json` (marked `draft: true`) with real accommodation/partner-hotel details; check Chinese translations.
-- [ ] Enable auto-renew for `wpcsa.org.za` (expires 2027-10-03).
+## Still to do
 
-- [ ] Turn off demo mode (`DEMO` in `src/data/live.ts`) once the results backend exists: fetch `/data/results.json` and use the real clock.
-
-## Open questions
-1. **Site sections:** final list of pages/sections.
-2. **Adverts:** sizes, placement, how many per page, and how sponsors/ads are rotated.
-3. **Basketball standings rules:** points system and tiebreakers (confirm with organisers).
-4. **Host city/venues for 2027:** needed for real content; 2025 data used as seed until then.
+The detailed, owned and dated list of remaining work (decisions, results backend, admin screens, 2027 content, translations and sign-off, testing, organiser walkthroughs, launch, event, post-event) is in **[docs/checklist.md](docs/checklist.md)**. It replaces the TODO list and open questions that used to be here.
