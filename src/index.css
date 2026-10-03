@@ -263,3 +263,218 @@ body {
     font-size: clamp(1.6rem, 8.5vw, 2.25rem);
   }
 }
+
+/* Tabs (days) and chips (sport filter) */
+.tabs,
+.chips {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: none;
+}
+
+.tabs {
+  margin-bottom: 0.75rem;
+}
+
+.tab,
+.chip {
+  flex: none;
+  border: 1px solid #d5d8e5;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.tab[aria-selected='true'],
+.chip[aria-pressed='true'] {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.chip {
+  font-size: 0.9rem;
+}
+
+.day-heading {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.time-group {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.time-heading {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.programme-item {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 4px solid var(--brand);
+  border-radius: 0.5rem;
+  background: #e9ecf8;
+}
+
+/* Fixture card */
+.fixture {
+  margin-bottom: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.75rem;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+.fixture.is-live {
+  box-shadow: 0 0 0 2px #d93025;
+}
+
+.fixture-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.fixture-meta time {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.fixture-comp {
+  margin: 0.15rem 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.fixture-teams {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.fixture-team {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 1.05rem;
+}
+
+.fixture-team.is-winner {
+  font-weight: 700;
+}
+
+.fixture-team.is-tbc .fixture-team-name {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.fixture-score {
+  font-variant-numeric: tabular-nums;
+}
+
+.fixture-extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-live {
+  background: #d93025;
+  color: #fff;
+}
+
+.badge-final,
+.badge-forfeit,
+.badge-cancelled {
+  background: #e4e6ef;
+  color: var(--muted);
+}
+
+/* Standings */
+.competition {
+  margin-top: 1.75rem;
+}
+
+.competition h2 {
+  margin-bottom: 0.5rem;
+}
+
+.competition h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.standings {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  font-variant-numeric: tabular-nums;
+}
+
+.standings th,
+.standings td {
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+}
+
+.standings thead th {
+  background: #e9ecf8;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.standings tbody tr + tr td {
+  border-top: 1px solid #eef0f6;
+}
+
+.standings .num {
+  width: 2.5rem;
+  text-align: right;
+}
+
+.standings .team {
+  font-weight: 600;
+}
+
+.standings .strong {
+  font-weight: 700;
+}
+
+.table-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+}

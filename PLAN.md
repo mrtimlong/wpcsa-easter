@@ -100,6 +100,8 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 - [ ] Replace the example content in `content/2025/visitor-guide.json` (marked `draft: true`) with real accommodation/partner-hotel details; check Chinese translations.
 - [ ] Enable auto-renew for `wpcsa.org.za` (expires 2027-10-03).
 
+- [ ] Turn off demo mode (`DEMO` in `src/data/live.ts`) once the results backend exists: fetch `/data/results.json` and use the real clock.
+
 ## Open questions
 1. **Site sections:** final list of pages/sections.
 2. **Adverts:** sizes, placement, how many per page, and how sponsors/ads are rotated.

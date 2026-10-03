@@ -2,6 +2,9 @@ import { LocationProvider, Route, Router, useLocation } from 'preact-iso'
 import { I18nProvider, useI18n } from './i18n/index.tsx'
 import { Home } from './pages/home.tsx'
 import { NotFound } from './pages/not-found.tsx'
+import { Results } from './pages/results.tsx'
+import { Schedule } from './pages/schedule.tsx'
+import { Standings } from './pages/standings.tsx'
 import { Visit } from './pages/visit.tsx'
 
 function Logos() {
@@ -20,6 +23,9 @@ function Header() {
   const { path } = useLocation()
   const links = [
     { href: '/', label: t('nav.home') },
+    { href: '/schedule', label: t('nav.schedule') },
+    { href: '/results', label: t('nav.results') },
+    { href: '/standings', label: t('nav.standings') },
     { href: '/visit', label: t('nav.visit') },
   ]
   return (
@@ -56,6 +62,9 @@ export function App() {
         <main class="main">
           <Router>
             <Route path="/" component={Home} />
+            <Route path="/schedule" component={Schedule} />
+            <Route path="/results" component={Results} />
+            <Route path="/standings" component={Standings} />
             <Route path="/visit" component={Visit} />
             <Route default component={NotFound} />
           </Router>
