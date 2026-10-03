@@ -29,7 +29,10 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
   - Keep the result schema per-sport and extensible.
 - **Repo:** public GitHub repo; only Tim has write access. The AWS deploy role trusts only `main` of this repo via OIDC. No secrets in the repo.
 - **Translations:** community members will supply Chinese text later; use placeholder strings (with a "missing translation" fallback to English) for now.
+- **Data model:** draft agreed (tournament, venues, associations, competitions, teams, fixtures with slots like "winner of", programme, sponsors; per-sport results). Must stay flexible: number of sports, basketball pools, and volleyball/badminton formats are unknown and will change.
+- **Player names:** never committed to GitHub. Team names are fine in the repo. Squads live in a separate `squads.json` uploaded to S3 outside the repo (source kept in gitignored `private/`); move to DynamoDB later only if organisers need to edit squads in `/admin`.
 - **Sponsors:** a sponsors section, plus advert slots on most pages (sizes/layout TBD). Build an ad-slot component early so it can be placed later.
+- **AWS region:** `af-south-1` (Cape Town); ACM cert in `us-east-1`. CLI profile `wpcsa`.
 - **Infrastructure:** set up with AWS CLI scripts (checked into `infra/` as a runbook of commands), not Terraform/CDK. Keep it minimal.
 - **Site sections:** to be decided later.
 - **Target event:** Easter 2027, Fri 26 – Mon 29 March 2027. The app should be live with fixtures well before then (aim: early March 2027).
