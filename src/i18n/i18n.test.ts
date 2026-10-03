@@ -15,8 +15,6 @@ describe('translate', () => {
   })
 
   it('interpolates params', () => {
-    expect(translate('en', 'app.edition', { year: 2027, city: 'Cape Town' })).toBe(
-      '2027 · Cape Town',
-    )
+    expect(translate('en', 'visit.title', { city: 'Cape Town' })).toBe('Visiting Cape Town')
   })
 })

@@ -214,3 +214,52 @@ body {
   color: var(--brand);
   font-weight: 600;
 }
+
+/* Landing hero: the artwork plus a title block in the artwork's own background blue. */
+.home-hero {
+  --hero-blue: #153395;
+  margin: -1rem -1rem 1.5rem;
+  background: var(--hero-blue);
+  color: #fff;
+}
+
+.home-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-hero-text {
+  padding: 0.25rem 1rem 1.5rem;
+  text-align: center;
+}
+
+.home-hero-text h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.home-hero-text p {
+  margin: 0.4rem 0 0;
+  opacity: 0.9;
+}
+
+/* Phones: portrait artwork with the title inside its empty top panel. */
+@media (max-width: 40rem) {
+  .home-hero {
+    position: relative;
+  }
+
+  .home-hero-text {
+    position: absolute;
+    top: 8%;
+    left: 12%;
+    right: 12%;
+    padding: 0;
+  }
+
+  .home-hero-text h1 {
+    font-size: clamp(1.6rem, 8.5vw, 2.25rem);
+  }
+}

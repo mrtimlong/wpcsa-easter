@@ -8,6 +8,7 @@ export const zhHant: Partial<Record<MessageKey, string>> = {
   // Placeholders: to be checked by translators.
   'nav.visit': '旅遊資訊',
   'visit.title': '{city}旅遊資訊',
+  'home.dates': '復活節週末 · 2027年3月26日至29日',
   'lang.toggle': 'English',
   // Taken from the SACSA logo itself.
   'logo.sacsa': '南非華僑體育協會',
