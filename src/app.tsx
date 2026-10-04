@@ -3,6 +3,7 @@ import { TabBar } from './components/tab-bar.tsx'
 import { FavouritesProvider } from './favourites.tsx'
 import { I18nProvider, useI18n } from './i18n/index.tsx'
 import { Home } from './pages/home.tsx'
+import { Info } from './pages/info.tsx'
 import { More } from './pages/more.tsx'
 import { MyTeams } from './pages/my-teams.tsx'
 import { NotFound } from './pages/not-found.tsx'
@@ -67,6 +68,7 @@ export function App() {
               <Route path="/teams/:id" component={TeamPage} />
               <Route path="/venues" component={Venues} />
               <Route path="/vendors" component={Vendors} />
+              <Route path="/info" component={Info} />
               <Route default component={NotFound} />
             </Router>
           </main>

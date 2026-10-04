@@ -5,6 +5,7 @@ import { useI18n } from '../i18n/index.tsx'
 type Link = { href: string; title: MessageKey; description: MessageKey; show?: boolean }
 
 const links: Link[] = [
+  { href: '/info', title: 'info.title', description: 'more.info' },
   { href: '/teams', title: 'teams.title', description: 'more.teams' },
   { href: '/my-teams', title: 'myTeams.title', description: 'more.myTeams' },
   { href: '/venues', title: 'venues.title', description: 'more.venues' },

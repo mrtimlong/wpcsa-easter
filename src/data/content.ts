@@ -18,6 +18,8 @@ const optional = {
   sponsors: [],
   squads: [],
   vendors: [],
+  info: undefined,
+  contacts: [],
   'visitor-guide': undefined,
   images: {},
   results: undefined,

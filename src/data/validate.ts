@@ -8,7 +8,18 @@ export function validateContent(content: Content): string[] {
   const errors: string[] = []
   const { tournament, venues, associations, competitions, teams, fixtures, programme, sponsors } = content
 
-  const collections = { venues, associations, competitions, teams, fixtures, programme, sponsors }
+  const collections = {
+    venues,
+    associations,
+    competitions,
+    teams,
+    fixtures,
+    programme,
+    sponsors,
+    vendors: content.vendors,
+    contacts: content.contacts,
+    'info sections': content.info?.sections ?? [],
+  }
   for (const [name, items] of Object.entries(collections)) {
     const seen = new Set<string>()
     for (const { id } of items) {
@@ -96,10 +107,7 @@ export function validateContent(content: Content): string[] {
       errors.push(`venue ${venue.id}: plan "${venue.plan}" not in images.json`)
   }
 
-  const vendorIds = new Set<string>()
   for (const vendor of content.vendors) {
-    if (vendorIds.has(vendor.id)) errors.push(`vendors: duplicate id "${vendor.id}"`)
-    vendorIds.add(vendor.id)
     if (vendor.venue && !venueById.has(vendor.venue))
       errors.push(`vendor ${vendor.id}: unknown venue "${vendor.venue}"`)
   }

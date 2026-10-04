@@ -43,7 +43,10 @@
     "groups": [
       "A",
       "B"
-    ]
+    ],
+    "format": {
+      "en": "Example: two pools of four, round robin. The top two in each pool play the semi-finals; the rest play for 5th–8th."
+    }
   },
   {
     "id": "vb",

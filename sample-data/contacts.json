@@ -1,0 +1,27 @@
+[
+  {
+    "id": "director",
+    "role": { "en": "Tournament director", "zh": "大會總監" },
+    "name": "Name (placeholder)",
+    "phone": "+27 00 000 0001",
+    "whatsapp": true
+  },
+  {
+    "id": "first-aid",
+    "role": { "en": "First aid", "zh": "急救" },
+    "phone": "+27 00 000 0002",
+    "notes": { "en": "Example: medic at the table by the Court A entrance" }
+  },
+  {
+    "id": "basketball",
+    "role": { "en": "Basketball convenor", "zh": "籃球召集人" },
+    "name": "Name (placeholder)",
+    "phone": "+27 00 000 0003",
+    "whatsapp": true
+  },
+  {
+    "id": "general",
+    "role": { "en": "General enquiries", "zh": "一般查詢" },
+    "email": "tournament@example.org"
+  }
+]

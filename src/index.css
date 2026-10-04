@@ -888,3 +888,60 @@ button.button {
 .vendor-details dd {
   margin: 0;
 }
+
+/* Tournament info */
+.info-contents {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.info-contents .chip {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Anchor targets (#contacts, /vendors#id) clear the sticky header. */
+section[id],
+article[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+.contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.75rem;
+}
+
+.contact .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contact .card-body .card-links {
+  flex-wrap: wrap;
+}
+
+.info-sport h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.info .info-sport .sport-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--sport);
+}
+
+.competition-format h4 {
+  margin: 0.75rem 0 0;
+}
+
+.competition-format p {
+  margin: 0.2rem 0;
+}

@@ -107,6 +107,8 @@ export const Competition = z.object({
   name: Text,
   groups: z.array(z.string()).optional(),
   rules: StandingsRules.optional(),
+  /** How it's played, in words ("Round robin, top two to the semi-finals…"). */
+  format: Text.optional(),
 })
 
 export const Team = z.object({
@@ -184,6 +186,31 @@ export const Squad = z.object({
   ),
 })
 
+/**
+ * Tournament information pages: rules, code of conduct… Body text is plain: blank lines separate
+ * paragraphs, lines starting with "- " are bullet points.
+ */
+export const Info = z.object({
+  sections: z.array(z.object({ id, title: Text, body: Text })),
+})
+
+/** Who to call. Real names and numbers live only in the data folder. */
+export const Contact = z.object({
+  id,
+  /** "Tournament director", "Basketball convenor", "First aid"… */
+  role: Text,
+  name: z.string().optional(),
+  /** International format, e.g. "+27 82 123 4567". */
+  phone: z
+    .string()
+    .regex(/^\+[0-9 ]{8,}$/, 'use +27 82 123 4567')
+    .optional(),
+  /** Offer a WhatsApp link for the phone number. */
+  whatsapp: z.boolean().optional(),
+  email: z.email().optional(),
+  notes: Text.optional(),
+})
+
 /** A photo with the attribution its licence requires (most stock photos are CC BY-SA). */
 export const Photo = z.object({
   /** Name in the data's images.json, i.e. the path under images/originals/ without extension. */
@@ -236,6 +263,8 @@ export const Content = z.object({
   programme: z.array(ProgrammeItem),
   sponsors: z.array(Sponsor),
   vendors: z.array(Vendor),
+  info: Info.optional(),
+  contacts: z.array(Contact),
   guide: VisitorGuide.optional(),
   squads: z.array(Squad),
   images: ImageManifest,
@@ -280,6 +309,8 @@ export type Fixture = z.infer<typeof Fixture>
 export type ProgrammeItem = z.infer<typeof ProgrammeItem>
 export type Sponsor = z.infer<typeof Sponsor>
 export type Squad = z.infer<typeof Squad>
+export type Info = z.infer<typeof Info>
+export type Contact = z.infer<typeof Contact>
 export type Photo = z.infer<typeof Photo>
 export type VisitorGuide = z.infer<typeof VisitorGuide>
 export type ImageManifest = z.infer<typeof ImageManifest>

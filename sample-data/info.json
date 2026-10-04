@@ -1,0 +1,25 @@
+{
+  "sections": [
+    {
+      "id": "code-of-conduct",
+      "title": { "en": "Code of conduct", "zh": "行為守則" },
+      "body": {
+        "en": "Example text, to be replaced by the committee.\n\nThe SACSA Easter Tournament is about friendship as much as competition. Everyone taking part (players, coaches, officials and supporters) is expected to:\n\n- respect opponents, officials and organisers\n- accept the decisions of referees and umpires\n- keep the venues clean and follow venue rules\n- look out for younger players\n\nSerious misconduct can lead to removal from the tournament."
+      }
+    },
+    {
+      "id": "oath",
+      "title": { "en": "Athletes’ oath", "zh": "運動員宣誓" },
+      "body": {
+        "en": "Example text: the oath from the printed brochure goes here, in English and Chinese."
+      }
+    },
+    {
+      "id": "rules",
+      "title": { "en": "General rules", "zh": "一般規則" },
+      "body": {
+        "en": "Example text, to be replaced by the committee.\n\n- Teams must be ready on court 10 minutes before their game.\n- A team not ready 15 minutes after the scheduled start forfeits the game.\n- Team managers must check scores with the scorer before leaving the court.\n- Protests go to the sport convenor within 30 minutes of the game ending."
+      }
+    }
+  ]
+}

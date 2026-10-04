@@ -78,3 +78,17 @@ describe('venues and vendors', () => {
     expect(within(noodles).getByRole('link', { name: 'UCT Sports Centre' })).toBeTruthy()
   })
 })
+
+describe('tournament info', () => {
+  it('shows contacts, the format of each competition and the info sections', async () => {
+    history.replaceState(null, '', '/info')
+    render(<App />)
+    await screen.findByRole('heading', { name: 'Tournament info', level: 1 })
+    expect(screen.getByRole('link', { name: 'Call +27 00 000 0001' }).getAttribute('href')).toBe('tel:+27000000001')
+    expect(screen.getAllByRole('link', { name: 'WhatsApp' })[0].getAttribute('href')).toBe('https://wa.me/27000000001')
+    expect(screen.getByText('8 teams · Pools A, B · 12 pool games · 8 knockout games')).toBeTruthy()
+    expect(screen.getByText(/two pools of four/)).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Code of conduct', level: 2 })).toBeTruthy()
+    expect(screen.getByText('accept the decisions of referees and umpires').tagName).toBe('LI')
+  })
+})
