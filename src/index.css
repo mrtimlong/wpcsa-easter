@@ -298,6 +298,10 @@ body {
   scrollbar-width: none;
 }
 
+.chips + .chips {
+  margin-top: 0.4rem;
+}
+
 .tabs {
   margin-bottom: 0.75rem;
 }
