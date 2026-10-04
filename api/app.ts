@@ -161,6 +161,8 @@ export function createApi(deps: Deps) {
   }
 
   async function route(event: APIGatewayProxyEventV2WithJWTAuthorizer): Promise<Response> {
+    // CORS preflight (no token, no authorizer): API Gateway adds the allowed origins and headers.
+    if (event.requestContext.http.method === 'OPTIONS') return { statusCode: 204 }
     const claims = event.requestContext.authorizer?.jwt?.claims ?? {}
     if (!groups(claims).includes(ADMIN_GROUP)) return fail(403, 'forbidden', 'not in the admin group')
     const by = String(claims.email ?? claims['cognito:username'] ?? claims.sub ?? 'unknown')

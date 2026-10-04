@@ -127,6 +127,8 @@ describe('admin API', () => {
     expect((await call(api, 'GET', '/state', { groups: '' })).status).toBe(403)
     expect((await call(api, 'GET', '/state', { groups: '[scorer admin]' })).status).toBe(200)
     expect((await call(api, 'GET', '/nowhere')).status).toBe(404)
+    // CORS preflight carries no token.
+    expect(await api(request('OPTIONS', '/state', { groups: '' }))).toEqual({ statusCode: 204 })
   })
 
   it('imports announcements when invoked directly', async () => {

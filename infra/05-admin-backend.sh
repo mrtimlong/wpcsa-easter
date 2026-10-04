@@ -170,12 +170,17 @@ if [[ "$ROUTE_ID" == "None" ]]; then
     --authorization-type JWT --authorizer-id "$AUTH_ID" --target "integrations/$INTEGRATION_ID" >/dev/null
 fi
 
-# Browsers check CORS with an OPTIONS request that carries no token. Without this route it would hit the
-# ANY route above and be refused (401); with no integration, API Gateway answers it from the CORS settings.
+# Browsers check CORS with an OPTIONS request that carries no token, which the ANY route above would
+# refuse (401). A route without an integration isn't enough (API Gateway still picks the ANY route), so
+# OPTIONS goes to the Lambda without the authorizer; it answers 204 and API Gateway adds the CORS headers.
 PREFLIGHT_ID=$(aws apigatewayv2 get-routes --api-id "$API_ID" \
   --query "Items[?RouteKey=='OPTIONS /{proxy+}'].RouteId | [0]" --output text)
 if [[ "$PREFLIGHT_ID" == "None" ]]; then
-  aws apigatewayv2 create-route --api-id "$API_ID" --route-key 'OPTIONS /{proxy+}' --authorization-type NONE >/dev/null
+  aws apigatewayv2 create-route --api-id "$API_ID" --route-key 'OPTIONS /{proxy+}' --authorization-type NONE \
+    --target "integrations/$INTEGRATION_ID" >/dev/null
+else
+  aws apigatewayv2 update-route --api-id "$API_ID" --route-id "$PREFLIGHT_ID" --authorization-type NONE \
+    --target "integrations/$INTEGRATION_ID" >/dev/null
 fi
 
 # A handful of scorers: 10 requests a second (bursts of 20) is plenty and caps any abuse.
