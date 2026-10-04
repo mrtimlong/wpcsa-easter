@@ -22,6 +22,30 @@ export function formatDay(key: string, locale: Locale, style: 'long' | 'short' =
   return new Intl.DateTimeFormat(intlLocale(locale), options).format(date)
 }
 
+/** "26 – 29 March 2027" / "2027年3月26日至29日" (dates are YYYY-MM-DD) */
+export function formatDateRange(start: string, end: string, locale: Locale): string {
+  const format = new Intl.DateTimeFormat(intlLocale(locale), {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+  return format.formatRange(new Date(`${start}T12:00:00Z`), new Date(`${end}T12:00:00Z`))
+}
+
+/** "Sunday, 20 April, 15:00" in the tournament's timezone */
+export function formatDateTime(iso: string, timeZone: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(intlLocale(locale), {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+    timeZone,
+  }).format(new Date(iso))
+}
+
 /** "16:50" */
 export function formatTime(iso: string, timeZone: string): string {
   return new Intl.DateTimeFormat('en-GB', { timeZone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(

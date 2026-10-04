@@ -1,4 +1,6 @@
 import { content } from '../data/content.ts'
+import { formatDateTime } from '../data/format.ts'
+import { now } from '../data/live.ts'
 import type { Sport } from '../data/schema.ts'
 import { useI18n } from '../i18n/index.tsx'
 
@@ -55,6 +57,7 @@ export function NoTeamsYet() {
 }
 
 export function DemoNotice() {
-  const { t } = useI18n()
-  return <p class="notice">{t('demo.notice')}</p>
+  const { t, locale } = useI18n()
+  const time = formatDateTime(new Date(now).toISOString(), content.tournament.timezone, locale)
+  return <p class="notice">{t('demo.notice', { time })}</p>
 }

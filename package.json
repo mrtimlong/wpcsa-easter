@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "typecheck": "tsc -b",
-    "images": "scripts/optimize-images.sh"
+    "images": "scripts/optimize-images.sh",
+    "data:check": "vitest run src/data/content.test.ts",
+    "data:upload": "infra/upload-data.sh"
   },
   "dependencies": {
     "preact": "^10.29.8",

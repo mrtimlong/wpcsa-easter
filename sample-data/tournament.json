@@ -9,5 +9,9 @@
   },
   "startDate": "2025-04-18",
   "endDate": "2025-04-21",
-  "timezone": "Africa/Johannesburg"
+  "timezone": "Africa/Johannesburg",
+  "demo": {
+    "now": "2025-04-20T15:00+02:00",
+    "seed": 2025
+  }
 }

@@ -6,6 +6,13 @@
 #     -> public/images/generated/visit/boulders-{480,800,1200}.{avif,jpg}
 #     -> entry "visit/boulders" in src/generated/images.json (used by <Picture>)
 #
+# With --data <dir>, does the same for a data folder (team photos, guide photos…), which is
+# uploaded to S3 separately from the site:
+#
+#   <dir>/images/originals/teams/bb-mens-wpa.jpg
+#     -> <dir>/images/generated/teams/bb-mens-wpa-{480,800}.{avif,jpg}
+#     -> entry "teams/bb-mens-wpa" in <dir>/images.json (loaded at runtime)
+#
 # Requires ImageMagick 7 (`brew install imagemagick`). Skips outputs that are up to date;
 # pass --force to regenerate everything.
 set -euo pipefail
@@ -19,9 +26,20 @@ AVIF_QUALITY=55 # 45 visibly smears fine line art; 55 is indistinguishable at ph
 JPEG_QUALITY=78
 
 force=false
-[[ "${1:-}" == "--force" ]] && force=true
+while (($#)); do
+  case "$1" in
+    --force) force=true ;;
+    --data)
+      dir="${2:?--data needs a directory}"
+      SRC="$dir/images/originals" OUT="$dir/images/generated" MANIFEST="$dir/images.json"
+      shift
+      ;;
+    *) echo "usage: $0 [--force] [--data <dir>]" >&2 && exit 1 ;;
+  esac
+  shift
+done
 
-mkdir -p "$OUT" "$(dirname "$MANIFEST")"
+mkdir -p "$SRC" "$OUT" "$(dirname "$MANIFEST")"
 entries=()
 
 while IFS= read -r -d '' file; do

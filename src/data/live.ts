@@ -1,14 +1,16 @@
-// Results and "now" for the app. Until the results backend exists this runs in demo mode:
-// 2025 fixtures with random results, as if it were Sunday afternoon of the tournament.
-// TODO: replace with a hook that fetches /data/results.json (and uses the real clock).
-import { content } from './content.ts'
+// Results and "now" for the app. Sample data sets tournament.demo, which generates random results
+// as if the clock read demo.now; real data uses results.json from the results backend.
+// TODO: poll results.json during the event instead of reading it once at startup.
+import { content, publishedResults } from './content.ts'
 import { generateDemoResults } from './demo.ts'
 import type { Result } from './schema.ts'
 
-export const DEMO = true
+const demo = content.tournament.demo
 
-export const now: number = DEMO ? Date.parse('2025-04-20T15:00+02:00') : Date.now()
+export const DEMO = demo !== undefined
 
-export const results: Map<string, Result> = DEMO
-  ? generateDemoResults(content, now)
-  : new Map<string, Result>()
+export const now: number = demo ? Date.parse(demo.now) : Date.now()
+
+export const results: Map<string, Result> = demo
+  ? generateDemoResults(content, now, demo.seed)
+  : new Map(publishedResults?.results.map((r) => [r.fixture, r]))

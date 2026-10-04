@@ -23,5 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Personal data (player names etc.): never commit
+# Tournament data (fixtures, squads, contacts, vendors…) is kept out of the repo and uploaded
+# to S3 with infra/upload-data.sh. Only the dummy sample-data/ is committed.
+# (Leading slash: src/data/ is code.)
+/data/
 private/

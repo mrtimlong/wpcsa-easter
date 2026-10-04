@@ -622,3 +622,22 @@ body {
   font-weight: 600;
   text-decoration: none;
 }
+
+button.button {
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Shown by index.html until the tournament data has loaded. */
+.loading {
+  margin: 30vh auto 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.load-error {
+  text-align: center;
+  padding-top: 20vh;
+}

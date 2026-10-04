@@ -31,7 +31,7 @@ export const zhHant: Partial<Record<MessageKey, string>> = {
   'standings.title': '積分榜',
   'standings.team': '隊伍',
   'visit.title': '{city}旅遊資訊',
-  'home.dates': '復活節週末 · 2027年3月26日至29日',
+  'home.dates': '復活節週末 · {dates}',
   'lang.toggle': 'English',
   // Taken from the SACSA logo itself.
   'logo.sacsa': '南非華僑體育協會',

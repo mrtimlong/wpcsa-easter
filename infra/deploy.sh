@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Uploads dist/ to the bucket with the right cache headers and refreshes CloudFront.
 # Used locally and by the GitHub Actions deploy workflow. Run `npm run build` first.
-# Never touches data/ (results.json, squads.json), which is written separately.
+# Never touches data/: the tournament data is uploaded with infra/upload-data.sh, and results.json
+# is written by the results backend.
 set -euo pipefail
 source "$(dirname "$0")/config.sh"
 cd "$(dirname "$0")/.."

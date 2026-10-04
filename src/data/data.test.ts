@@ -152,6 +152,7 @@ describe('validateContent', () => {
       ],
       programme: [],
       sponsors: [],
+      images: {},
     }
     expect(validateContent(content)).toEqual([
       'fixture x2 away: unknown team "zz"',
