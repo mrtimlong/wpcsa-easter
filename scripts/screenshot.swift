@@ -1,6 +1,7 @@
 // Screenshots a page in WebKit at phone size (macOS only), e.g. to check a layout without a browser:
 //   swift scripts/screenshot.swift http://localhost:5173/teams teams.png [width=390] [height=844] [js]
-// The optional JavaScript runs just before the snapshot and its result is printed.
+// The optional JavaScript runs just before the snapshot and its result is printed. Set SETUP_JS to run
+// code before the page's own scripts, e.g. SETUP_JS="localStorage.setItem('favouriteTeams', '[\"x\"]')".
 import AppKit
 import WebKit
 
@@ -48,6 +49,10 @@ let noAnimations = WKUserScript(
   source: "const s = document.createElement('style'); s.textContent = '*, *::before, *::after { animation: none !important; transition: none !important }'; document.documentElement.appendChild(s)",
   injectionTime: .atDocumentEnd, forMainFrameOnly: true)
 config.userContentController.addUserScript(noAnimations)
+if let setup = ProcessInfo.processInfo.environment["SETUP_JS"] {
+  config.userContentController.addUserScript(
+    WKUserScript(source: setup, injectionTime: .atDocumentStart, forMainFrameOnly: true))
+}
 let webView = WKWebView(frame: NSRect(x: 0, y: 0, width: width, height: height), configuration: config)
 webView.customUserAgent =
   "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1"
