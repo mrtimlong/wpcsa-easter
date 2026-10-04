@@ -21,15 +21,17 @@ These block later work, so get answers early.
 | [ ] | Volleyball and badminton standings rules (points per win? set ratio?) and best-of formats per round | Org | Nov 2026 |
 | [ ] | Edition number for 2027 (66th?) and official tournament name in English and Chinese | Org | Nov 2026 |
 | [ ] | Official Chinese name of SACSA: the 2025 cover says 華橋, the logo says 華僑 | Org / Tr | Nov 2026 |
-| [ ] | Who will enter results: list of organisers/scorers (name, email, which sport/court) | Org | Jan 2027 |
-| [ ] | Can scorers change a fixture's time or court on the day, or only enter results? Do we want an "announcements" banner for schedule changes? | Org | Nov 2026 |
+| [ ] | Who will enter results: names and emails of the committee members (decided: a couple of committee members, all with the same access, not restricted by sport) | Org | Jan 2027 |
+| [x] | Can scorers change a fixture's time or court on the day? Decided: not in 2027. Moves go out as an announcement and Tim uploads the corrected fixtures; editing time/court in `/admin` is a version 2 feature | Org | Nov 2026 |
 | [x] | Final list of site sections (chairman, Oct 2026): Home, Schedule, Results, Standings in the tab bar; under More: Tournament info (format, rules, code of conduct, contacts), Teams (photo, squad, coach), Venues (toilets, medics, merchandise…), Vendors, Sponsors, Visiting, My teams | Org / Tim | Dec 2026 |
 | [ ] | Contacts: confirm who is listed, and whether to show personal mobile numbers or role-based ones | Org | Jan 2027 |
 | [ ] | Team photos: do teams send them before the tournament, or are they taken on the day? Who collects them? | Org | Jan 2027 |
+| [ ] | Team lists and squads: we start with a spreadsheet per association; the committee decides whether a Google Form would be easier for associations | Org | Dec 2026 |
+| [ ] | Golf: ask the golf convenor whether they want live scoring in the app. Default for 2027: final standings only, posted after the last round | Tim | Nov 2026 |
 | [ ] | Vendors: who collects their details (what they sell, where, hours, payment methods, logo), and by when | Org | Feb 2027 |
 | [x] | Advertising: rotating sponsor logos on every page, linking to a sponsors page with more detail (may change later) | Org / Spons | Dec 2026 |
 | [ ] | Sponsor list, tiers and logos (SVG or large PNG) plus links | Spons | Feb 2027 |
-| [ ] | Announcements: who is allowed to post, and who checks the Chinese before urgent posts go out (or post English only during the event) | Org | Jan 2027 |
+| [ ] | Announcements: the same committee members post them; who checks the Chinese before urgent posts go out (or post English only during the event) | Org | Jan 2027 |
 | [ ] | Player consent: players (or parents of minors) agree to names **and team photos** being shown publicly in the app during the event (POPIA). Add to the registration form | Org | Jan 2027 |
 | [ ] | Is the AI-generated goat artwork OK with the committee, or should a designer redo it? | Org | Nov 2026 |
 
@@ -40,9 +42,9 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
 | [ ] | Reactivate the `wpcsa-builder` access key for the build; deactivate it again afterwards | Tim | Oct 2026 |
-| [ ] | **DynamoDB** table for results (key: year + fixture id), on-demand billing, point-in-time recovery on | Tim | Oct 2026 |
+| [ ] | **DynamoDB**: one table for results, announcements and the audit trail (key: year + `RESULT#<fixture id>` / `ANN#<id>` / `AUDIT#…`), on-demand billing, point-in-time recovery on | Tim | Oct 2026 |
 | [ ] | Audit trail: every save/change/delete recorded with who, when, before and after (separate items or table) | Tim | Oct 2026 |
-| [ ] | **Cognito user pool**: admin-created users only (no self sign-up), email + password, password reset by email, optional MFA; groups `admin` and `scorer` | Tim | Oct 2026 |
+| [ ] | **Cognito user pool**: admin-created users only (no self sign-up), email + password, password reset by email, optional MFA; one `admin` group (results entry isn't restricted by sport or court) | Tim | Oct 2026 |
 | [ ] | **API Gateway HTTP API** with a Cognito JWT authorizer; CORS limited to `easter.wpcsa.org.za` (+ localhost for dev); throttling | Tim | Nov 2026 |
 | [ ] | **Lambda: save result**: validate with the shared zod schema, check the fixture exists, check the score makes sense for the sport/best-of, conditional write (reject if someone else changed it meanwhile), write audit record | Tim | Nov 2026 |
 | [ ] | Lambda: delete/clear a result (for mistakes), admin only | Tim | Nov 2026 |
@@ -59,7 +61,7 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
 | [ ] | Login / logout / forgot password (bilingual) | Tim | Dec 2026 |
-| [ ] | Pick a game: defaults to "now and next" on the scorer's court; also by day, sport, court or game number | Tim | Dec 2026 |
+| [ ] | Pick a game: defaults to "now and next" across all venues; also by day, sport, court or game number | Tim | Dec 2026 |
 | [ ] | Score entry per sport, with big touch targets: basketball (two totals), volleyball (sets, best-of aware), badminton (games per rubber), padel (TBC) | Tim | Dec 2026 |
 | [ ] | Status options: live (update during the game), final, forfeit (which side), cancelled | Tim | Dec 2026 |
 | [ ] | Confirmation step showing the winner before saving; clear success/failure message | Tim | Dec 2026 |
@@ -67,7 +69,7 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [ ] | "Someone else updated this game" conflict message | Tim | Dec 2026 |
 | [ ] | Poor signal handling: show clearly when a save didn't go through and let the scorer retry (decide whether to queue offline) | Tim | Jan 2027 |
 | [ ] | Recent changes list (audit view) for admins | Tim | Jan 2027 |
-| [ ] | Post an announcement: title + text (EN, optional 中文), pinned/urgent toggle, preview, edit and delete; who can post (admins only, or scorers too?) | Tim | Jan 2027 |
+| [ ] | Post an announcement: title + text (EN, optional 中文), pinned/urgent toggle, preview, edit and delete | Tim | Jan 2027 |
 | [ ] | Admin pages excluded from search engines and not cached by the service worker | Tim | Dec 2026 |
 
 ## 4. Public app: switch from demo to live results
@@ -89,7 +91,8 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 |---|---|---|---|
 | [ ] | Create `data/` (copy `sample-data/`, remove `demo` from `tournament.json`): `tournament.json`, `venues.json`, `associations.json`, `competitions.json`, `teams.json` | Tim | Jan 2027 |
 | [ ] | Back up `data/` somewhere other than this laptop (it isn't in git); S3 versioning keeps old uploads too | Tim | Jan 2027 |
-| [ ] | Fixtures/draw for 2027 from the organisers (spreadsheet → JSON import script if the draw comes as a spreadsheet) | Org / Tim | Feb 2027 |
+| [ ] | **Spreadsheet import**: a Google Sheets template (tabs for teams, squads, vendors, fixtures, with fixed column headings) and `npm run data:import`, which reads the sheets with the Sheets API (read-only service account; squad sheets are never published to the web), writes `data/*.json` and runs `data:check`. Tim still runs the upload | Tim | Jan 2027 |
+| [ ] | Fixtures/draw for 2027 from the organisers, in the fixtures tab of the spreadsheet | Org / Tim | Feb 2027 |
 | [ ] | Programme / schedule of events for 2027 (AGM, registration, march past, social, egg hunt, finals, dance, golf rounds): this is the overview on the Home page, so one line per event or block of games | Org | Feb 2027 |
 | [ ] | `DATA_DIR=data npm run data:check` passes (no unknown teams, court clashes, missing logos, etc.); upload | Tim | Feb 2027 |
 | [x] | Home page dates/host from content (remove the hard-coded 2027 text) | Tim | Feb 2027 |
@@ -105,7 +108,7 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
 | [x] | Format for `data/squads.json` (team → players, numbers, captain, coach, manager, photo) | Tim | Jan 2027 |
-| [ ] | Template organisers can fill in (spreadsheet), plus a script to turn it into `squads.json` | Tim | Jan 2027 |
+| [ ] | Squads tab per association in the spreadsheet template, imported into `squads.json` by `npm run data:import` (see section 5) | Tim | Jan 2027 |
 | [x] | Upload script to `s3://…/data/` (`npm run data:upload`; the deploy role is blocked from `data/`, so Tim uploads) | Tim | Jan 2027 |
 | [x] | Team pages: photo, squad, coach, standing and games; team names link to them | Tim | Feb 2027 |
 | [ ] | Team photos: `npm run images -- --data data` after adding them to `data/images/originals/teams/<team id>.jpg` | Tim | Mar 2027 |
@@ -126,7 +129,7 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | [x] | Sport rules page (`/rules`): basketball, mini basketball, volleyball and golf rules from the 2026 brochure, in `src/rules/` | Tim | Feb 2027 |
 | [x] | Tournament oath (EN and official 中文 from the brochure) on the rules page; SACSA motto "Friendship through sport" on Home | Tim | Feb 2027 |
 | [x] | Golf as a sport (placeholder data); Programme overview on Home | Tim | Feb 2027 |
-| [ ] | Golf scores: a leaderboard (Stableford, divisions, team trophies) if golf results are wanted in the app | Tim / Org | Feb 2027 |
+| [ ] | Golf final standings (divisions, team trophies) shown in the app after the last round; a live leaderboard only if the golf convenor wants it (see section 1) | Tim | Feb 2027 |
 | [ ] | Chinese wording of the motto "Friendship through sport" | Tr | Feb 2027 |
 | [ ] | Confirm the 2026 sport rules still apply for 2027 (basketball, minis, volleyball; golf if played); badminton and padel rules if wanted; Chinese translations | Org | Feb 2027 |
 | [ ] | Bracket view for knockouts (nice to have) | Tim | Feb 2027 |
@@ -170,7 +173,7 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | [ ] | Slow network test (3G throttling): pages usable, images small | Tim | Feb 2027 |
 | [ ] | Lighthouse: performance, accessibility, best practices, PWA all green | Tim | Feb 2027 |
 | [ ] | Accessibility: colour contrast, screen reader labels, large text setting, keyboard on desktop | Tim | Feb 2027 |
-| [ ] | Security review of the results API: can't save without login, scorers can't do admin actions, input validation, CORS, rate limits | Tim | Feb 2027 |
+| [ ] | Security review of the results API: can't save without login, input validation, CORS, rate limits | Tim | Feb 2027 |
 | [ ] | Timezone check: phone set to another timezone still shows SA times | Tim | Feb 2027 |
 | [ ] | Load sanity check: results.json served by CloudFront, so hundreds of viewers is fine; check the API under several scorers at once | Tim | Feb 2027 |
 

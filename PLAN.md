@@ -32,6 +32,7 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 - **Translations:** community members will supply Chinese text later; use placeholder strings (with a "missing translation" fallback to English) for now.
 - **Data model:** draft agreed (tournament, venues, associations, competitions, teams, fixtures with slots like "winner of", programme, sponsors; per-sport results). Must stay flexible: number of sports, basketball pools, and volleyball/badminton formats are unknown and will change.
 - **Player names:** never committed to GitHub. Squads live in `data/squads.json`; move to DynamoDB later only if organisers need to edit squads in `/admin`.
+- **Admin and data entry (Oct 2026):** DynamoDB only for what changes during the event: results and announcements, entered in `/admin` by a couple of committee members (one access level, not restricted by sport). Everything else stays JSON uploaded by Tim. Teams, squads, vendors and fixtures are collected in Google Sheets and converted with an import script; the committee decides whether a form suits associations better. Changing a game's time or court in `/admin` is a version 2 feature (2027 uses announcements plus a fixtures upload). Golf: final standings only, unless the convenor wants live scoring.
 - **Sponsors:** a sponsors page (tiers, logos, descriptions), and for advertising, sponsor logos rotating at the foot of every page (may change later).
 - **AWS region:** `af-south-1` (Cape Town); ACM cert in `us-east-1`. CLI profile `wpcsa`.
 - **Infrastructure:** set up with AWS CLI scripts (checked into `infra/` as a runbook of commands), not Terraform/CDK. Keep it minimal.
@@ -84,7 +85,7 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 1. Auth: Amazon Cognito user pool. Developer invites organiser accounts; no public sign-up.
 2. API: API Gateway (HTTP API) + Lambda, which validates input and stores results in DynamoDB.
 3. On each save, Lambda regenerates `results.json` in S3 (short CloudFront cache, ~30s), so public reads stay static, fast, cheap and offline-capable.
-4. Admin screens in the same PWA (`/admin`): login, pick a game, enter score/winner, plus best-of-3/5 set scores for volleyball and rubbers for badminton.
+4. Admin screens in the same PWA (`/admin`): login, pick a game, enter score/winner, plus best-of-3/5 set scores for volleyball and rubbers for badminton; post announcements.
 5. App derives standings and resolves knockout slots ("Winner of Game 49") from results.
 6. Audit trail: who entered/changed each result and when.
 7. Later: push notifications (Web Push; iOS requires the app to be installed).
