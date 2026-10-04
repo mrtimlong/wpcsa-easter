@@ -42,7 +42,10 @@ function TeamDetails({ team }: { team: Team }) {
   const upcoming = games.filter((f) => !isDone(f.id))
   const played = games.filter((f) => isDone(f.id)).reverse()
 
-  const table = competition && standings(competition, content.teams, content.fixtures, results, team.group)
+  // Competitions without head-to-head games (golf) have no standings or game list.
+  const hasGames = content.fixtures.some((f) => f.competition === team.competition)
+  const table =
+    hasGames && competition ? standings(competition, content.teams, content.fixtures, results, team.group) : undefined
   const position = table ? table.rows.findIndex((row) => row.team === team.id) : -1
   const row = table?.rows[position]
   const following = isFavourite(team.id)
@@ -129,7 +132,7 @@ function TeamDetails({ team }: { team: Team }) {
           ))}
         </section>
       )}
-      {games.length === 0 && <p class="muted">{t('team.noGames')}</p>}
+      {hasGames && games.length === 0 && <p class="muted">{t('team.noGames')}</p>}
     </article>
   )
 }

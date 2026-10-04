@@ -94,18 +94,37 @@ describe('tournament info', () => {
   })
 })
 
-describe('sport rules', () => {
-  it('shows rules only for sports played this year', async () => {
+describe('rules and oath', () => {
+  it('shows the oath in both languages and the rules for each sport played this year', async () => {
     history.replaceState(null, '', '/rules')
     render(<App />)
-    await screen.findByRole('heading', { name: 'Sport rules', level: 1 })
-    expect(screen.getByRole('heading', { name: 'Basketball', level: 2 })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'Mini basketball', level: 2 })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'Volleyball', level: 2 })).toBeTruthy()
-    // Golf isn't one of the sample data's sports.
-    expect(screen.queryByRole('heading', { name: 'Golf' })).toBeNull()
+    await screen.findByRole('heading', { name: 'Rules and oath', level: 1 })
+    expect(screen.getByText(/^I promise that I will take part/)).toBeTruthy()
+    expect(screen.getByText(/^本人誓以至誠/)).toBeTruthy()
+    for (const name of ['Basketball', 'Mini basketball', 'Volleyball', 'Golf']) {
+      expect(screen.getByRole('heading', { name, level: 2 })).toBeTruthy()
+    }
     expect(screen.getByText('More points scored in the games between them.').tagName).toBe('LI')
     expect(screen.getByRole('link', { name: 'Mini basketball' }).getAttribute('href')).toBe('#mini-basketball')
+  })
+})
+
+describe('home', () => {
+  it('shows the motto and the day’s programme, marking what’s on now', async () => {
+    render(<App />)
+    expect(await screen.findByText('Friendship through sport')).toBeTruthy()
+    const programme = within(screen.getByRole('heading', { name: 'Programme' }).closest('section')!)
+    // Demo time is Sunday 15:00.
+    expect(programme.getByRole('tab', { selected: true }).textContent).toMatch(/Sun/)
+    const padel = programme.getByText('Padel').closest('li')!
+    expect(within(padel).getByText('Now')).toBeTruthy()
+    expect(within(padel).getByText('08:00–21:00')).toBeTruthy()
+    const egg = programme.getByText(/Easter egg hunt/).closest('li')!
+    expect(within(egg).queryByText('Now')).toBeNull()
+
+    fireEvent.click(programme.getByRole('tab', { name: /Mon/ }))
+    expect(programme.getByText('Golf: round 3 and prize-giving')).toBeTruthy()
+    expect(programme.getByText('Presentation dance')).toBeTruthy()
   })
 })
 
@@ -143,7 +162,7 @@ describe('teams list', () => {
     render(<App />)
     await screen.findByRole('heading', { name: 'Teams', level: 1 })
     const sportsShown = () => screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent?.trim())
-    expect(sportsShown()).toEqual(['Basketball', 'Volleyball', 'Badminton'])
+    expect(sportsShown()).toEqual(['Basketball', 'Volleyball', 'Badminton', 'Golf'])
 
     const teamLinks = () => [...document.querySelectorAll('.link-list a')].map((a) => a.getAttribute('href'))
 

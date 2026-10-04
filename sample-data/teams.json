@@ -211,5 +211,29 @@
     "competition": "bd",
     "name": "SG",
     "association": "sg"
+  },
+  {
+    "id": "golf-ng",
+    "competition": "golf",
+    "name": "NG",
+    "association": "ng"
+  },
+  {
+    "id": "golf-wp",
+    "competition": "golf",
+    "name": "WP",
+    "association": "wp"
+  },
+  {
+    "id": "golf-sg",
+    "competition": "golf",
+    "name": "SG",
+    "association": "sg"
+  },
+  {
+    "id": "golf-swazi",
+    "competition": "golf",
+    "name": "Swazi",
+    "association": "swazi"
   }
 ]

@@ -124,5 +124,23 @@
     },
     "mapUrl": "https://www.google.com/maps/search/?api=1&query=Chinese%20Community%20Centre%2C%20Cape%20Town",
     "courts": []
+  },
+  {
+    "id": "golf-club",
+    "name": {
+      "en": "Example Golf Club"
+    },
+    "notes": {
+      "en": "Placeholder: the 2027 golf venues are still to be confirmed."
+    },
+    "courts": [],
+    "facilities": [
+      {
+        "kind": "food",
+        "where": {
+          "en": "Example: halfway house and clubhouse"
+        }
+      }
+    ]
   }
 ]

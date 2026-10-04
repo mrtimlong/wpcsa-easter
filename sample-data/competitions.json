@@ -70,5 +70,15 @@
     "name": {
       "en": "Badminton Interprovincial"
     }
+  },
+  {
+    "id": "golf",
+    "sport": "golf",
+    "name": {
+      "en": "Golf"
+    },
+    "format": {
+      "en": "Example text, to be replaced by the committee.\n\nIndividual Stableford over three rounds, with players divided into divisions by handicap.\n\n- Individual trophy: total individual scores over the three days\n- Inter-provincial team trophy: best 2 individual scores per team, per day"
+    }
   }
 ]

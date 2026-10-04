@@ -15,7 +15,7 @@ const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'use YYYY-MM-DD')
 /** Human-readable text. zh (Traditional Chinese) falls back to en when missing. */
 export const Text = z.object({ en: z.string().min(1), zh: z.string().min(1).optional() })
 
-export const Sport = z.enum(['basketball', 'volleyball', 'badminton', 'padel'])
+export const Sport = z.enum(['basketball', 'volleyball', 'badminton', 'padel', 'golf'])
 
 export const Tournament = z.object({
   year: z.number().int(),

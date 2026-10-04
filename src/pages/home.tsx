@@ -1,6 +1,7 @@
 import { LatestNews } from '../components/latest-news.tsx'
 import { MyNextGames } from '../components/my-next-games.tsx'
 import { Picture, siteImage } from '../components/picture.tsx'
+import { ProgrammeOverview } from '../components/programme-overview.tsx'
 import { content } from '../data/content.ts'
 import { formatDateRange } from '../data/format.ts'
 import { useI18n } from '../i18n/index.tsx'
@@ -22,9 +23,11 @@ export function Home() {
         <div class="home-hero-text">
           <h1>{t('app.title')}</h1>
           <p>{t('home.dates', { dates: formatDateRange(startDate, endDate, locale) })}</p>
+          <p class="motto">{t('home.motto')}</p>
         </div>
       </section>
       <LatestNews />
+      <ProgrammeOverview />
       <MyNextGames />
     </>
   )

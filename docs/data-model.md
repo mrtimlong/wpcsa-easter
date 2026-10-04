@@ -18,7 +18,7 @@ The site (code, layout, UI text) is in this repo. The tournament **data is not**
 | `squads.json` | Players, coach, manager, team photo per team. **Personal data**: consented players only, delete after the event | No |
 | `announcements.json` | Organiser updates: posted time, title, body, urgent/pinned, optional expiry. Refreshed every minute while the app is open. Later written by the announcements API | No |
 | `contacts.json` | Who to call: role, name, phone (WhatsApp), email | No |
-| `info.json` | Tournament info sections (code of conduct, oath, rules) as plain text | No |
+| `info.json` | Tournament info sections (code of conduct, general rules) as plain text. The oath and sport rules are site content in `src/rules/` | No |
 | `vendors.json` | Who's selling what, where, opening hours, payment methods | No |
 | `sponsors.json` + `logos/` | Sponsors by tier, with logos (SVG/PNG, about 3:1) for the rotating strip | No |
 | `visitor-guide.json` | "Visiting" page | No |
@@ -39,11 +39,11 @@ Standings and knockout progression are **derived** from fixtures + results (`sta
 - **Tournament**: year, edition, host city, dates, timezone.
 - **Venue**: with courts (`uct` → `a`, `b`, `hall2-1`…), optional notes, `facilities` (`toilets`, `firstAid`, `merchandise`, `food`, `water`, `parking`, `lostProperty`, `info`, `other`, each with where/notes) and a site `plan` image.
 - **Association**: province/region (WP, SG, NG, Swazi). Club teams (Hisense, Misfits…) have none.
-- **Competition**: one per sport + division (`bb-mens`, `vb`, `bd`). Optional `groups` (pools), standings `rules` and a `format` description (team and game counts are derived).
+- **Competition**: one per sport + division (`bb-mens`, `vb`, `bd`, `golf`). A competition can have no fixtures (golf, for now): its teams and squads still show, but it has no standings or results. Optional `groups` (pools), standings `rules` and a `format` description (team and game counts are derived).
 - **Team**: belongs to one competition (WPA in Minis A ≠ WPA in Mens), optionally a group.
 - **Fixture**: unique `id` plus display `number` ("Game 49"; numbers restart per day in volleyball), `stage` (`group`/`knockout`), optional `label` ("Cup final"), `start` with UTC offset, venue/court, `home`/`away`/`officials` **slots**, optional `format.bestOf`, and `tie` to group badminton rubbers.
 - **Slot**: `{team}` | `{winnerOf}` | `{loserOf}` | `{position, group?}` | `{tbc}`. Position/winner slots resolve to a team once the group is complete or the referenced game has a result.
-- **ProgrammeItem**: schedule of events (AGM, march past, social…).
+- **ProgrammeItem**: schedule of events (AGM, march past, social…) and blocks of games ("Basketball and volleyball games", "Golf: round 1"), one line each. Shown interleaved with the games on Schedule, and on their own as the Programme overview on Home, so keep them to a tight weekend-at-a-glance list.
 - **Sponsor**: name, tier (`headline`/`gold`/`supporter`: headline logos rotate three times as often as supporters, gold twice), logo, description, link.
 - **Vendor**: name, description, venue + where, hours, payment methods (`cash`, `card`, `snapscan`, `zapper`, `eft`), logo, link.
 - **Squad**: team, players (name, number, captain), coach, manager, photo.

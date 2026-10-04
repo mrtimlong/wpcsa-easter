@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
-import { DemoNotice, NoTeamsYet, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
+import { DemoNotice, fixtureSports, NoTeamsYet, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay } from '../data/format.ts'
 import { DEMO, results } from '../data/live.ts'
@@ -41,7 +41,7 @@ export function Results() {
     <section>
       <h1>{t('results.title')}</h1>
       {DEMO && <DemoNotice />}
-      <SportFilter value={sport} onChange={setSport} includeMine />
+      <SportFilter value={sport} onChange={setSport} includeMine options={fixtureSports} />
       {sport === 'mine' && favourites.size === 0 && <NoTeamsYet />}
       {withResults.length === 0 && !(sport === 'mine' && favourites.size === 0) && (
         <p class="muted">{sport === 'mine' ? t('myTeams.noResults') : t('results.empty')}</p>

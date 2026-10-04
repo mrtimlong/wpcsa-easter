@@ -8,13 +8,6 @@
       }
     },
     {
-      "id": "oath",
-      "title": { "en": "Athletes’ oath", "zh": "運動員宣誓" },
-      "body": {
-        "en": "Example text: the oath from the printed brochure goes here, in English and Chinese."
-      }
-    },
-    {
       "id": "rules",
       "title": { "en": "General rules", "zh": "一般規則" },
       "body": {

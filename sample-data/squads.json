@@ -1564,5 +1564,22 @@
         "number": 9
       }
     ]
+  },
+  {
+    "team": "golf-wp",
+    "players": [
+      {
+        "name": "Golfer 1"
+      },
+      {
+        "name": "Golfer 2"
+      },
+      {
+        "name": "Golfer 3"
+      },
+      {
+        "name": "Golfer 4"
+      }
+    ]
   }
 ]

@@ -20,7 +20,7 @@ export type RuleSection = {
 export type RuleSet = {
   id: string
   /** Shown only when this year's data has a competition in this sport. */
-  sport: Sport | 'golf'
+  sport: Sport
   title: RuleText
   intro?: RuleText
   sections: RuleSection[]

@@ -33,6 +33,13 @@ const paths: Record<Sport, preact.JSX.Element> = {
       />
     </>
   ),
+  // Flag in the hole on a green.
+  golf: (
+    <>
+      <path d="M9 20V3l8 3.5L9 10" />
+      <ellipse cx="12" cy="20" rx="8" ry="2" />
+    </>
+  ),
 }
 
 export function SportIcon({ sport, class: className }: { sport: Sport; class?: string }) {

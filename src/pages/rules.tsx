@@ -4,6 +4,7 @@ import type { Sport } from '../data/schema.ts'
 import { useScrollToHash } from '../hooks/scroll-to-hash.ts'
 import { useI18n } from '../i18n/index.tsx'
 import { type Rule, type RuleSection, type RuleSet, type RuleText, ruleSets } from '../rules/index.ts'
+import { oath } from '../rules/oath.ts'
 
 /** Rule sets for the sports being played this year, grouped by sport. */
 function rulesBySport(): { sport: Sport; sets: RuleSet[] }[] {
@@ -17,7 +18,7 @@ function useText() {
   return (text: RuleText) => (typeof text === 'string' ? text : l(text))
 }
 
-/** Rules of play for each sport (site content from src/rules/, not tournament data). */
+/** The tournament oath and the rules of play for each sport (site content from src/rules/, not data). */
 export function Rules() {
   useScrollToHash()
   const { t } = useI18n()
@@ -28,9 +29,14 @@ export function Rules() {
   return (
     <article class="rules">
       <h1>{t('rules.title')}</h1>
-      {sets.length > 1 && (
+      {sets.length > 0 && (
         <nav aria-label={t('info.contents')}>
           <ul class="chips chips-wrap info-contents">
+            <li>
+              <a class="chip" href="#oath">
+                {t('rules.oath')}
+              </a>
+            </li>
             {sets.map((set) => (
               <li key={set.id}>
                 <a class="chip" href={`#${set.id}`}>
@@ -41,6 +47,13 @@ export function Rules() {
           </ul>
         </nav>
       )}
+      <section id="oath" class="oath">
+        <h2>{t('rules.oath')}</h2>
+        <blockquote>
+          <p lang="en">{oath.en}</p>
+          <p lang="zh-Hant">{oath.zh}</p>
+        </blockquote>
+      </section>
       {groups.length === 0 && <p class="muted">{t('rules.none')}</p>}
       {groups.map(({ sport, sets }) =>
         sets.map((set) => (

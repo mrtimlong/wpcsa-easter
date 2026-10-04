@@ -16,7 +16,7 @@ These block later work, so get answers early.
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
 | [ ] | Confirm 2027 host city, venues and courts (UCT Sports Centre again? halls/courts per sport) | Org | Nov 2026 |
-| [ ] | Confirm sports and divisions for 2027 (basketball divisions and pools, volleyball format, badminton format, padel: in the app or info only?) | Org | Nov 2026 |
+| [ ] | Confirm sports and divisions for 2027 (basketball divisions and pools, volleyball format, badminton format, padel: in the app or info only?; golf: courses, rounds, divisions and how scores are shown) | Org | Nov 2026 |
 | [ ] | Basketball standings rules: points (default win 2 / loss 1 / forfeit 0) and tiebreak order (default head-to-head → difference → points scored) | Org | Nov 2026 |
 | [ ] | Volleyball and badminton standings rules (points per win? set ratio?) and best-of formats per round | Org | Nov 2026 |
 | [ ] | Edition number for 2027 (66th?) and official tournament name in English and Chinese | Org | Nov 2026 |
@@ -90,12 +90,12 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | [ ] | Create `data/` (copy `sample-data/`, remove `demo` from `tournament.json`): `tournament.json`, `venues.json`, `associations.json`, `competitions.json`, `teams.json` | Tim | Jan 2027 |
 | [ ] | Back up `data/` somewhere other than this laptop (it isn't in git); S3 versioning keeps old uploads too | Tim | Jan 2027 |
 | [ ] | Fixtures/draw for 2027 from the organisers (spreadsheet → JSON import script if the draw comes as a spreadsheet) | Org / Tim | Feb 2027 |
-| [ ] | Programme / schedule of events for 2027 (AGM, registration, march past, social, egg hunt, finals, dance) | Org | Feb 2027 |
+| [ ] | Programme / schedule of events for 2027 (AGM, registration, march past, social, egg hunt, finals, dance, golf rounds): this is the overview on the Home page, so one line per event or block of games | Org | Feb 2027 |
 | [ ] | `DATA_DIR=data npm run data:check` passes (no unknown teams, court clashes, missing logos, etc.); upload | Tim | Feb 2027 |
 | [x] | Home page dates/host from content (remove the hard-coded 2027 text) | Tim | Feb 2027 |
 | [ ] | Visiting page: replace example content with real recommendations, partner hotel and rates, parking at venues, set `draft: false` | Org / Tim | Feb 2027 |
 | [ ] | Real photos of venues (ideally our own, or properly licensed) | Org | Feb 2027 |
-| [ ] | Info content (`info.json`, `contacts.json`): oath (EN/中文, from the brochure), rules, code of conduct, contacts, first aid/emergency numbers; a format description per competition | Org | Feb 2027 |
+| [ ] | Info content (`info.json`, `contacts.json`): rules, code of conduct, contacts, first aid/emergency numbers; a format description per competition | Org | Feb 2027 |
 | [ ] | Venue facilities (`venues.json`): toilets, first aid/medics, merchandise, food, water, parking, lost property, info desk; a site plan image if possible | Org | Feb 2027 |
 | [ ] | Vendors (`vendors.json`) and sponsors (`sponsors.json`, logos in `data/logos/`, wide SVG or PNG) | Org / Spons | Mar 2027 |
 | [ ] | Late changes process: who tells Tim, how fast it goes live (`npm run data:upload` is live within a minute) | Org / Tim | Feb 2027 |
@@ -124,6 +124,10 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | [x] | Venues page: map links, sports, facilities, site plan, vendors there | Tim | Feb 2027 |
 | [x] | Vendors page and Tournament info page (contacts, format, rules, code of conduct) | Tim | Feb 2027 |
 | [x] | Sport rules page (`/rules`): basketball, mini basketball, volleyball and golf rules from the 2026 brochure, in `src/rules/` | Tim | Feb 2027 |
+| [x] | Tournament oath (EN and official 中文 from the brochure) on the rules page; SACSA motto "Friendship through sport" on Home | Tim | Feb 2027 |
+| [x] | Golf as a sport (placeholder data); Programme overview on Home | Tim | Feb 2027 |
+| [ ] | Golf scores: a leaderboard (Stableford, divisions, team trophies) if golf results are wanted in the app | Tim / Org | Feb 2027 |
+| [ ] | Chinese wording of the motto "Friendship through sport" | Tr | Feb 2027 |
 | [ ] | Confirm the 2026 sport rules still apply for 2027 (basketball, minis, volleyball; golf if played); badminton and padel rules if wanted; Chinese translations | Org | Feb 2027 |
 | [ ] | Bracket view for knockouts (nice to have) | Tim | Feb 2027 |
 | [x] | **Announcements page** (`/news`): organisers post updates during the weekend (schedule changes, court moves, weather, lost property, social reminders). Newest first, posted time, optional pinned/urgent flag, bilingual (EN required, 中文 optional) | Tim | Feb 2027 |

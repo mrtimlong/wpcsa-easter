@@ -12,6 +12,7 @@
   --sport-volleyball: #0f7f8a;
   --sport-badminton: #3a8a1f;
   --sport-padel: #8a3fb0;
+  --sport-golf: #8a6d1f;
 
   color-scheme: light;
   font-family:
@@ -367,6 +368,11 @@ body {
   opacity: 0.9;
 }
 
+.home-hero-text .motto {
+  margin-top: 0.2rem;
+  font-style: italic;
+}
+
 /* Phones: portrait artwork with the title inside its empty top panel. */
 @media (max-width: 40rem) {
   .home-hero {
@@ -518,6 +524,10 @@ body {
 
 .sport-padel {
   --sport: var(--sport-padel);
+}
+
+.sport-golf {
+  --sport: var(--sport-golf);
 }
 
 .fixture-teams {
@@ -1159,6 +1169,68 @@ article[id] {
   background: #d93025;
 }
 
+/* Programme overview on the home page */
+.programme h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.programme .programme-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border-radius: 0.75rem;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+.programme .programme-list li {
+  display: grid;
+  grid-template-columns: 6.2rem 1fr;
+  gap: 0.75rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.programme .programme-list li + li {
+  border-top: 1px solid #eceef5;
+}
+
+.programme .programme-list li.is-now {
+  background: #fdf0ef;
+}
+
+.programme .programme-list time {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.programme .programme-list li > span {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.programme .programme-list strong {
+  font-weight: 600;
+}
+
+.programme .programme-list .sport-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+  color: var(--sport);
+  vertical-align: -0.15rem;
+}
+
+.programme .programme-list .badge {
+  margin-left: 0.4rem;
+}
+
+.programme .programme-list .muted {
+  font-size: 0.85rem;
+}
+
 /* Sport rules */
 .rules .rule-set h2 {
   display: flex;
@@ -1184,10 +1256,27 @@ article[id] {
   padding-left: 1.4rem;
 }
 
-.rules .rule-set li {
+.rules .rule-set :is(ol, ul) > li {
   margin: 0.25rem 0;
 }
 
 .rules .rule-set li > ul {
   margin: 0.2rem 0 0.4rem;
+}
+
+.rules .oath blockquote {
+  margin: 0.5rem 0 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--brand);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  font-style: italic;
+}
+
+.rules .oath blockquote p {
+  margin: 0.4rem 0;
+}
+
+.rules .oath blockquote p[lang="zh-Hant"] {
+  font-style: normal;
 }
