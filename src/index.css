@@ -1158,3 +1158,36 @@ article[id] {
   border-radius: 999px;
   background: #d93025;
 }
+
+/* Sport rules */
+.rules .rule-set h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+}
+
+.rules .rule-set h2 .sport-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  color: var(--sport);
+}
+
+.rules .rule-set h3 {
+  margin: 1.1rem 0 0.3rem;
+  font-size: 1rem;
+}
+
+.rules .rule-set ol,
+.rules .rule-set ul {
+  margin: 0.3rem 0;
+  padding-left: 1.4rem;
+}
+
+.rules .rule-set li {
+  margin: 0.25rem 0;
+}
+
+.rules .rule-set li > ul {
+  margin: 0.2rem 0 0.4rem;
+}

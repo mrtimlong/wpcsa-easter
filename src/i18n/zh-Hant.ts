@@ -34,6 +34,7 @@ export const zhHant: Partial<Record<MessageKey, string>> = {
   'info.title': '大會資訊',
   'info.contacts': '聯絡',
   'info.format': '賽制',
+  'rules.title': '比賽規則',
   'sponsors.title': '贊助商',
   'sponsors.thanks': '感謝贊助商',
   'venues.title': '場地',

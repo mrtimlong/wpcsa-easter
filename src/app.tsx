@@ -12,6 +12,7 @@ import { MyTeams } from './pages/my-teams.tsx'
 import { News } from './pages/news.tsx'
 import { NotFound } from './pages/not-found.tsx'
 import { Results } from './pages/results.tsx'
+import { Rules } from './pages/rules.tsx'
 import { Schedule } from './pages/schedule.tsx'
 import { Sponsors } from './pages/sponsors.tsx'
 import { Standings } from './pages/standings.tsx'
@@ -83,6 +84,7 @@ export function App() {
                 <Route path="/venues" component={Venues} />
                 <Route path="/vendors" component={Vendors} />
                 <Route path="/info" component={Info} />
+                <Route path="/rules" component={Rules} />
                 <Route path="/sponsors" component={Sponsors} />
                 <Route default component={NotFound} />
               </Router>

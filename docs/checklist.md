@@ -123,6 +123,8 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | [x] | Bottom tab bar on phones, with a More page for everything else | Tim | Dec 2026 |
 | [x] | Venues page: map links, sports, facilities, site plan, vendors there | Tim | Feb 2027 |
 | [x] | Vendors page and Tournament info page (contacts, format, rules, code of conduct) | Tim | Feb 2027 |
+| [x] | Sport rules page (`/rules`): basketball, mini basketball, volleyball and golf rules from the 2026 brochure, in `src/rules/` | Tim | Feb 2027 |
+| [ ] | Confirm the 2026 sport rules still apply for 2027 (basketball, minis, volleyball; golf if played); badminton and padel rules if wanted; Chinese translations | Org | Feb 2027 |
 | [ ] | Bracket view for knockouts (nice to have) | Tim | Feb 2027 |
 | [x] | **Announcements page** (`/news`): organisers post updates during the weekend (schedule changes, court moves, weather, lost property, social reminders). Newest first, posted time, optional pinned/urgent flag, bilingual (EN required, 中文 optional) | Tim | Feb 2027 |
 | [x] | Announcements: banner on every page for the latest urgent post, dismissible; unread dot on the More tab and count on the More page; latest two on the home page | Tim | Feb 2027 |

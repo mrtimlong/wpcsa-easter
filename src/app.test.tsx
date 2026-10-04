@@ -94,6 +94,21 @@ describe('tournament info', () => {
   })
 })
 
+describe('sport rules', () => {
+  it('shows rules only for sports played this year', async () => {
+    history.replaceState(null, '', '/rules')
+    render(<App />)
+    await screen.findByRole('heading', { name: 'Sport rules', level: 1 })
+    expect(screen.getByRole('heading', { name: 'Basketball', level: 2 })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Mini basketball', level: 2 })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Volleyball', level: 2 })).toBeTruthy()
+    // Golf isn't one of the sample data's sports.
+    expect(screen.queryByRole('heading', { name: 'Golf' })).toBeNull()
+    expect(screen.getByText('More points scored in the games between them.').tagName).toBe('LI')
+    expect(screen.getByRole('link', { name: 'Mini basketball' }).getAttribute('href')).toBe('#mini-basketball')
+  })
+})
+
 describe('sponsors', () => {
   it('rotates logos at the foot of pages, with bigger tiers shown more often', async () => {
     const { rotation } = await import('./components/sponsor-strip.tsx')

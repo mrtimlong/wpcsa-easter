@@ -35,7 +35,7 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 - **Sponsors:** a sponsors page (tiers, logos, descriptions), and for advertising, sponsor logos rotating at the foot of every page (may change later).
 - **AWS region:** `af-south-1` (Cape Town); ACM cert in `us-east-1`. CLI profile `wpcsa`.
 - **Infrastructure:** set up with AWS CLI scripts (checked into `infra/` as a runbook of commands), not Terraform/CDK. Keep it minimal.
-- **Site sections (chairman, Oct 2026):** bottom tab bar with Home, Schedule, Results, Standings and More. Under More: Tournament info (format, rules, code of conduct, contacts), Teams (photo, squad, coach), Venues (toilets, medics, merchandise…), Vendors, Sponsors, Visiting, My teams., plus Announcements (organiser updates, urgent banner).
+- **Site sections (chairman, Oct 2026):** bottom tab bar with Home, Schedule, Results, Standings and More. Under More: Tournament info (format, rules, code of conduct, contacts), Teams (photo, squad, coach), Venues (toilets, medics, merchandise…), Vendors, Sponsors, Visiting, My teams, plus Sport rules and Announcements (organiser updates, urgent banner).
 - **Target event:** Easter 2027, Fri 26 – Mon 29 March 2027. The app should be live with fixtures well before then (aim: early March 2027).
 
 ## High-level tasks

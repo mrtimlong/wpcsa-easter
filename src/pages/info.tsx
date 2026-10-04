@@ -29,6 +29,11 @@ export function Info() {
               </a>
             </li>
           ))}
+          <li>
+            <a class="chip" href="/rules">
+              {t('rules.title')} →
+            </a>
+          </li>
         </ul>
       </nav>
 
