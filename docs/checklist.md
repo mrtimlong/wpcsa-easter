@@ -23,11 +23,14 @@ These block later work, so get answers early.
 | [ ] | Official Chinese name of SACSA: the 2025 cover says 華橋, the logo says 華僑 | Org / Tr | Nov 2026 |
 | [ ] | Who will enter results: list of organisers/scorers (name, email, which sport/court) | Org | Jan 2027 |
 | [ ] | Can scorers change a fixture's time or court on the day, or only enter results? Do we want an "announcements" banner for schedule changes? | Org | Nov 2026 |
-| [ ] | Final list of site sections (current: Home, Schedule, Results, Standings, Visiting; candidates: Info/Oath, Teams, Sponsors, Venues) | Org / Tim | Dec 2026 |
-| [ ] | Advert slots: sizes, placement, how many per page, rotation, and whether ads link out | Org / Spons | Dec 2026 |
+| [x] | Final list of site sections (chairman, Oct 2026): Home, Schedule, Results, Standings in the tab bar; under More: Tournament info (format, rules, code of conduct, contacts), Teams (photo, squad, coach), Venues (toilets, medics, merchandise…), Vendors, Sponsors, Visiting, My teams | Org / Tim | Dec 2026 |
+| [ ] | Contacts: confirm who is listed, and whether to show personal mobile numbers or role-based ones | Org | Jan 2027 |
+| [ ] | Team photos: do teams send them before the tournament, or are they taken on the day? Who collects them? | Org | Jan 2027 |
+| [ ] | Vendors: who collects their details (what they sell, where, hours, payment methods, logo), and by when | Org | Feb 2027 |
+| [x] | Advertising: rotating sponsor logos on every page, linking to a sponsors page with more detail (may change later) | Org / Spons | Dec 2026 |
 | [ ] | Sponsor list, tiers and logos (SVG or large PNG) plus links | Spons | Feb 2027 |
 | [ ] | Announcements: who is allowed to post, and who checks the Chinese before urgent posts go out (or post English only during the event) | Org | Jan 2027 |
-| [ ] | Player consent: players (or parents of minors) agree to names being shown publicly in the app during the event (POPIA). Add to the registration form | Org | Jan 2027 |
+| [ ] | Player consent: players (or parents of minors) agree to names **and team photos** being shown publicly in the app during the event (POPIA). Add to the registration form | Org | Jan 2027 |
 | [ ] | Is the AI-generated goat artwork OK with the committee, or should a designer redo it? | Org | Nov 2026 |
 
 ## 2. Organiser results backend
@@ -78,27 +81,34 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [ ] | Keep a way to preview with demo data (e.g. `?demo` on staging only) for testing | Tim | Jan 2027 |
 | [ ] | Date-faking for testing: view the app "as if" it's a given tournament time | Tim | Jan 2027 |
 
-## 5. 2027 content
+## 5. 2027 data
+
+All of this is JSON in the gitignored `data/` folder (never in the repo), uploaded with `npm run data:upload`; no deploy needed. See [data-model.md](data-model.md).
 
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
-| [ ] | Create `content/2027/`: `tournament.json`, `venues.json`, `associations.json`, `competitions.json`, `teams.json` | Tim | Jan 2027 |
+| [ ] | Create `data/` (copy `sample-data/`, remove `demo` from `tournament.json`): `tournament.json`, `venues.json`, `associations.json`, `competitions.json`, `teams.json` | Tim | Jan 2027 |
+| [ ] | Back up `data/` somewhere other than this laptop (it isn't in git); S3 versioning keeps old uploads too | Tim | Jan 2027 |
 | [ ] | Fixtures/draw for 2027 from the organisers (spreadsheet → JSON import script if the draw comes as a spreadsheet) | Org / Tim | Feb 2027 |
 | [ ] | Programme / schedule of events for 2027 (AGM, registration, march past, social, egg hunt, finals, dance) | Org | Feb 2027 |
-| [ ] | Switch `src/data/content.ts` to 2027; validation passes (no unknown teams, court clashes, etc.) | Tim | Feb 2027 |
-| [ ] | Home page dates/host from content (remove the hard-coded 2027 text) | Tim | Feb 2027 |
+| [ ] | `DATA_DIR=data npm run data:check` passes (no unknown teams, court clashes, missing logos, etc.); upload | Tim | Feb 2027 |
+| [x] | Home page dates/host from content (remove the hard-coded 2027 text) | Tim | Feb 2027 |
 | [ ] | Visiting page: replace example content with real recommendations, partner hotel and rates, parking at venues, set `draft: false` | Org / Tim | Feb 2027 |
 | [ ] | Real photos of venues (ideally our own, or properly licensed) | Org | Feb 2027 |
-| [ ] | Info content: oath (EN/中文, from the brochure), rules, contacts, first aid/emergency numbers, lost property | Org | Feb 2027 |
-| [ ] | Late changes process: who tells Tim, how fast it goes live (a push deploys in ~2 min) | Org / Tim | Feb 2027 |
+| [ ] | Info content (`info.json`, `contacts.json`): oath (EN/中文, from the brochure), rules, code of conduct, contacts, first aid/emergency numbers; a format description per competition | Org | Feb 2027 |
+| [ ] | Venue facilities (`venues.json`): toilets, first aid/medics, merchandise, food, water, parking, lost property, info desk; a site plan image if possible | Org | Feb 2027 |
+| [ ] | Vendors (`vendors.json`) and sponsors (`sponsors.json`, logos in `data/logos/`, wide SVG or PNG) | Org / Spons | Mar 2027 |
+| [ ] | Late changes process: who tells Tim, how fast it goes live (`npm run data:upload` is live within a minute) | Org / Tim | Feb 2027 |
 
 ## 6. Squads (player names, never in GitHub)
 
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
-| [ ] | Format for `private/squads.json` (team id → players, numbers) and a template organisers can fill in (spreadsheet) | Tim | Jan 2027 |
-| [ ] | Upload script to `s3://…/data/squads.json` (deploy role is blocked from `data/`, so Tim uploads) | Tim | Jan 2027 |
-| [ ] | Team page / squad display in the app, fetched at runtime | Tim | Feb 2027 |
+| [x] | Format for `data/squads.json` (team → players, numbers, captain, coach, manager, photo) | Tim | Jan 2027 |
+| [ ] | Template organisers can fill in (spreadsheet), plus a script to turn it into `squads.json` | Tim | Jan 2027 |
+| [x] | Upload script to `s3://…/data/` (`npm run data:upload`; the deploy role is blocked from `data/`, so Tim uploads) | Tim | Jan 2027 |
+| [x] | Team pages: photo, squad, coach, standing and games; team names link to them | Tim | Feb 2027 |
+| [ ] | Team photos: `npm run images -- --data data` after adding them to `data/images/originals/teams/<team id>.jpg` | Tim | Mar 2027 |
 | [ ] | Collect squads from teams; only players who consented | Org | Mar 2027 |
 | [ ] | Double-check before every push that no names are in the repo (`git grep`) | Tim | ongoing |
 
@@ -106,12 +116,13 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
-| [ ] | Sponsors section (tiers, logos, links) | Tim | Feb 2027 |
-| [ ] | Advert slot component and placement on most pages (once sizes are agreed) | Tim | Feb 2027 |
+| [x] | Sponsors page (tiers, logos, descriptions, links) | Tim | Feb 2027 |
+| [x] | Rotating sponsor logos at the foot of every page (pausable) | Tim | Feb 2027 |
 | [ ] | Home page: "Happening now / next up", countdown before the event, quick links | Tim | Jan 2027 |
 | [x] | "My teams" favourites (stored on the phone) to filter schedule and results | Tim | Jan 2027 |
-| [ ] | Bottom tab bar on phones (the top nav no longer fits) | Tim | Dec 2026 |
-| [ ] | Venues page with map links and which sports are where | Tim | Feb 2027 |
+| [x] | Bottom tab bar on phones, with a More page for everything else | Tim | Dec 2026 |
+| [x] | Venues page: map links, sports, facilities, site plan, vendors there | Tim | Feb 2027 |
+| [x] | Vendors page and Tournament info page (contacts, format, rules, code of conduct) | Tim | Feb 2027 |
 | [ ] | Bracket view for knockouts (nice to have) | Tim | Feb 2027 |
 | [ ] | **Announcements page** (`/news`): organisers post updates during the weekend (schedule changes, court moves, weather, lost property, social reminders). Newest first, posted time, optional pinned/urgent flag, bilingual (EN required, 中文 optional) | Tim | Feb 2027 |
 | [ ] | Announcements: banner on every page for the latest urgent/pinned post, dismissible; unread badge on the tab bar/More | Tim | Feb 2027 |
@@ -206,7 +217,7 @@ Run on **staging** with 2027 fixtures and test accounts. Write down anything con
 
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
-| [ ] | Delete `squads.json` from S3 (and old versions) within a week | Tim | Apr 2027 |
+| [ ] | Delete `squads.json`, team photos and personal contact numbers from S3 (and old versions) within a week | Tim | Apr 2027 |
 | [ ] | Disable organiser accounts | Tim | Apr 2027 |
 | [ ] | Archive 2027 results/standings (keep viewable, e.g. `/2027`) | Tim | Apr 2027 |
 | [ ] | Retrospective with organisers: what worked, what to change for 2028 | Org / Tim | Apr 2027 |

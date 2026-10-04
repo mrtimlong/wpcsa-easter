@@ -17,7 +17,8 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 
 ## Decisions so far
 - **URL:** `easter.wpcsa.org.za`, a subdomain of the existing `wpcsa.org.za` domain (no new domain needed).
-- **Results:** organisers (admins) log in and enter scores/results after each game. General content (fixtures, programme, info pages) is maintained by the developer in the repo.
+- **Results:** organisers (admins) log in and enter scores/results after each game. General content (fixtures, programme, info pages) is maintained by the developer.
+- **Site vs data:** the repo holds the site only. All tournament data (fixtures, teams, venues, vendors, contacts, sponsors, squads, info text) is JSON in a gitignored `data/` folder, uploaded to S3 separately and fetched at runtime, so it changes without a deploy and personal details never reach GitHub. Dummy `sample-data/` is committed for development and tests.
 - **Language:** fully bilingual English / Traditional Chinese (the brochure uses 繁體), with a language toggle.
 - **Architecture:** the public site stays static (S3 + CloudFront). A small serverless admin API writes results, which the app fetches as a JSON file served from S3/CloudFront.
 - **DNS:** Tim can edit `wpcsa.org.za` records directly.
@@ -30,11 +31,11 @@ A Progressive Web App that replaces the printed/PDF tournament brochure. It is h
 - **Repo:** public GitHub repo; only Tim has write access. The AWS deploy role trusts only `main` of this repo via OIDC. No secrets in the repo.
 - **Translations:** community members will supply Chinese text later; use placeholder strings (with a "missing translation" fallback to English) for now.
 - **Data model:** draft agreed (tournament, venues, associations, competitions, teams, fixtures with slots like "winner of", programme, sponsors; per-sport results). Must stay flexible: number of sports, basketball pools, and volleyball/badminton formats are unknown and will change.
-- **Player names:** never committed to GitHub. Team names are fine in the repo. Squads live in a separate `squads.json` uploaded to S3 outside the repo (source kept in gitignored `private/`); move to DynamoDB later only if organisers need to edit squads in `/admin`.
-- **Sponsors:** a sponsors section, plus advert slots on most pages (sizes/layout TBD). Build an ad-slot component early so it can be placed later.
+- **Player names:** never committed to GitHub. Squads live in `data/squads.json`; move to DynamoDB later only if organisers need to edit squads in `/admin`.
+- **Sponsors:** a sponsors page (tiers, logos, descriptions), and for advertising, sponsor logos rotating at the foot of every page (may change later).
 - **AWS region:** `af-south-1` (Cape Town); ACM cert in `us-east-1`. CLI profile `wpcsa`.
 - **Infrastructure:** set up with AWS CLI scripts (checked into `infra/` as a runbook of commands), not Terraform/CDK. Keep it minimal.
-- **Site sections:** to be decided later.
+- **Site sections (chairman, Oct 2026):** bottom tab bar with Home, Schedule, Results, Standings and More. Under More: Tournament info (format, rules, code of conduct, contacts), Teams (photo, squad, coach), Venues (toilets, medics, merchandise…), Vendors, Sponsors, Visiting, My teams. Planned: Announcements (see checklist).
 - **Target event:** Easter 2027, Fri 26 – Mon 29 March 2027. The app should be live with fixtures well before then (aim: early March 2027).
 
 ## High-level tasks
