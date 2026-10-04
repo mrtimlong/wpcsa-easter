@@ -4,6 +4,7 @@ import { App } from './app.tsx'
 
 afterEach(() => {
   cleanup()
+  localStorage.clear()
   history.replaceState(null, '', '/')
 })
 
@@ -117,5 +118,26 @@ describe('sponsors', () => {
       'Supporters',
     ])
     expect(screen.queryByRole('complementary', { name: 'Thanks to our sponsors' })).toBeNull()
+  })
+})
+
+describe('teams list', () => {
+  it('filters by sport and by followed teams', async () => {
+    localStorage.setItem('favouriteTeams', JSON.stringify(['vb-misfits']))
+    history.replaceState(null, '', '/teams')
+    render(<App />)
+    await screen.findByRole('heading', { name: 'Teams', level: 1 })
+    const sportsShown = () => screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent?.trim())
+    expect(sportsShown()).toEqual(['Basketball', 'Volleyball', 'Badminton'])
+
+    const teamLinks = () => [...document.querySelectorAll('.link-list a')].map((a) => a.getAttribute('href'))
+
+    fireEvent.click(screen.getByRole('button', { name: 'Volleyball' }))
+    expect(sportsShown()).toEqual(['Volleyball'])
+    expect(teamLinks()).toHaveLength(6)
+
+    fireEvent.click(screen.getByRole('button', { name: '★ My teams' }))
+    expect(sportsShown()).toEqual(['Volleyball'])
+    expect(teamLinks()).toEqual(['/teams/vb-misfits'])
   })
 })
