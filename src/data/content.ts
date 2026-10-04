@@ -17,6 +17,7 @@ const required = ['tournament', 'venues', 'associations', 'competitions', 'teams
 const optional = {
   sponsors: [],
   squads: [],
+  vendors: [],
   'visitor-guide': undefined,
   images: {},
   results: undefined,

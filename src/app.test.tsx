@@ -55,3 +55,26 @@ describe('team page', () => {
     expect(screen.queryByRole('heading', { name: 'Squad' })).toBeNull()
   })
 })
+
+describe('venues and vendors', () => {
+  it('lists facilities, sports and vendors at each venue', async () => {
+    history.replaceState(null, '', '/venues')
+    render(<App />)
+    const uct = (await screen.findByRole('heading', { name: 'UCT Sports Centre', level: 2 })).closest('article')!
+    expect(within(uct).getByText('First aid')).toBeTruthy()
+    expect(within(uct).getByText('Medic on duty during all games')).toBeTruthy()
+    expect(within(uct).getByText('Basketball')).toBeTruthy()
+    expect(within(uct).getByRole('link', { name: 'Example Noodle Bar' }).getAttribute('href')).toBe(
+      '/vendors#example-noodles',
+    )
+  })
+
+  it('shows what each vendor sells, where, when and how to pay', async () => {
+    history.replaceState(null, '', '/vendors')
+    render(<App />)
+    const noodles = (await screen.findByRole('heading', { name: 'Example Noodle Bar' })).closest('article')!
+    expect(within(noodles).getByText('Cash, Card, SnapScan')).toBeTruthy()
+    expect(within(noodles).getByText('Sat–Mon, 9:00–16:00')).toBeTruthy()
+    expect(within(noodles).getByRole('link', { name: 'UCT Sports Centre' })).toBeTruthy()
+  })
+})

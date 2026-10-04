@@ -30,6 +30,60 @@
           "en": "Badminton"
         }
       }
+    ],
+    "address": "UCT Sports Centre, Upper Campus, Rondebosch, Cape Town",
+    "notes": {
+      "en": "Example: park in P16 off Woolsack Drive and enter through the main foyer. No food or drink on the courts."
+    },
+    "facilities": [
+      {
+        "kind": "toilets",
+        "where": {
+          "en": "Example: main foyer, and next to Hall 2"
+        }
+      },
+      {
+        "kind": "firstAid",
+        "where": {
+          "en": "Example: table by the Court A entrance"
+        },
+        "notes": {
+          "en": "Medic on duty during all games"
+        }
+      },
+      {
+        "kind": "merchandise",
+        "where": {
+          "en": "Example: main foyer"
+        },
+        "notes": {
+          "en": "Tournament T-shirts and caps"
+        }
+      },
+      {
+        "kind": "food",
+        "where": {
+          "en": "Example: outside the main entrance"
+        }
+      },
+      {
+        "kind": "water",
+        "where": {
+          "en": "Example: fountain by the foyer toilets"
+        }
+      },
+      {
+        "kind": "lostProperty",
+        "where": {
+          "en": "Example: organisers’ table"
+        }
+      },
+      {
+        "kind": "info",
+        "where": {
+          "en": "Example: organisers’ table, main foyer"
+        }
+      }
     ]
   },
   {
@@ -39,7 +93,21 @@
     },
     "address": "1 Ludel Cl, Montague Gardens, Cape Town, 7441",
     "mapUrl": "https://www.google.com/maps/search/?api=1&query=Aura%20Padel%20Club%2C%201%20Ludel%20Cl%2C%20Montague%20Gardens%2C%20Cape%20Town",
-    "courts": []
+    "courts": [],
+    "facilities": [
+      {
+        "kind": "toilets",
+        "where": {
+          "en": "Example: clubhouse"
+        }
+      },
+      {
+        "kind": "food",
+        "where": {
+          "en": "Example: clubhouse café"
+        }
+      }
+    ]
   },
   {
     "id": "time-out-market",

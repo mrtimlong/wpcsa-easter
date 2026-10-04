@@ -7,6 +7,8 @@ type Link = { href: string; title: MessageKey; description: MessageKey; show?: b
 const links: Link[] = [
   { href: '/teams', title: 'teams.title', description: 'more.teams' },
   { href: '/my-teams', title: 'myTeams.title', description: 'more.myTeams' },
+  { href: '/venues', title: 'venues.title', description: 'more.venues' },
+  { href: '/vendors', title: 'vendors.title', description: 'more.vendors', show: content.vendors.length > 0 },
   { href: '/visit', title: 'nav.visit', description: 'more.visit', show: content.guide !== undefined },
 ]
 

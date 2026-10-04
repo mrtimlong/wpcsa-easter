@@ -91,6 +91,19 @@ export function validateContent(content: Content): string[] {
     squadTeams.add(squad.team)
   }
 
+  for (const venue of venues) {
+    if (venue.plan && !(venue.plan in content.images))
+      errors.push(`venue ${venue.id}: plan "${venue.plan}" not in images.json`)
+  }
+
+  const vendorIds = new Set<string>()
+  for (const vendor of content.vendors) {
+    if (vendorIds.has(vendor.id)) errors.push(`vendors: duplicate id "${vendor.id}"`)
+    vendorIds.add(vendor.id)
+    if (vendor.venue && !venueById.has(vendor.venue))
+      errors.push(`vendor ${vendor.id}: unknown venue "${vendor.venue}"`)
+  }
+
   for (const item of programme) {
     if (item.venue && !venueById.has(item.venue)) errors.push(`programme ${item.id}: unknown venue "${item.venue}"`)
   }

@@ -163,6 +163,7 @@ describe('validateContent', () => {
       programme: [],
       sponsors: [],
       squads: [],
+      vendors: [],
       images: {},
     }
     expect(validateContent(content)).toEqual([

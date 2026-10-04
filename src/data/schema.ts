@@ -29,12 +29,62 @@ export const Tournament = z.object({
   demo: z.object({ now: dateTime, seed: z.number().int().optional() }).optional(),
 })
 
+/** Path of a file in the data folder, served as-is (logos: SVG or PNG), e.g. "logos/acme.svg". */
+const dataFile = z
+  .string()
+  .regex(/^[a-z0-9][a-z0-9/_.-]*\.(svg|png|jpg|webp)$/, 'a file in the data folder, e.g. logos/acme.svg')
+
+export const FacilityKind = z.enum([
+  'toilets',
+  'firstAid',
+  'merchandise',
+  'food',
+  'water',
+  'parking',
+  'lostProperty',
+  'info',
+  'other',
+])
+
 export const Venue = z.object({
   id,
   name: Text,
   address: z.string().optional(),
   mapUrl: z.url().optional(),
+  /** Getting there, entrances, rules (no food in the hall…). */
+  notes: Text.optional(),
   courts: z.array(z.object({ id, name: Text })),
+  /** Where to find things on site. */
+  facilities: z
+    .array(
+      z.object({
+        kind: FacilityKind,
+        /** Overrides the standard name for the kind ("Physio" for firstAid, anything for other). */
+        name: Text.optional(),
+        where: Text,
+        notes: Text.optional(),
+      }),
+    )
+    .optional(),
+  /** Site or floor plan: a name in images.json. */
+  plan: z.string().optional(),
+})
+
+export const PaymentMethod = z.enum(['cash', 'card', 'snapscan', 'zapper', 'eft'])
+
+/** Someone selling at the tournament: food stalls, merchandise, physio… */
+export const Vendor = z.object({
+  id,
+  name: z.string(),
+  description: Text,
+  venue: id.optional(),
+  /** Where at the venue ("Outside Hall 2"). */
+  where: Text.optional(),
+  /** Opening times ("Sat–Sun 8:00–17:00"). */
+  hours: Text.optional(),
+  payment: z.array(PaymentMethod).optional(),
+  logo: dataFile.optional(),
+  url: z.url().optional(),
 })
 
 /** A province/region/club that teams belong to (WP, SG, NG…). */
@@ -185,6 +235,7 @@ export const Content = z.object({
   fixtures: z.array(Fixture),
   programme: z.array(ProgrammeItem),
   sponsors: z.array(Sponsor),
+  vendors: z.array(Vendor),
   guide: VisitorGuide.optional(),
   squads: z.array(Squad),
   images: ImageManifest,
@@ -217,6 +268,9 @@ export type Text = z.infer<typeof Text>
 export type Sport = z.infer<typeof Sport>
 export type Tournament = z.infer<typeof Tournament>
 export type Venue = z.infer<typeof Venue>
+export type FacilityKind = z.infer<typeof FacilityKind>
+export type PaymentMethod = z.infer<typeof PaymentMethod>
+export type Vendor = z.infer<typeof Vendor>
 export type Association = z.infer<typeof Association>
 export type StandingsRules = z.infer<typeof StandingsRules>
 export type Competition = z.infer<typeof Competition>

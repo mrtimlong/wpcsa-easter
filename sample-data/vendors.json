@@ -1,0 +1,30 @@
+[
+  {
+    "id": "example-noodles",
+    "name": "Example Noodle Bar",
+    "description": { "en": "Example vendor: wonton noodles, dumplings and bubble tea." },
+    "venue": "uct",
+    "where": { "en": "Outside the main entrance" },
+    "hours": { "en": "Sat–Mon, 9:00–16:00" },
+    "payment": ["cash", "card", "snapscan"]
+  },
+  {
+    "id": "example-merch",
+    "name": "Tournament Merchandise",
+    "description": { "en": "Example vendor: official 2027 T-shirts, caps and water bottles." },
+    "venue": "uct",
+    "where": { "en": "Main foyer" },
+    "hours": { "en": "Fri–Mon, during games" },
+    "payment": ["cash", "card"]
+  },
+  {
+    "id": "example-physio",
+    "name": "Example Sports Physio",
+    "description": { "en": "Example vendor: strapping, massage and injury checks." },
+    "venue": "uct",
+    "where": { "en": "Next to the first aid table" },
+    "hours": { "en": "Sat–Sun, 8:00–18:00" },
+    "payment": ["card", "eft"],
+    "url": "https://example.com/"
+  }
+]

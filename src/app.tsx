@@ -11,6 +11,8 @@ import { Schedule } from './pages/schedule.tsx'
 import { Standings } from './pages/standings.tsx'
 import { TeamPage } from './pages/team.tsx'
 import { Teams } from './pages/teams.tsx'
+import { Vendors } from './pages/vendors.tsx'
+import { Venues } from './pages/venues.tsx'
 import { Visit } from './pages/visit.tsx'
 
 function Logos() {
@@ -63,6 +65,8 @@ export function App() {
               <Route path="/more" component={More} />
               <Route path="/teams" component={Teams} />
               <Route path="/teams/:id" component={TeamPage} />
+              <Route path="/venues" component={Venues} />
+              <Route path="/vendors" component={Vendors} />
               <Route default component={NotFound} />
             </Router>
           </main>
