@@ -14,7 +14,7 @@ cd "$(dirname "$0")/.."
 DIR="${1:-data}"
 [[ -f "$DIR/tournament.json" ]] || { echo "$DIR/tournament.json not found" >&2; exit 1; }
 
-echo "Checking $DIR…"
+echo "Checking ${DIR}…"
 DATA_DIR="$DIR" npx vitest run src/data/content.test.ts --silent >/dev/null ||
   { echo "Validation failed: run DATA_DIR=$DIR npm run data:check for details" >&2; exit 1; }
 
