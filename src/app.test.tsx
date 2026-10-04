@@ -15,12 +15,12 @@ describe('tab bar', () => {
     render(<App />)
     expect(tabBar().getByRole('link', { name: 'Home' }).getAttribute('aria-current')).toBe('page')
 
-    fireEvent.click(tabBar().getByRole('link', { name: 'More' }))
+    fireEvent.click(tabBar().getByRole('link', { name: /^More/ }))
     expect(await screen.findByRole('heading', { name: 'More', level: 1 })).toBeTruthy()
 
     fireEvent.click(within(screen.getByRole('main')).getByRole('link', { name: /My teams/ }))
     expect(await screen.findByRole('heading', { name: 'My teams', level: 1 })).toBeTruthy()
-    expect(tabBar().getByRole('link', { name: 'More' }).getAttribute('aria-current')).toBe('page')
+    expect(tabBar().getByRole('link', { name: /^More/ }).getAttribute('aria-current')).toBe('page')
     expect(tabBar().getByRole('link', { name: 'Home' }).getAttribute('aria-current')).toBeNull()
   })
 })
@@ -139,5 +139,33 @@ describe('teams list', () => {
     fireEvent.click(screen.getByRole('button', { name: '★ My teams' }))
     expect(sportsShown()).toEqual(['Volleyball'])
     expect(teamLinks()).toEqual(['/teams/vb-misfits'])
+  })
+})
+
+describe('announcements', () => {
+  it('lists current announcements, pinned first then newest, and marks them read', async () => {
+    history.replaceState(null, '', '/news')
+    render(<App />)
+    await screen.findByRole('heading', { name: 'Announcements', level: 1 })
+    // Demo "now" is Sunday 15:00: the expired rain delay and the 18:00 prize-giving are hidden.
+    expect(screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent)).toEqual([
+      'Welcome to the tournament!',
+      'Minis semi-finals moved to Court B',
+      'Lost property',
+    ])
+    expect(screen.getAllByText('New')).toHaveLength(3)
+    expect(JSON.parse(localStorage.getItem('announcementsSeen')!)).toHaveLength(3)
+  })
+
+  it('shows the urgent banner until dismissed, and an unread count under More', async () => {
+    render(<App />)
+    const banner = await screen.findByRole('status')
+    expect(banner.textContent).toContain('Minis semi-finals moved to Court B')
+    expect(tabBar().getByRole('img', { name: '3 new' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Latest news' })).toBeTruthy()
+
+    fireEvent.click(within(banner).getByRole('button', { name: 'Dismiss' }))
+    expect(screen.queryByRole('status')).toBeNull()
+    expect(JSON.parse(localStorage.getItem('announcementsDismissed')!)).toEqual(['court-change'])
   })
 })

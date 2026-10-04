@@ -16,6 +16,7 @@ The site (code, layout, UI text) is in this repo. The tournament **data is not**
 | `tournament.json` | Year, host city, dates, timezone; `demo` for sample data only | Yes |
 | `venues.json`, `associations.json`, `competitions.json`, `teams.json`, `fixtures.json`, `programme.json` | The tournament structure and schedule | Yes |
 | `squads.json` | Players, coach, manager, team photo per team. **Personal data**: consented players only, delete after the event | No |
+| `announcements.json` | Organiser updates: posted time, title, body, urgent/pinned, optional expiry. Refreshed every minute while the app is open. Later written by the announcements API | No |
 | `contacts.json` | Who to call: role, name, phone (WhatsApp), email | No |
 | `info.json` | Tournament info sections (code of conduct, oath, rules) as plain text | No |
 | `vendors.json` | Who's selling what, where, opening hours, payment methods | No |
@@ -46,6 +47,7 @@ Standings and knockout progression are **derived** from fixtures + results (`sta
 - **Sponsor**: name, tier (`headline`/`gold`/`supporter`: headline logos rotate three times as often as supporters, gold twice), logo, description, link.
 - **Vendor**: name, description, venue + where, hours, payment methods (`cash`, `card`, `snapscan`, `zapper`, `eft`), logo, link.
 - **Squad**: team, players (name, number, captain), coach, manager, photo.
+- **Announcement**: id, `posted` (shown from then on, so posts can be scheduled), title, body (plain text), `urgent` (banner on every page until dismissed), `pinned` (top of the list), optional `expires`.
 - **Contact**: role, name, phone (`+27 …`, optional WhatsApp link), email, notes.
 - **Info**: sections with id, title and body. Body text is plain: blank lines between paragraphs, `- ` for bullet points.
 - **Result**: per fixture: `status` (`live`/`final`/`forfeit`/`cancelled`) and either `{home, away}` points or `{sets: [[h, a], …]}` (volleyball sets, badminton games).

@@ -124,9 +124,10 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | [x] | Venues page: map links, sports, facilities, site plan, vendors there | Tim | Feb 2027 |
 | [x] | Vendors page and Tournament info page (contacts, format, rules, code of conduct) | Tim | Feb 2027 |
 | [ ] | Bracket view for knockouts (nice to have) | Tim | Feb 2027 |
-| [ ] | **Announcements page** (`/news`): organisers post updates during the weekend (schedule changes, court moves, weather, lost property, social reminders). Newest first, posted time, optional pinned/urgent flag, bilingual (EN required, 中文 optional) | Tim | Feb 2027 |
-| [ ] | Announcements: banner on every page for the latest urgent/pinned post, dismissible; unread badge on the tab bar/More | Tim | Feb 2027 |
-| [ ] | Announcements: refresh while the app is open (poll with results), so posts appear without a reload | Tim | Feb 2027 |
+| [x] | **Announcements page** (`/news`): organisers post updates during the weekend (schedule changes, court moves, weather, lost property, social reminders). Newest first, posted time, optional pinned/urgent flag, bilingual (EN required, 中文 optional) | Tim | Feb 2027 |
+| [x] | Announcements: banner on every page for the latest urgent post, dismissible; unread dot on the More tab and count on the More page; latest two on the home page | Tim | Feb 2027 |
+| [x] | Announcements: refresh while the app is open (every minute, and when the app comes back to the foreground), so posts appear without a reload (worst case ~2 min with caching) | Tim | Feb 2027 |
+| [ ] | Until the announcements API exists, posts go in `data/announcements.json` and `npm run data:upload` (Tim only). Once the API writes it, exclude it from the upload like `results.json` | Tim | Feb 2027 |
 | [ ] | "Add to home screen" prompt/instructions for iPhone and Android | Tim | Feb 2027 |
 | [ ] | Push notifications for results/schedule changes (optional, post-MVP) | Tim | later |
 

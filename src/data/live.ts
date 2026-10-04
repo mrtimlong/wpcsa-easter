@@ -11,6 +11,11 @@ export const DEMO = demo !== undefined
 
 export const now: number = demo ? Date.parse(demo.now) : Date.now()
 
+/** The time now (frozen at demo.now in demo mode), for things that change while the app is open. */
+export function currentTime(): number {
+  return demo ? Date.parse(demo.now) : Date.now()
+}
+
 export const results: Map<string, Result> = demo
   ? generateDemoResults(content, now, demo.seed)
   : new Map(publishedResults?.results.map((r) => [r.fixture, r]))

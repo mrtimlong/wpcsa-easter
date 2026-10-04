@@ -98,6 +98,35 @@ body {
   cursor: pointer;
 }
 
+/* Latest urgent announcement, under the header. */
+.urgent-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  background: #d93025;
+  color: #fff;
+}
+
+.urgent-banner a {
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.urgent-banner button {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.2);
+  color: inherit;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 .main {
   max-width: 48rem;
   margin: 0 auto;
@@ -123,6 +152,7 @@ body {
 }
 
 .tab-bar a {
+  position: relative;
   flex: 1;
   max-width: 7rem;
   height: var(--tab-bar-height);
@@ -1028,4 +1058,85 @@ article[id] {
 .sponsor-tier-headline .sponsor-logo {
   max-width: 24rem;
   margin: 0 auto;
+}
+
+/* Announcements */
+.badge-urgent {
+  background: #d93025;
+  color: #fff;
+}
+
+.badge-new {
+  margin-left: 0.4rem;
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.announcement {
+  margin-bottom: 0.75rem;
+}
+
+.announcement.is-urgent {
+  box-shadow:
+    inset 5px 0 0 #d93025,
+    0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+.announcement h2 {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+/* Cards zero their paragraph margins; announcement bodies need space between paragraphs. */
+.announcement .card-body > * + p,
+.announcement .card-body > * + ul {
+  margin-top: 0.6rem;
+}
+
+.announcement .card-body > ul {
+  margin-bottom: 0;
+}
+
+.announcement-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.announcement-meta .badge {
+  margin: 0;
+}
+
+.announcement-meta .badge:not(.badge-urgent, .badge-new) {
+  background: #e4e6ef;
+  color: var(--muted);
+}
+
+.latest-news {
+  margin: 1.5rem 0 2rem;
+}
+
+.latest-news h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.latest-news .badge-urgent {
+  margin-right: 0.3rem;
+  vertical-align: 0.1em;
+}
+
+.tab-dot {
+  position: absolute;
+  top: 0.45rem;
+  left: calc(50% + 0.55rem);
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 2px solid var(--surface);
+  border-radius: 999px;
+  background: #d93025;
 }

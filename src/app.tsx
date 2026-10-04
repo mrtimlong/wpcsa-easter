@@ -1,12 +1,15 @@
 import { LocationProvider, Route, Router, useLocation } from 'preact-iso'
+import { AnnouncementsProvider } from './announcements.tsx'
 import { SponsorStrip } from './components/sponsor-strip.tsx'
 import { TabBar } from './components/tab-bar.tsx'
+import { UrgentBanner } from './components/urgent-banner.tsx'
 import { FavouritesProvider } from './favourites.tsx'
 import { I18nProvider, useI18n } from './i18n/index.tsx'
 import { Home } from './pages/home.tsx'
 import { Info } from './pages/info.tsx'
 import { More } from './pages/more.tsx'
 import { MyTeams } from './pages/my-teams.tsx'
+import { News } from './pages/news.tsx'
 import { NotFound } from './pages/not-found.tsx'
 import { Results } from './pages/results.tsx'
 import { Schedule } from './pages/schedule.tsx'
@@ -60,30 +63,34 @@ export function App() {
   return (
     <I18nProvider>
       <FavouritesProvider>
-        <LocationProvider>
-          <Logos />
-          <Header />
-          <main class="main">
-            <Router>
-              <Route path="/" component={Home} />
-              <Route path="/schedule" component={Schedule} />
-              <Route path="/results" component={Results} />
-              <Route path="/standings" component={Standings} />
-              <Route path="/visit" component={Visit} />
-              <Route path="/my-teams" component={MyTeams} />
-              <Route path="/more" component={More} />
-              <Route path="/teams" component={Teams} />
-              <Route path="/teams/:id" component={TeamPage} />
-              <Route path="/venues" component={Venues} />
-              <Route path="/vendors" component={Vendors} />
-              <Route path="/info" component={Info} />
-              <Route path="/sponsors" component={Sponsors} />
-              <Route default component={NotFound} />
-            </Router>
-            <Sponsorship />
-          </main>
-          <TabBar />
-        </LocationProvider>
+        <AnnouncementsProvider>
+          <LocationProvider>
+            <Logos />
+            <Header />
+            <UrgentBanner />
+            <main class="main">
+              <Router>
+                <Route path="/" component={Home} />
+                <Route path="/schedule" component={Schedule} />
+                <Route path="/results" component={Results} />
+                <Route path="/standings" component={Standings} />
+                <Route path="/visit" component={Visit} />
+                <Route path="/my-teams" component={MyTeams} />
+                <Route path="/more" component={More} />
+                <Route path="/news" component={News} />
+                <Route path="/teams" component={Teams} />
+                <Route path="/teams/:id" component={TeamPage} />
+                <Route path="/venues" component={Venues} />
+                <Route path="/vendors" component={Vendors} />
+                <Route path="/info" component={Info} />
+                <Route path="/sponsors" component={Sponsors} />
+                <Route default component={NotFound} />
+              </Router>
+              <Sponsorship />
+            </main>
+            <TabBar />
+          </LocationProvider>
+        </AnnouncementsProvider>
       </FavouritesProvider>
     </I18nProvider>
   )

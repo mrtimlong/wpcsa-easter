@@ -1,3 +1,4 @@
+import { useAnnouncements } from '../announcements.tsx'
 import { content } from '../data/content.ts'
 import type { MessageKey } from '../i18n/en.ts'
 import { useI18n } from '../i18n/index.tsx'
@@ -5,6 +6,7 @@ import { useI18n } from '../i18n/index.tsx'
 type Link = { href: string; title: MessageKey; description: MessageKey; show?: boolean }
 
 const links: Link[] = [
+  { href: '/news', title: 'news.title', description: 'more.news' },
   { href: '/info', title: 'info.title', description: 'more.info' },
   { href: '/teams', title: 'teams.title', description: 'more.teams' },
   { href: '/my-teams', title: 'myTeams.title', description: 'more.myTeams' },
@@ -17,6 +19,7 @@ const links: Link[] = [
 /** Everything that doesn't fit in the tab bar. */
 export function More() {
   const { t, l } = useI18n()
+  const { unread } = useAnnouncements()
   return (
     <section>
       <h1>{t('more.title')}</h1>
@@ -26,7 +29,12 @@ export function More() {
           .map((link) => (
             <li key={link.href}>
               <a href={link.href}>
-                <strong>{t(link.title)}</strong>
+                <strong>
+                  {t(link.title)}
+                  {link.href === '/news' && unread.size > 0 && (
+                    <span class="badge badge-new">{t('news.unread', { n: unread.size })}</span>
+                  )}
+                </strong>
                 <span class="muted">{t(link.description, { city: l(content.tournament.host) })}</span>
               </a>
             </li>

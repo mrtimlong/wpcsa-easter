@@ -1,4 +1,5 @@
 import { useLocation } from 'preact-iso'
+import { useAnnouncements } from '../announcements.tsx'
 import type { MessageKey } from '../i18n/en.ts'
 import { useI18n } from '../i18n/index.tsx'
 
@@ -39,6 +40,7 @@ const tabs: { href: string; icon: keyof typeof icons; label: MessageKey }[] = [
 export function TabBar() {
   const { t } = useI18n()
   const { path } = useLocation()
+  const { unread } = useAnnouncements()
   const main = tabs.slice(0, -1).some((tab) => tab.href === path)
   return (
     <nav class="tab-bar" aria-label={t('nav.label')}>
@@ -59,6 +61,10 @@ export function TabBar() {
               {icons[tab.icon]}
             </svg>
             <span>{t(tab.label)}</span>
+            {/* New announcements live under More. */}
+            {tab.href === '/more' && unread.size > 0 && (
+              <span class="tab-dot" role="img" aria-label={t('news.unread', { n: unread.size })} />
+            )}
           </a>
         )
       })}

@@ -20,6 +20,7 @@ const optional = {
   vendors: [],
   info: undefined,
   contacts: [],
+  announcements: [],
   'visitor-guide': undefined,
   images: {},
   results: undefined,
@@ -33,6 +34,11 @@ async function fetchJson(name: FileName, isOptional: boolean): Promise<unknown> 
   // S3 answers 403 rather than 404 for missing objects (the bucket isn't listable).
   if (isOptional && (response.status === 404 || response.status === 403)) return optional[name as keyof typeof optional]
   throw new DataError(`${name}.json: HTTP ${response.status}`)
+}
+
+/** Fetches announcements.json again, for refreshing while the app is open. */
+export async function loadAnnouncements(): Promise<Content['announcements']> {
+  return (await fetchJson('announcements', true)) as Content['announcements']
 }
 
 export async function loadData(): Promise<{ content: Content; results?: Results }> {

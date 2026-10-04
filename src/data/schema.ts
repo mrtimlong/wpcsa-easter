@@ -215,6 +215,22 @@ export const Contact = z.object({
   notes: Text.optional(),
 })
 
+/**
+ * An organiser update during the weekend (court change, weather, lost property…).
+ * Shown once `posted` has passed and until `expires`; urgent ones also get a banner on every page.
+ */
+export const Announcement = z.object({
+  id,
+  posted: dateTime,
+  title: Text,
+  /** Plain text: blank lines between paragraphs, "- " for bullets. */
+  body: Text.optional(),
+  urgent: z.boolean().optional(),
+  /** Kept at the top of the list. */
+  pinned: z.boolean().optional(),
+  expires: dateTime.optional(),
+})
+
 /** A photo with the attribution its licence requires (most stock photos are CC BY-SA). */
 export const Photo = z.object({
   /** Name in the data's images.json, i.e. the path under images/originals/ without extension. */
@@ -269,6 +285,7 @@ export const Content = z.object({
   vendors: z.array(Vendor),
   info: Info.optional(),
   contacts: z.array(Contact),
+  announcements: z.array(Announcement),
   guide: VisitorGuide.optional(),
   squads: z.array(Squad),
   images: ImageManifest,
@@ -316,6 +333,7 @@ export type Sponsor = z.infer<typeof Sponsor>
 export type Squad = z.infer<typeof Squad>
 export type Info = z.infer<typeof Info>
 export type Contact = z.infer<typeof Contact>
+export type Announcement = z.infer<typeof Announcement>
 export type Photo = z.infer<typeof Photo>
 export type VisitorGuide = z.infer<typeof VisitorGuide>
 export type ImageManifest = z.infer<typeof ImageManifest>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "welcome",
+    "posted": "2025-04-18T08:00+02:00",
+    "pinned": true,
+    "title": { "en": "Welcome to the tournament!", "zh": "歡迎參加運動會！" },
+    "body": {
+      "en": "Example announcement. Welcome to Cape Town for the 64th SACSA Easter Tournament. Check this page during the weekend for schedule changes and news from the organisers.\n\nRegistration is at the organisers’ table in the main foyer."
+    }
+  },
+  {
+    "id": "court-change",
+    "posted": "2025-04-20T13:40+02:00",
+    "urgent": true,
+    "title": { "en": "Minis semi-finals moved to Court B" },
+    "body": {
+      "en": "Example announcement. Both Minis A semi-finals this afternoon are now on Court B (same times). Court A is closed for a floor repair."
+    }
+  },
+  {
+    "id": "lost-property",
+    "posted": "2025-04-19T17:15+02:00",
+    "title": { "en": "Lost property" },
+    "body": {
+      "en": "Example announcement. Handed in so far:\n\n- blue water bottle\n- black SG hoodie (size M)\n- car keys with a red keyring\n\nCollect from the organisers’ table."
+    }
+  },
+  {
+    "id": "rain-delay",
+    "posted": "2025-04-19T09:00+02:00",
+    "expires": "2025-04-19T12:00+02:00",
+    "urgent": true,
+    "title": { "en": "Padel delayed by rain" },
+    "body": { "en": "Example of an expired announcement: no longer shown after 12:00 on Saturday." }
+  },
+  {
+    "id": "prize-giving",
+    "posted": "2025-04-20T18:00+02:00",
+    "title": { "en": "Prize-giving at 19:00" },
+    "body": { "en": "Example of a scheduled announcement: only appears from 18:00 on Sunday." }
+  }
+]

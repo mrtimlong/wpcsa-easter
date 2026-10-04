@@ -1,3 +1,4 @@
+import { LatestNews } from '../components/latest-news.tsx'
 import { MyNextGames } from '../components/my-next-games.tsx'
 import { Picture, siteImage } from '../components/picture.tsx'
 import { content } from '../data/content.ts'
@@ -23,6 +24,7 @@ export function Home() {
           <p>{t('home.dates', { dates: formatDateRange(startDate, endDate, locale) })}</p>
         </div>
       </section>
+      <LatestNews />
       <MyNextGames />
     </>
   )

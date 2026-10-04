@@ -33,12 +33,17 @@ export function formatDateRange(start: string, end: string, locale: Locale): str
   return format.formatRange(new Date(`${start}T12:00:00Z`), new Date(`${end}T12:00:00Z`))
 }
 
-/** "Sunday, 20 April, 15:00" in the tournament's timezone */
-export function formatDateTime(iso: string, timeZone: string, locale: Locale): string {
+/** "Sunday, 20 April, 15:00" (or "Sun 20 Apr, 15:00" short) in the tournament's timezone */
+export function formatDateTime(
+  iso: string,
+  timeZone: string,
+  locale: Locale,
+  style: 'long' | 'short' = 'long',
+): string {
   return new Intl.DateTimeFormat(intlLocale(locale), {
-    weekday: 'long',
+    weekday: style,
     day: 'numeric',
-    month: 'long',
+    month: style,
     hour: '2-digit',
     minute: '2-digit',
     hourCycle: 'h23',

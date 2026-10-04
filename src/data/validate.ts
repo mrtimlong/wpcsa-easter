@@ -18,6 +18,7 @@ export function validateContent(content: Content): string[] {
     sponsors,
     vendors: content.vendors,
     contacts: content.contacts,
+    announcements: content.announcements,
     'info sections': content.info?.sections ?? [],
   }
   for (const [name, items] of Object.entries(collections)) {
@@ -110,6 +111,11 @@ export function validateContent(content: Content): string[] {
   for (const vendor of content.vendors) {
     if (vendor.venue && !venueById.has(vendor.venue))
       errors.push(`vendor ${vendor.id}: unknown venue "${vendor.venue}"`)
+  }
+
+  for (const a of content.announcements) {
+    if (a.expires && Date.parse(a.expires) <= Date.parse(a.posted))
+      errors.push(`announcement ${a.id}: expires before it's posted`)
   }
 
   for (const item of programme) {

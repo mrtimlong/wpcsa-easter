@@ -165,6 +165,7 @@ describe('validateContent', () => {
       squads: [],
       vendors: [],
       contacts: [],
+      announcements: [],
       images: {},
     }
     expect(validateContent(content)).toEqual([
