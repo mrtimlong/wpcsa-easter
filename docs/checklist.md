@@ -26,6 +26,7 @@ These block later work, so get answers early.
 | [ ] | Final list of site sections (current: Home, Schedule, Results, Standings, Visiting; candidates: Info/Oath, Teams, Sponsors, Venues) | Org / Tim | Dec 2026 |
 | [ ] | Advert slots: sizes, placement, how many per page, rotation, and whether ads link out | Org / Spons | Dec 2026 |
 | [ ] | Sponsor list, tiers and logos (SVG or large PNG) plus links | Spons | Feb 2027 |
+| [ ] | Announcements: who is allowed to post, and who checks the Chinese before urgent posts go out (or post English only during the event) | Org | Jan 2027 |
 | [ ] | Player consent: players (or parents of minors) agree to names being shown publicly in the app during the event (POPIA). Add to the registration form | Org | Jan 2027 |
 | [ ] | Is the AI-generated goat artwork OK with the committee, or should a designer redo it? | Org | Nov 2026 |
 
@@ -47,6 +48,7 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [ ] | CloudWatch logs (with retention), alarms for errors/throttles emailed to Tim | Tim | Nov 2026 |
 | [ ] | Unit tests for the Lambda (validation, conflicts, auth) and an integration test against a test table | Tim | Nov 2026 |
 | [ ] | Script to create/disable organiser accounts from a list (not committed: emails are personal data) | Tim | Jan 2027 |
+| [ ] | Announcements API: create/edit/delete posts (Lambda + same table or a second one), audit trail, regenerates `data/announcements.json` in S3 with a short cache | Tim | Dec 2026 |
 | [ ] | Cost check: expected well under $5/month; AWS budget alert set | Tim | Nov 2026 |
 
 ## 3. Admin screens (`/admin`)
@@ -62,6 +64,7 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [ ] | "Someone else updated this game" conflict message | Tim | Dec 2026 |
 | [ ] | Poor signal handling: show clearly when a save didn't go through and let the scorer retry (decide whether to queue offline) | Tim | Jan 2027 |
 | [ ] | Recent changes list (audit view) for admins | Tim | Jan 2027 |
+| [ ] | Post an announcement: title + text (EN, optional 中文), pinned/urgent toggle, preview, edit and delete; who can post (admins only, or scorers too?) | Tim | Jan 2027 |
 | [ ] | Admin pages excluded from search engines and not cached by the service worker | Tim | Dec 2026 |
 
 ## 4. Public app: switch from demo to live results
@@ -110,7 +113,9 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [ ] | Bottom tab bar on phones (the top nav no longer fits) | Tim | Dec 2026 |
 | [ ] | Venues page with map links and which sports are where | Tim | Feb 2027 |
 | [ ] | Bracket view for knockouts (nice to have) | Tim | Feb 2027 |
-| [ ] | Announcements banner for schedule changes (if organisers want it) | Tim | Feb 2027 |
+| [ ] | **Announcements page** (`/news`): organisers post updates during the weekend (schedule changes, court moves, weather, lost property, social reminders). Newest first, posted time, optional pinned/urgent flag, bilingual (EN required, 中文 optional) | Tim | Feb 2027 |
+| [ ] | Announcements: banner on every page for the latest urgent/pinned post, dismissible; unread badge on the tab bar/More | Tim | Feb 2027 |
+| [ ] | Announcements: refresh while the app is open (poll with results), so posts appear without a reload | Tim | Feb 2027 |
 | [ ] | "Add to home screen" prompt/instructions for iPhone and Android | Tim | Feb 2027 |
 | [ ] | Push notifications for results/schedule changes (optional, post-MVP) | Tim | later |
 
@@ -169,6 +174,7 @@ Run on **staging** with 2027 fixtures and test accounts. Write down anything con
 | [ ] | Scenario: group stage completes; knockout games show the right teams | Org | Feb 2027 |
 | [ ] | Scenario: poor signal (walk out of range / airplane mode mid-save); scorer can tell it failed and retry | Org | Feb 2027 |
 | [ ] | Scenario: forgotten password reset; wrong password lockout | Org | Feb 2027 |
+| [ ] | Scenario: post an urgent announcement (e.g. game moved to another court); it shows on another phone within a minute; edit it, then delete it | Org | Feb 2027 |
 | [ ] | **Dry run:** simulate a full tournament day on staging with several scorers entering results to a timetable | Org / Tim | early Mar 2027 |
 | [ ] | Fix issues from the dry run; re-test | Tim | early Mar 2027 |
 | [ ] | **Sign-off: results process approved** by the tournament director (name + date) | Org | early Mar 2027 |
