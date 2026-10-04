@@ -27,10 +27,22 @@ The site (code, layout, UI text) is in this repo. The tournament **data is not**
 
 Workflow:
 
-1. Edit JSON in `data/` (start by copying `sample-data/` and removing `demo` from `tournament.json`).
+1. Edit JSON in `data/` (start by copying `sample-data/` and removing `demo` from `tournament.json`), or import the organisers' sheets (below).
 2. `npm run dev` serves `data/` locally at `/data/` (set `DATA_DIR=…` to pick another folder).
 3. `DATA_DIR=data npm run data:check` validates it.
 4. `npm run data:upload` validates again, syncs it to `s3://wpcsa-easter-2027/data/` and refreshes CloudFront. Phones get the new data on their next page load (it's cached for offline use, but the network copy wins when there is one).
+
+## Importing from Google Sheets
+
+Teams, squads, vendors and fixtures are collected from organisers in Google Sheets in the WPCSA "Mobile Site" Drive folder, then imported with `npm run data:import` (default `data/`, or `npm run data:import -- <dir>`). The importer ([`scripts/import-sheets.ts`](../scripts/import-sheets.ts), conversion in [`src/data/sheets.ts`](../src/data/sheets.ts)):
+
+- reads every spreadsheet directly in the Drive folder named in `<dir>/sheets.json` (`{"folder": "<Drive folder id>"}`), signing in as the read-only service account `sheets-reader@wpcsa-easter.iam.gserviceaccount.com` (Google Cloud project `wpcsa-easter`), whose key is in `~/.config/wpcsa/sheets-reader.json`. The folder is shared with it as Viewer;
+- recognises sheets by name: `Teams and squads – <association short name>` (one per association; any other suffix, e.g. "Invited and clubs", gives teams without an association; `– TEMPLATE` is skipped), `Vendors` and `Fixtures`. Other files are listed and skipped;
+- refers to competitions, venues and courts by their English names (as in the dropdowns), and to teams by name within a competition. Ids are made from names: team `<competition>-<name>`, vendor `<name>`, fixture `<sport prefix>-<game no.>` (`bb-049`), so game numbers must be unique within a sport and stay the same once results are entered;
+- keeps only players marked "Yes" for consent, takes each team's pool from its group games, and picks up `teams/<team id>` photos and `logos/<vendor id>.svg|png` that are already in the data folder;
+- writes `teams.json`, `squads.json`, `vendors.json` and `fixtures.json` for the kinds of sheet it found, but nothing at all if any row has a problem (it lists sheet, tab and row), then runs the data check. Review the changes, then `npm run data:upload`.
+
+Fixture slots in Home/Away/Officials: a team name, `Winner 49` / `Loser 49`, `1st` / `2nd Pool A`, or `TBC` / `TBC: Losers of the semi-finals`.
 
 Standings and knockout progression are **derived** from fixtures + results (`standings.ts`, `resolve.ts`), never stored.
 

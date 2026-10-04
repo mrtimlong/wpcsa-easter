@@ -19,6 +19,7 @@ npm run build      # lint, typecheck, then production build to dist/
 npm run preview    # serve the production build (service worker active)
 npm run data:check # validate a data folder (DATA_DIR=data npm run data:check)
 npm run data:upload # validate and upload ./data to S3 (no deploy needed)
+npm run data:import # import teams, squads, vendors and fixtures from the Google Sheets into ./data
 ```
 
 The tournament data (fixtures, teams, contacts, squads…) is **not in this repo**: it's a folder of JSON uploaded to S3 separately. The dev server uses `./data/` (gitignored) if it exists, otherwise the dummy `./sample-data/`. See [docs/data-model.md](docs/data-model.md).

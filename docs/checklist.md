@@ -91,7 +91,9 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 |---|---|---|---|
 | [ ] | Create `data/` (copy `sample-data/`, remove `demo` from `tournament.json`): `tournament.json`, `venues.json`, `associations.json`, `competitions.json`, `teams.json` | Tim | Jan 2027 |
 | [ ] | Back up `data/` somewhere other than this laptop (it isn't in git); S3 versioning keeps old uploads too | Tim | Jan 2027 |
-| [ ] | **Spreadsheet import**: a Google Sheets template (tabs for teams, squads, vendors, fixtures, with fixed column headings) and `npm run data:import`, which reads the sheets with the Sheets API (read-only service account; squad sheets are never published to the web), writes `data/*.json` and runs `data:check`. Tim still runs the upload | Tim | Jan 2027 |
+| [x] | **Spreadsheet import**: a Google Sheets template (tabs for teams, squads, vendors, fixtures, with fixed column headings) and `npm run data:import`, which reads the sheets with the Sheets API (read-only service account; squad sheets are never published to the web), writes `data/*.json` and runs `data:check`. Tim still runs the upload. Templates are in the Mobile Site folder; see [data-model.md](data-model.md#importing-from-google-sheets) | Tim | Jan 2027 |
+| [ ] | Before sending out the templates: update each template's Lists tab with the 2027 competitions, venues and courts; fix the Fixtures example court; delete the Test data folder | Tim | Feb 2027 |
+| [ ] | Create `data/sheets.json` with the Mobile Site folder id | Tim | Jan 2027 |
 | [ ] | Fixtures/draw for 2027 from the organisers, in the fixtures tab of the spreadsheet | Org / Tim | Feb 2027 |
 | [ ] | Programme / schedule of events for 2027 (AGM, registration, march past, social, egg hunt, finals, dance, golf rounds): this is the overview on the Home page, so one line per event or block of games | Org | Feb 2027 |
 | [ ] | `DATA_DIR=data npm run data:check` passes (no unknown teams, court clashes, missing logos, etc.); upload | Tim | Feb 2027 |
@@ -108,7 +110,7 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
 | [x] | Format for `data/squads.json` (team → players, numbers, captain, coach, manager, photo) | Tim | Jan 2027 |
-| [ ] | Squads tab per association in the spreadsheet template, imported into `squads.json` by `npm run data:import` (see section 5) | Tim | Jan 2027 |
+| [x] | Squads tab per association in the spreadsheet template, imported into `squads.json` by `npm run data:import` (see section 5) | Tim | Jan 2027 |
 | [x] | Upload script to `s3://…/data/` (`npm run data:upload`; the deploy role is blocked from `data/`, so Tim uploads) | Tim | Jan 2027 |
 | [x] | Team pages: photo, squad, coach, standing and games; team names link to them | Tim | Feb 2027 |
 | [ ] | Team photos: `npm run images -- --data data` after adding them to `data/images/originals/teams/<team id>.jpg` | Tim | Mar 2027 |
@@ -244,4 +246,4 @@ Run on **staging** with 2027 fixtures and test accounts. Write down anything con
 | [ ] | GitHub: branch protection on `main` (require CI to pass), Dependabot for dependency updates | Tim | Nov 2026 |
 | [ ] | GitHub Actions `ubuntu-latest` moves to Ubuntu 26 from 19 Oct 2026; check the next build still passes | Tim | Oct 2026 |
 | [ ] | Privacy notice page (what's shown, why, how to ask for a name to be removed) | Tim / Org | Feb 2027 |
-| [ ] | Make sure at least one other person can deploy/fix things if Tim is unavailable (docs + access) | Tim / Org | Feb 2027 |
+| [ ] | Make sure at least one other person can deploy/fix things if Tim is unavailable (docs + access). The sheets import uses a service account in Tim's personal Google Cloud project: a stand-in creates their own and the Mobile Site folder is shared with it | Tim / Org | Feb 2027 |
