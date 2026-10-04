@@ -170,6 +170,14 @@ if [[ "$ROUTE_ID" == "None" ]]; then
     --authorization-type JWT --authorizer-id "$AUTH_ID" --target "integrations/$INTEGRATION_ID" >/dev/null
 fi
 
+# Browsers check CORS with an OPTIONS request that carries no token. Without this route it would hit the
+# ANY route above and be refused (401); with no integration, API Gateway answers it from the CORS settings.
+PREFLIGHT_ID=$(aws apigatewayv2 get-routes --api-id "$API_ID" \
+  --query "Items[?RouteKey=='OPTIONS /{proxy+}'].RouteId | [0]" --output text)
+if [[ "$PREFLIGHT_ID" == "None" ]]; then
+  aws apigatewayv2 create-route --api-id "$API_ID" --route-key 'OPTIONS /{proxy+}' --authorization-type NONE >/dev/null
+fi
+
 # A handful of scorers: 10 requests a second (bursts of 20) is plenty and caps any abuse.
 if ! aws apigatewayv2 get-stage --api-id "$API_ID" --stage-name '$default' >/dev/null 2>&1; then
   aws apigatewayv2 create-stage --api-id "$API_ID" --stage-name '$default' --auto-deploy \
