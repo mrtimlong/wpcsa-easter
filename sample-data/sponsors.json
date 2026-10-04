@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "id": "headline-a",
+    "name": "Headline Sponsor",
+    "tier": "headline",
+    "logo": "logos/headline-a.svg",
+    "description": { "en": "Example sponsor: a short description of the business and a thank-you from the committee." },
+    "url": "https://example.com/"
+  },
+  {
+    "id": "gold-a",
+    "name": "Gold Sponsor A",
+    "tier": "gold",
+    "logo": "logos/gold-a.svg",
+    "description": { "en": "Example sponsor: what they do and where to find them." },
+    "url": "https://example.com/"
+  },
+  {
+    "id": "gold-b",
+    "name": "Gold Sponsor B",
+    "tier": "gold",
+    "logo": "logos/gold-b.svg",
+    "description": { "en": "Example sponsor: what they do and where to find them." }
+  },
+  { "id": "supporter-a", "name": "Supporter A", "tier": "supporter", "logo": "logos/supporter-a.svg" },
+  { "id": "supporter-b", "name": "Supporter B", "tier": "supporter", "logo": "logos/supporter-b.svg" },
+  { "id": "supporter-c", "name": "Supporter C", "tier": "supporter", "logo": "logos/supporter-c.svg" }
+]

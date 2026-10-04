@@ -10,6 +10,7 @@ const links: Link[] = [
   { href: '/my-teams', title: 'myTeams.title', description: 'more.myTeams' },
   { href: '/venues', title: 'venues.title', description: 'more.venues' },
   { href: '/vendors', title: 'vendors.title', description: 'more.vendors', show: content.vendors.length > 0 },
+  { href: '/sponsors', title: 'sponsors.title', description: 'more.sponsors', show: content.sponsors.length > 0 },
   { href: '/visit', title: 'nav.visit', description: 'more.visit', show: content.guide !== undefined },
 ]
 

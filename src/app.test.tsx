@@ -92,3 +92,30 @@ describe('tournament info', () => {
     expect(screen.getByText('accept the decisions of referees and umpires').tagName).toBe('LI')
   })
 })
+
+describe('sponsors', () => {
+  it('rotates logos at the foot of pages, with bigger tiers shown more often', async () => {
+    const { rotation } = await import('./components/sponsor-strip.tsx')
+    const ids = rotation().map((s) => s.id)
+    expect(ids.filter((id) => id === 'headline-a')).toHaveLength(3)
+    expect(ids.filter((id) => id === 'gold-a')).toHaveLength(2)
+    expect(ids.filter((id) => id === 'supporter-a')).toHaveLength(1)
+    expect(ids.slice(0, 3)).toEqual(['headline-a', 'gold-a', 'gold-b'])
+
+    render(<App />)
+    const strip = await screen.findByRole('complementary', { name: 'Thanks to our sponsors' })
+    expect(within(strip).getByRole('link').getAttribute('href')).toMatch(/^\/sponsors#/)
+  })
+
+  it('lists sponsors by tier, without the strip', async () => {
+    history.replaceState(null, '', '/sponsors')
+    render(<App />)
+    await screen.findByRole('heading', { name: 'Our sponsors', level: 1 })
+    expect(screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent)).toEqual([
+      'Headline sponsors',
+      'Gold sponsors',
+      'Supporters',
+    ])
+    expect(screen.queryByRole('complementary', { name: 'Thanks to our sponsors' })).toBeNull()
+  })
+})

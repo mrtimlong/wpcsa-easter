@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <rect x="2" y="2" width="296" height="96" rx="14" fill="#fff" stroke="#8a3fb0" stroke-width="4"/>
+  <circle cx="52" cy="50" r="26" fill="#8a3fb0"/>
+  <text x="182" y="48" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#8a3fb0" text-anchor="middle">Supporter B</text>
+  <text x="182" y="74" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#5c6075" text-anchor="middle">example logo</text>
+</svg>

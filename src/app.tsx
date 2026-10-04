@@ -1,4 +1,5 @@
-import { LocationProvider, Route, Router } from 'preact-iso'
+import { LocationProvider, Route, Router, useLocation } from 'preact-iso'
+import { SponsorStrip } from './components/sponsor-strip.tsx'
 import { TabBar } from './components/tab-bar.tsx'
 import { FavouritesProvider } from './favourites.tsx'
 import { I18nProvider, useI18n } from './i18n/index.tsx'
@@ -9,6 +10,7 @@ import { MyTeams } from './pages/my-teams.tsx'
 import { NotFound } from './pages/not-found.tsx'
 import { Results } from './pages/results.tsx'
 import { Schedule } from './pages/schedule.tsx'
+import { Sponsors } from './pages/sponsors.tsx'
 import { Standings } from './pages/standings.tsx'
 import { TeamPage } from './pages/team.tsx'
 import { Teams } from './pages/teams.tsx'
@@ -48,6 +50,12 @@ function Header() {
   )
 }
 
+/** Rotating sponsor logos at the foot of every page except the sponsors page itself. */
+function Sponsorship() {
+  const { path } = useLocation()
+  return path === '/sponsors' ? null : <SponsorStrip />
+}
+
 export function App() {
   return (
     <I18nProvider>
@@ -69,8 +77,10 @@ export function App() {
               <Route path="/venues" component={Venues} />
               <Route path="/vendors" component={Vendors} />
               <Route path="/info" component={Info} />
+              <Route path="/sponsors" component={Sponsors} />
               <Route default component={NotFound} />
             </Router>
+            <Sponsorship />
           </main>
           <TabBar />
         </LocationProvider>

@@ -158,12 +158,16 @@ export const ProgrammeItem = z.object({
   sports: z.array(Sport).optional(),
 })
 
+export const SponsorTier = z.enum(['headline', 'gold', 'supporter'])
+
 export const Sponsor = z.object({
   id,
   name: z.string(),
-  logo: z.string().optional(),
+  tier: SponsorTier,
+  /** Shown in the rotating logo strip; wide logos work best (about 3:1). */
+  logo: dataFile.optional(),
+  description: Text.optional(),
   url: z.url().optional(),
-  tier: z.enum(['headline', 'gold', 'supporter']),
 })
 
 /**
@@ -307,6 +311,7 @@ export type Team = z.infer<typeof Team>
 export type Slot = z.infer<typeof Slot>
 export type Fixture = z.infer<typeof Fixture>
 export type ProgrammeItem = z.infer<typeof ProgrammeItem>
+export type SponsorTier = z.infer<typeof SponsorTier>
 export type Sponsor = z.infer<typeof Sponsor>
 export type Squad = z.infer<typeof Squad>
 export type Info = z.infer<typeof Info>
