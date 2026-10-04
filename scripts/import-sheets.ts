@@ -63,15 +63,19 @@ async function get<T>(url: string): Promise<T> {
 }
 
 const query = new URLSearchParams({
-  q: `'${folder}' in parents and mimeType = 'application/vnd.google-apps.spreadsheet' and trashed = false`,
-  fields: 'files(id,name)',
+  q: `'${folder}' in parents and trashed = false`,
+  fields: 'files(id,name,mimeType)',
   pageSize: '200',
   supportsAllDrives: 'true',
   includeItemsFromAllDrives: 'true',
 })
-const { files: found } = await get<{ files: { id: string; name: string }[] }>(
+const { files: listed } = await get<{ files: { id: string; name: string; mimeType: string }[] }>(
   `https://www.googleapis.com/drive/v3/files?${query}`,
 )
+const found = listed.filter((f) => f.mimeType === 'application/vnd.google-apps.spreadsheet')
+// Uploaded Excel files stay .xlsx unless converted, and the Sheets API can't read them.
+const excel = listed.filter((f) => /\.(xlsx|xls|ods|csv)$/i.test(f.name)).map((f) => f.name)
+for (const name of excel) console.log(`Skipped "${name}": open it and use File → Save as Google Sheets`)
 if (!found.length) {
   console.error('No spreadsheets found: is the folder shared with the service account?')
   process.exit(1)
