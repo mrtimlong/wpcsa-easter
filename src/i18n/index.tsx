@@ -12,8 +12,18 @@ const messages: Record<Locale, Partial<Record<MessageKey, string>>> = {
   'zh-Hant': zhHant,
 }
 
+function templateFor(locale: Locale, key: MessageKey, n: unknown): string {
+  const one = `${key}.one` as MessageKey
+  if (n === 1 && one in en) {
+    // Chinese has no plural forms, so its main translation also covers 1.
+    return messages[locale][one] ?? (locale === 'en' ? undefined : messages[locale][key]) ?? en[one]
+  }
+  return messages[locale][key] ?? en[key]
+}
+
+/** Translates a UI string. With params.n === 1, a `<key>.one` variant ("1 team") wins if there is one. */
 export function translate(locale: Locale, key: MessageKey, params?: Record<string, string | number>): string {
-  const template = messages[locale][key] ?? en[key]
+  const template = templateFor(locale, key, params?.n)
   if (!params) return template
   return template.replace(/\{(\w+)\}/g, (match, name: string) => (name in params ? String(params[name]) : match))
 }

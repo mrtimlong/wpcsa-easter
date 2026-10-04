@@ -30,6 +30,7 @@ The tournament data (fixtures, teams, contacts, squads…) is **not in this repo
 - `src/i18n/`: translations. `en.ts` is the source of truth; `zh-Hant.ts` may omit keys, which fall back to English
 - `public/`: static assets and icons. Regenerate PNG icons from `favicon.svg` with `swift scripts/generate-icons.swift` (macOS)
 - `vite.config.ts`: Vite, PWA manifest and service worker config
+- `scripts/screenshot.swift`: phone-sized WebKit screenshot of a page (macOS), e.g. `swift scripts/screenshot.swift http://localhost:5173/ home.png`
 
 ## Images
 
