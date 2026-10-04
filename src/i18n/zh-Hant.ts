@@ -10,6 +10,8 @@ export const zhHant: Partial<Record<MessageKey, string>> = {
   'nav.results': '賽果',
   'nav.standings': '積分榜',
   'nav.visit': '旅遊資訊',
+  'nav.more': '更多',
+  'more.title': '更多',
   'filter.all': '全部',
   'sport.basketball': '籃球',
   'sport.volleyball': '排球',

@@ -1,7 +1,9 @@
-import { LocationProvider, Route, Router, useLocation } from 'preact-iso'
+import { LocationProvider, Route, Router } from 'preact-iso'
+import { TabBar } from './components/tab-bar.tsx'
 import { FavouritesProvider } from './favourites.tsx'
 import { I18nProvider, useI18n } from './i18n/index.tsx'
 import { Home } from './pages/home.tsx'
+import { More } from './pages/more.tsx'
 import { MyTeams } from './pages/my-teams.tsx'
 import { NotFound } from './pages/not-found.tsx'
 import { Results } from './pages/results.tsx'
@@ -22,14 +24,6 @@ function Logos() {
 
 function Header() {
   const { t, locale, setLocale } = useI18n()
-  const { path } = useLocation()
-  const links = [
-    { href: '/', label: t('nav.home') },
-    { href: '/schedule', label: t('nav.schedule') },
-    { href: '/results', label: t('nav.results') },
-    { href: '/standings', label: t('nav.standings') },
-    { href: '/visit', label: t('nav.visit') },
-  ]
   return (
     <header class="header">
       <div class="header-row">
@@ -49,13 +43,6 @@ function Header() {
           </button>
         </div>
       </div>
-      <nav class="nav">
-        {links.map((link) => (
-          <a key={link.href} href={link.href} aria-current={path === link.href ? 'page' : undefined}>
-            {link.label}
-          </a>
-        ))}
-      </nav>
     </header>
   )
 }
@@ -75,9 +62,11 @@ export function App() {
               <Route path="/standings" component={Standings} />
               <Route path="/visit" component={Visit} />
               <Route path="/my-teams" component={MyTeams} />
+              <Route path="/more" component={More} />
               <Route default component={NotFound} />
             </Router>
           </main>
+          <TabBar />
         </LocationProvider>
       </FavouritesProvider>
     </I18nProvider>
