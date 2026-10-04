@@ -20,6 +20,7 @@ npm run preview    # serve the production build (service worker active)
 npm run data:check # validate a data folder (DATA_DIR=data npm run data:check)
 npm run data:upload # validate and upload ./data to S3 (no deploy needed)
 npm run data:import # import teams, squads, vendors and fixtures from the Google Sheets into ./data
+npm run api:build # bundle the admin API Lambda (api/) into api/dist (infra/05-admin-backend.sh deploys it)
 ```
 
 The tournament data (fixtures, teams, contacts, squads…) is **not in this repo**: it's a folder of JSON uploaded to S3 separately. The dev server uses `./data/` (gitignored) if it exists, otherwise the dummy `./sample-data/`. See [docs/data-model.md](docs/data-model.md).
@@ -43,7 +44,9 @@ Photos that are data (team photos, guide photos) go in `<data dir>/images/origin
 
 Every push to `main` runs typecheck, tests and build, then deploys to https://easter.wpcsa.org.za via GitHub Actions (`.github/workflows/deploy.yml`). Pull requests run the checks only. The workflow assumes the `wpcsa-easter-deploy` AWS role through OIDC (no stored keys); its ARN is the repo variable `AWS_DEPLOY_ROLE_ARN`.
 
-Infrastructure is created by the numbered scripts in `infra/` (AWS CLI, profile `wpcsa`), in order: bucket, certificate, CloudFront, GitHub deploy role. `infra/deploy.sh` can also be run locally after `npm run build`.
+Infrastructure is created by the numbered scripts in `infra/` (AWS CLI, profile `wpcsa`), in order: bucket, certificate, CloudFront, GitHub deploy role, admin backend. `infra/deploy.sh` can also be run locally after `npm run build`.
+
+**/admin** (results and announcements) uses a DynamoDB table, a Cognito user pool and a Lambda behind an HTTP API, all created by `infra/05-admin-backend.sh`, which also deploys new API code when re-run and writes the site's public settings to `src/generated/backend.json`. Add or disable committee logins with `infra/admin-users.sh`. Saves republish `data/results.json` and `data/announcements.json` (30 s cache), so `data:upload` leaves those two alone.
 
 ## Translations
 

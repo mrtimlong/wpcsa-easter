@@ -77,3 +77,27 @@ export function scoreSummary(result: Result | undefined): ScoreSummary | null {
     detail: score.sets.map(([h, a]) => `${h}–${a}`).join(', '),
   }
 }
+
+/** "+02:00": the timezone's UTC offset at an instant. */
+function utcOffset(instant: number, timeZone: string): string {
+  const name = new Intl.DateTimeFormat('en', { timeZone, timeZoneName: 'longOffset' })
+    .formatToParts(new Date(instant))
+    .find((p) => p.type === 'timeZoneName')!.value
+  return name === 'GMT' ? '+00:00' : name.slice(3)
+}
+
+/** An instant as tournament-local date-time with offset, the format the data uses: "2027-03-26T13:30+02:00". */
+export function toLocalIso(instant: number, timeZone: string): string {
+  return `${dayKey(new Date(instant).toISOString(), timeZone)}T${formatTime(new Date(instant).toISOString(), timeZone)}${utcOffset(instant, timeZone)}`
+}
+
+/** A datetime-local input value ("2027-03-26T13:30") read as tournament time. */
+export function fromLocalInput(value: string, timeZone: string): string {
+  // The offset at roughly that time (close enough: tournaments don't straddle a DST change).
+  return `${value}${utcOffset(Date.parse(`${value}Z`), timeZone)}`
+}
+
+/** The other way: a data date-time as a datetime-local input value, in tournament time. */
+export function toLocalInput(iso: string, timeZone: string): string {
+  return toLocalIso(Date.parse(iso), timeZone).slice(0, 16)
+}

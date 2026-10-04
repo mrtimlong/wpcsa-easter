@@ -1,4 +1,5 @@
-import { LocationProvider, Route, Router, useLocation } from 'preact-iso'
+import type { ComponentChildren } from 'preact'
+import { LocationProvider, lazy, Route, Router, useLocation } from 'preact-iso'
 import { AnnouncementsProvider } from './announcements.tsx'
 import { SponsorStrip } from './components/sponsor-strip.tsx'
 import { TabBar } from './components/tab-bar.tsx'
@@ -21,6 +22,15 @@ import { Teams } from './pages/teams.tsx'
 import { Vendors } from './pages/vendors.tsx'
 import { Venues } from './pages/venues.tsx'
 import { Visit } from './pages/visit.tsx'
+
+// Only committee members open /admin, so it's a separate download.
+const Admin = lazy(() => import('./admin/admin.tsx').then((m) => m.Admin))
+
+/** The public app's extras (urgent banner, sponsors, tab bar), left out of /admin. */
+function PublicOnly({ children }: { children: ComponentChildren }) {
+  const { path } = useLocation()
+  return path === '/admin' || path.startsWith('/admin/') ? null : children
+}
 
 function Logos() {
   const { t } = useI18n()
@@ -68,7 +78,9 @@ export function App() {
           <LocationProvider>
             <Logos />
             <Header />
-            <UrgentBanner />
+            <PublicOnly>
+              <UrgentBanner />
+            </PublicOnly>
             <main class="main">
               <Router>
                 <Route path="/" component={Home} />
@@ -86,11 +98,16 @@ export function App() {
                 <Route path="/info" component={Info} />
                 <Route path="/rules" component={Rules} />
                 <Route path="/sponsors" component={Sponsors} />
+                <Route path="/admin/:page*" component={Admin} />
                 <Route default component={NotFound} />
               </Router>
-              <Sponsorship />
+              <PublicOnly>
+                <Sponsorship />
+              </PublicOnly>
             </main>
-            <TabBar />
+            <PublicOnly>
+              <TabBar />
+            </PublicOnly>
           </LocationProvider>
         </AnnouncementsProvider>
       </FavouritesProvider>

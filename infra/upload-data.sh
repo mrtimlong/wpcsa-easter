@@ -6,7 +6,9 @@
 #   infra/upload-data.sh               # ./data
 #   infra/upload-data.sh sample-data   # the 2025 demo data
 #
-# Leaves results.json alone: that's written by the results backend. Never uploads images/originals.
+# Leaves results.json and announcements.json alone: /admin writes those through the admin API (to load
+# a data folder's announcements.json into it, use infra/import-announcements.sh). Never uploads
+# images/originals.
 set -euo pipefail
 source "$(dirname "$0")/config.sh"
 cd "$(dirname "$0")/.."
@@ -20,7 +22,7 @@ DATA_DIR="$DIR" npx vitest run src/data/content.test.ts --silent >/dev/null ||
 
 # JSON changes during the event (results, schedule tweaks): short cache.
 aws s3 sync "$DIR" "s3://$BUCKET/data" --delete --only-show-errors \
-  --exclude "*" --include "*.json" --exclude "results.json" \
+  --exclude "*" --include "*.json" --exclude "results.json" --exclude "announcements.json" --exclude "sheets.json" \
   --cache-control "public, max-age=60"
 
 # Photos and logos.

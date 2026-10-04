@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { content } from './content.ts'
 import { generateDemoResults } from './demo.ts'
-import { dayKey, formatTime, scoreSummary } from './format.ts'
+import { dayKey, formatTime, fromLocalInput, scoreSummary, toLocalInput, toLocalIso } from './format.ts'
 import { outcome } from './outcome.ts'
 import { resolveSlot } from './resolve.ts'
 import { Result } from './schema.ts'
@@ -45,6 +45,12 @@ describe('format', () => {
   it('uses the tournament timezone', () => {
     expect(formatTime('2025-04-20T12:30+00:00', 'Africa/Johannesburg')).toBe('14:30')
     expect(dayKey('2025-04-20T23:30+00:00', 'Africa/Johannesburg')).toBe('2025-04-21')
+  })
+
+  it('writes date-times the way the data does, in tournament time', () => {
+    expect(toLocalIso(Date.parse('2027-03-26T11:30:00Z'), 'Africa/Johannesburg')).toBe('2027-03-26T13:30+02:00')
+    expect(fromLocalInput('2027-03-26T13:30', 'Africa/Johannesburg')).toBe('2027-03-26T13:30+02:00')
+    expect(toLocalInput('2027-03-26T11:30Z', 'Africa/Johannesburg')).toBe('2027-03-26T13:30')
   })
 
   it('summarises set scores, ignoring a set in progress', () => {

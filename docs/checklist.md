@@ -42,35 +42,36 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
 | [ ] | Reactivate the `wpcsa-builder` access key for the build; deactivate it again afterwards | Tim | Oct 2026 |
-| [ ] | **DynamoDB**: one table for results, announcements and the audit trail (key: year + `RESULT#<fixture id>` / `ANN#<id>` / `AUDIT#…`), on-demand billing, point-in-time recovery on | Tim | Oct 2026 |
-| [ ] | Audit trail: every save/change/delete recorded with who, when, before and after (separate items or table) | Tim | Oct 2026 |
-| [ ] | **Cognito user pool**: admin-created users only (no self sign-up), email + password, password reset by email, optional MFA; one `admin` group (results entry isn't restricted by sport or court) | Tim | Oct 2026 |
-| [ ] | **API Gateway HTTP API** with a Cognito JWT authorizer; CORS limited to `easter.wpcsa.org.za` (+ localhost for dev); throttling | Tim | Nov 2026 |
-| [ ] | **Lambda: save result**: validate with the shared zod schema, check the fixture exists, check the score makes sense for the sport/best-of, conditional write (reject if someone else changed it meanwhile), write audit record | Tim | Nov 2026 |
-| [ ] | Lambda: delete/clear a result (for mistakes), admin only | Tim | Nov 2026 |
-| [ ] | On every change, regenerate `data/results.json` in S3 and invalidate it in CloudFront (short cache, ~30 s) | Tim | Nov 2026 |
-| [ ] | Lambda execution role: least privilege (this table, `data/results.json` only, this invalidation) | Tim | Nov 2026 |
+| [ ] | Run `infra/05-admin-backend.sh`, commit the `src/generated/backend.json` it writes, add your own login with `infra/admin-users.sh add`, and try /admin on a phone | Tim | Oct 2026 |
+| [x] | **DynamoDB**: one table for results, announcements and the audit trail (key: year + `RESULT#<fixture id>` / `ANN#<id>` / `AUDIT#…`), on-demand billing, point-in-time recovery on. Table `wpcsa-easter`, created by `infra/05-admin-backend.sh` | Tim | Oct 2026 |
+| [x] | Audit trail: every save/change/delete recorded with who, when, before and after (separate items or table). Written in the same transaction as the change (`AUDIT#<time>` items) | Tim | Oct 2026 |
+| [x] | **Cognito user pool**: admin-created users only (no self sign-up), email + password, password reset by email, optional MFA; one `admin` group (results entry isn't restricted by sport or court). Pool `wpcsa-easter-admins` (Lite tier, 10-character passwords); MFA not turned on | Tim | Oct 2026 |
+| [x] | **API Gateway HTTP API** with a Cognito JWT authorizer; CORS limited to `easter.wpcsa.org.za` (+ localhost for dev); throttling. One `ANY /{proxy+}` route, 10 req/s, bursts of 20 | Tim | Nov 2026 |
+| [x] | **Lambda: save result**: validate with the shared zod schema, check the fixture exists, check the score makes sense for the sport/best-of, conditional write (reject if someone else changed it meanwhile), write audit record | Tim | Nov 2026 |
+| [x] | Lambda: delete/clear a result (for mistakes), admin only | Tim | Nov 2026 |
+| [x] | On every change, regenerate `data/results.json` in S3 and invalidate it in CloudFront (short cache, ~30 s). No invalidation needed: the file is written with `max-age=30`, which CloudFront honours | Tim | Nov 2026 |
+| [x] | Lambda execution role: least privilege (this table, `data/results.json` only, this invalidation) | Tim | Nov 2026 |
 | [ ] | CloudWatch logs (with retention), alarms for errors/throttles emailed to Tim | Tim | Nov 2026 |
-| [ ] | Unit tests for the Lambda (validation, conflicts, auth) and an integration test against a test table | Tim | Nov 2026 |
-| [ ] | Script to create/disable organiser accounts from a list (not committed: emails are personal data) | Tim | Jan 2027 |
-| [ ] | Announcements API: create/edit/delete posts (Lambda + same table or a second one), audit trail, regenerates `data/announcements.json` in S3 with a short cache | Tim | Dec 2026 |
+| [x] | Unit tests for the Lambda (validation, conflicts, auth) and an integration test against a test table. Unit tests with an in-memory store (`api/app.test.ts`) and the admin screens end to end (`src/admin/admin.test.tsx`); no integration test against a real table yet | Tim | Nov 2026 |
+| [x] | Script to create/disable organiser accounts from a list (not committed: emails are personal data). `infra/admin-users.sh add|resend|disable|enable|list <email>` | Tim | Jan 2027 |
+| [x] | Announcements API: create/edit/delete posts (Lambda + same table or a second one), audit trail, regenerates `data/announcements.json` in S3 with a short cache | Tim | Dec 2026 |
 | [ ] | Cost check: expected well under $5/month; AWS budget alert set | Tim | Nov 2026 |
 
 ## 3. Admin screens (`/admin`)
 
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
-| [ ] | Login / logout / forgot password (bilingual) | Tim | Dec 2026 |
-| [ ] | Pick a game: defaults to "now and next" across all venues; also by day, sport, court or game number | Tim | Dec 2026 |
-| [ ] | Score entry per sport, with big touch targets: basketball (two totals), volleyball (sets, best-of aware), badminton (games per rubber), padel (TBC) | Tim | Dec 2026 |
-| [ ] | Status options: live (update during the game), final, forfeit (which side), cancelled | Tim | Dec 2026 |
-| [ ] | Confirmation step showing the winner before saving; clear success/failure message | Tim | Dec 2026 |
-| [ ] | Edit/correct a saved result, with a warning if it changes who goes through to a knockout game | Tim | Dec 2026 |
-| [ ] | "Someone else updated this game" conflict message | Tim | Dec 2026 |
+| [x] | Login / logout / forgot password (bilingual) | Tim | Dec 2026 |
+| [x] | Pick a game: today's games across all venues, a "Needs a result" list (started, no final result), by day or sport, or search by game number or team | Tim | Dec 2026 |
+| [x] | Score entry per sport, with big touch targets: basketball (two totals), volleyball (sets, best-of aware), badminton (games per rubber), padel (TBC). Padel uses games like badminton until its format is known | Tim | Dec 2026 |
+| [x] | Status options: live (update during the game), final, forfeit (which side), cancelled | Tim | Dec 2026 |
+| [x] | Confirmation step showing the winner before saving; clear success/failure message | Tim | Dec 2026 |
+| [x] | Edit/correct a saved result, with a warning if it changes who goes through to a knockout game | Tim | Dec 2026 |
+| [x] | "Someone else updated this game" conflict message | Tim | Dec 2026 |
 | [ ] | Poor signal handling: show clearly when a save didn't go through and let the scorer retry (decide whether to queue offline) | Tim | Jan 2027 |
-| [ ] | Recent changes list (audit view) for admins | Tim | Jan 2027 |
-| [ ] | Post an announcement: title + text (EN, optional 中文), pinned/urgent toggle, preview, edit and delete | Tim | Jan 2027 |
-| [ ] | Admin pages excluded from search engines and not cached by the service worker | Tim | Dec 2026 |
+| [x] | Recent changes list (audit view) for admins | Tim | Jan 2027 |
+| [x] | Post an announcement: title + text (EN, optional 中文), pinned/urgent toggle, preview, edit and delete | Tim | Jan 2027 |
+| [x] | Admin pages excluded from search engines and not cached by the service worker. `noindex` and robots.txt; the admin code is a separate download and its API calls are never cached | Tim | Dec 2026 |
 
 ## 4. Public app: switch from demo to live results
 
@@ -138,7 +139,7 @@ All of this is JSON in the gitignored `data/` folder (never in the repo), upload
 | [x] | **Announcements page** (`/news`): organisers post updates during the weekend (schedule changes, court moves, weather, lost property, social reminders). Newest first, posted time, optional pinned/urgent flag, bilingual (EN required, 中文 optional) | Tim | Feb 2027 |
 | [x] | Announcements: banner on every page for the latest urgent post, dismissible; unread dot on the More tab and count on the More page; latest two on the home page | Tim | Feb 2027 |
 | [x] | Announcements: refresh while the app is open (every minute, and when the app comes back to the foreground), so posts appear without a reload (worst case ~2 min with caching) | Tim | Feb 2027 |
-| [ ] | Until the announcements API exists, posts go in `data/announcements.json` and `npm run data:upload` (Tim only). Once the API writes it, exclude it from the upload like `results.json` | Tim | Feb 2027 |
+| [x] | Until the announcements API exists, posts go in `data/announcements.json` and `npm run data:upload` (Tim only). Once the API writes it, exclude it from the upload like `results.json`. `data:upload` now skips announcements.json; `infra/import-announcements.sh <dir>` loads a folder's posts into the table | Tim | Feb 2027 |
 | [ ] | "Add to home screen" prompt/instructions for iPhone and Android | Tim | Feb 2027 |
 | [ ] | Push notifications for results/schedule changes (optional, post-MVP) | Tim | later |
 

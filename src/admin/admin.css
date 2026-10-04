@@ -1,0 +1,301 @@
+/* /admin only (loaded with the admin pages). Big touch targets: scores are entered courtside on a phone. */
+
+.admin-nav .tab {
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.admin-nav .tab[aria-current="page"] {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.admin-account {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+}
+
+.admin-form {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 30rem;
+}
+
+.admin-form h1,
+.admin-form h2,
+.admin-form p {
+  margin: 0;
+}
+
+.field {
+  display: grid;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea,
+.admin-search,
+.admin-score input,
+.admin-set input {
+  width: 100%;
+  border: 1px solid #c4c8d8;
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+  /* 16px or more stops iOS zooming in on focus. */
+  font-size: max(1rem, 16px);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.admin-form .field-help {
+  margin-top: -0.5rem;
+  font-size: 0.85rem;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.check input {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.form-actions .button {
+  min-height: 2.75rem;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.admin-search {
+  margin-bottom: 0.75rem;
+}
+
+/* Game list */
+.admin-games {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-game a {
+  --sport: var(--muted);
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.65rem 0.9rem;
+  border-left: 5px solid var(--sport);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  color: var(--text);
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.admin-game.sport-basketball a {
+  --sport: var(--sport-basketball);
+}
+
+.admin-game.sport-volleyball a {
+  --sport: var(--sport-volleyball);
+}
+
+.admin-game.sport-badminton a {
+  --sport: var(--sport-badminton);
+}
+
+.admin-game.sport-padel a {
+  --sport: var(--sport-padel);
+}
+
+.admin-game.is-due a {
+  box-shadow: 0 0 0 2px #d9a400;
+}
+
+.admin-game-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.admin-game-meta time {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-game-teams {
+  font-weight: 600;
+}
+
+.admin-game-result {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Score entry */
+.admin-game-header h1 {
+  margin: 0.15rem 0;
+  font-size: 1.3rem;
+}
+
+.admin-game-header p {
+  margin: 0;
+}
+
+.admin-game-header .sport-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--sport);
+  vertical-align: -0.25rem;
+}
+
+.admin-status {
+  margin: 1rem 0 0.75rem;
+}
+
+.admin-status .chip,
+.admin-sides .chip {
+  min-height: 2.75rem;
+  padding-inline: 1.1rem;
+  font-size: 1rem;
+}
+
+.admin-sides {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+  border: 0;
+  padding: 0;
+}
+
+.admin-sides legend {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.admin-score {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.admin-score-side {
+  display: grid;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+
+.admin-score input,
+.admin-set input {
+  min-height: 3.25rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-sets {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.admin-set {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 1fr;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.admin-set > span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.admin-set-names > span {
+  overflow: hidden;
+  color: var(--text);
+  font-weight: 600;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-problems {
+  margin: 0.75rem 0;
+  padding-left: 2rem;
+}
+
+.admin-summary {
+  margin: 0.75rem 0;
+}
+
+.admin-summary .card-body {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.admin-summary-team {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.15rem;
+}
+
+.admin-summary-team.is-winner {
+  font-weight: 700;
+}
+
+.admin-danger {
+  margin-top: 2rem;
+}
+
+.admin-danger .link-button {
+  color: #b3261e;
+}
+
+/* Audit trail */
+.admin-changes {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-changes li {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.75rem;
+  background: var(--surface);
+}
+
+.admin-changes .muted {
+  font-size: 0.8rem;
+}
