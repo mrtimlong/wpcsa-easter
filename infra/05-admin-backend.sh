@@ -107,7 +107,10 @@ aws iam put-role-policy --role-name "$ROLE" --policy-name admin-api --policy-doc
 ROLE_ARN=$(aws iam get-role --role-name "$ROLE" --query Role.Arn --output text)
 
 # --- Lambda
-aws logs create-log-group --log-group-name "$LOG_GROUP" --tags project=wpcsa-easter 2>/dev/null || true
+if ! aws logs describe-log-groups --log-group-name-prefix "$LOG_GROUP" \
+  --query "logGroups[?logGroupName=='$LOG_GROUP'] | [0].logGroupName" --output text | grep -q "$LOG_GROUP"; then
+  aws logs create-log-group --log-group-name "$LOG_GROUP" --tags project=wpcsa-easter
+fi
 aws logs put-retention-policy --log-group-name "$LOG_GROUP" --retention-in-days 90
 
 npm run --silent api:build

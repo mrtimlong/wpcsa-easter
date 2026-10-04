@@ -40,6 +40,12 @@
       "Effect": "Allow",
       "Action": ["iam:ListOpenIDConnectProviders", "iam:ListRoles", "iam:CreateServiceLinkedRole"],
       "Resource": "*"
+    },
+    {
+      "Sid": "ProjectLogGroups",
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogGroup", "logs:PutRetentionPolicy", "logs:TagResource", "logs:TagLogGroup"],
+      "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/wpcsa-easter-*"
     }
   ]
 }
