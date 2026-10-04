@@ -44,7 +44,6 @@ export function MyNextGames() {
       ) : (
         upcoming.map((f) => <FixtureCard key={f.id} fixture={f} showDay />)
       )}
-      <a href="/schedule">{t('myTeams.fullSchedule')}</a>
     </section>
   )
 }

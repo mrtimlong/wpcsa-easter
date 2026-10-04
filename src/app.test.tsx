@@ -110,20 +110,20 @@ describe('rules and oath', () => {
 })
 
 describe('home', () => {
-  it('shows the motto and the day’s programme, marking what’s on now', async () => {
+  it('shows the motto and the programme from today on, marking what’s on now', async () => {
     render(<App />)
     expect(await screen.findByText('Friendship through sport')).toBeTruthy()
     const programme = within(screen.getByRole('heading', { name: 'Programme' }).closest('section')!)
-    // Demo time is Sunday 15:00.
-    expect(programme.getByRole('tab', { selected: true }).textContent).toMatch(/Sun/)
+    // Demo time is Sunday 15:00: Friday and Saturday are over.
+    expect(programme.getAllByRole('heading', { level: 3 }).map((h) => h.textContent)).toEqual([
+      'Sunday, 20 April',
+      'Monday, 21 April',
+    ])
     const padel = programme.getByText('Padel').closest('li')!
     expect(within(padel).getByText('Now')).toBeTruthy()
     expect(within(padel).getByText('08:00–21:00')).toBeTruthy()
     const egg = programme.getByText(/Easter egg hunt/).closest('li')!
     expect(within(egg).queryByText('Now')).toBeNull()
-
-    fireEvent.click(programme.getByRole('tab', { name: /Mon/ }))
-    expect(programme.getByText('Golf: round 3 and prize-giving')).toBeTruthy()
     expect(programme.getByText('Presentation dance')).toBeTruthy()
   })
 })

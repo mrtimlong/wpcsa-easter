@@ -171,7 +171,7 @@ export const en = {
   'myTeams.noUpcoming': 'No upcoming games for your teams.',
   'myTeams.noGamesThisDay': 'None of your teams play on this day.',
   'myTeams.noResults': 'No results for your teams yet.',
-  'myTeams.fullSchedule': 'Full schedule',
+  'programme.fullSchedule': 'Full schedule',
   'notFound.title': 'Page not found',
   'notFound.back': 'Back to home',
 }

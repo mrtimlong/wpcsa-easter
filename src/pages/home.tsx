@@ -27,8 +27,8 @@ export function Home() {
         </div>
       </section>
       <LatestNews />
-      <ProgrammeOverview />
       <MyNextGames />
+      <ProgrammeOverview />
     </>
   )
 }

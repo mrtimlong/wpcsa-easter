@@ -43,7 +43,7 @@ Standings and knockout progression are **derived** from fixtures + results (`sta
 - **Team**: belongs to one competition (WPA in Minis A ≠ WPA in Mens), optionally a group.
 - **Fixture**: unique `id` plus display `number` ("Game 49"; numbers restart per day in volleyball), `stage` (`group`/`knockout`), optional `label` ("Cup final"), `start` with UTC offset, venue/court, `home`/`away`/`officials` **slots**, optional `format.bestOf`, and `tie` to group badminton rubbers.
 - **Slot**: `{team}` | `{winnerOf}` | `{loserOf}` | `{position, group?}` | `{tbc}`. Position/winner slots resolve to a team once the group is complete or the referenced game has a result.
-- **ProgrammeItem**: schedule of events (AGM, march past, social…) and blocks of games ("Basketball and volleyball games", "Golf: round 1"), one line each. Shown interleaved with the games on Schedule, and on their own as the Programme overview on Home, so keep them to a tight weekend-at-a-glance list.
+- **ProgrammeItem**: schedule of events (AGM, march past, social…) and blocks of games ("Basketball and volleyball games", "Golf: round 1"), one line each. Shown interleaved with the games on Schedule, and on their own as the Programme overview on Home (days that are over drop off), so keep them to a tight weekend-at-a-glance list.
 - **Sponsor**: name, tier (`headline`/`gold`/`supporter`: headline logos rotate three times as often as supporters, gold twice), logo, description, link.
 - **Vendor**: name, description, venue + where, hours, payment methods (`cash`, `card`, `snapscan`, `zapper`, `eft`), logo, link.
 - **Squad**: team, players (name, number, captain), coach, manager, photo.
