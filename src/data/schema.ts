@@ -114,6 +114,26 @@ export const Sponsor = z.object({
   tier: z.enum(['headline', 'gold', 'supporter']),
 })
 
+/**
+ * Who's in a team. Personal data: lives only in the data folder (squads.json), never in git,
+ * and only for players who consented. Delete after the event.
+ */
+export const Squad = z.object({
+  team: id,
+  /** Team photo: a name in images.json. */
+  photo: z.string().optional(),
+  coach: z.string().optional(),
+  manager: z.string().optional(),
+  players: z.array(
+    z.object({
+      name: z.string().min(1),
+      /** Shirt number; a string allows "00". */
+      number: z.union([z.number().int().min(0), z.string()]).optional(),
+      captain: z.boolean().optional(),
+    }),
+  ),
+})
+
 /** A photo with the attribution its licence requires (most stock photos are CC BY-SA). */
 export const Photo = z.object({
   /** Name in the data's images.json, i.e. the path under images/originals/ without extension. */
@@ -166,6 +186,7 @@ export const Content = z.object({
   programme: z.array(ProgrammeItem),
   sponsors: z.array(Sponsor),
   guide: VisitorGuide.optional(),
+  squads: z.array(Squad),
   images: ImageManifest,
 })
 
@@ -204,6 +225,7 @@ export type Slot = z.infer<typeof Slot>
 export type Fixture = z.infer<typeof Fixture>
 export type ProgrammeItem = z.infer<typeof ProgrammeItem>
 export type Sponsor = z.infer<typeof Sponsor>
+export type Squad = z.infer<typeof Squad>
 export type Photo = z.infer<typeof Photo>
 export type VisitorGuide = z.infer<typeof VisitorGuide>
 export type ImageManifest = z.infer<typeof ImageManifest>

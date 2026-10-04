@@ -1,0 +1,1568 @@
+[
+  {
+    "team": "bb-minis-a-wpa",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ],
+    "photo": "teams/bb-minis-a-wpa"
+  },
+  {
+    "team": "bb-minis-a-wpb",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-minis-a-sga",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-minis-a-sgb",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-minis-b-wpc",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-minis-b-wpd",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-minis-b-sgc",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-minis-b-sgd",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-mens-wpa",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-mens-wpb",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-mens-ng",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-mens-sg",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-ladies-wpa",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-ladies-wpb",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-ladies-sg",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-jr-ladies-invite",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-ladies-wp",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-ladies-sg",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-ladies-swazi",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-nga",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-wpb",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-ngc",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-hisense",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-wpa",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-sg",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-ngb",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "bb-mens-wpc",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      },
+      {
+        "name": "Player 9",
+        "number": 12
+      },
+      {
+        "name": "Player 10",
+        "number": 13
+      }
+    ]
+  },
+  {
+    "team": "vb-wpa",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      }
+    ]
+  },
+  {
+    "team": "vb-wpb",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      }
+    ]
+  },
+  {
+    "team": "vb-misfits",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      }
+    ]
+  },
+  {
+    "team": "vb-spiker-roo-sonics",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      }
+    ]
+  },
+  {
+    "team": "vb-spiker-roo-vipers",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      }
+    ]
+  },
+  {
+    "team": "vb-ng",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      },
+      {
+        "name": "Player 7",
+        "number": 10
+      },
+      {
+        "name": "Player 8",
+        "number": 11
+      }
+    ]
+  },
+  {
+    "team": "bd-wp",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      }
+    ]
+  },
+  {
+    "team": "bd-sg",
+    "coach": "Coach (placeholder)",
+    "players": [
+      {
+        "name": "Player 1",
+        "number": 4,
+        "captain": true
+      },
+      {
+        "name": "Player 2",
+        "number": 5
+      },
+      {
+        "name": "Player 3",
+        "number": 6
+      },
+      {
+        "name": "Player 4",
+        "number": 7
+      },
+      {
+        "name": "Player 5",
+        "number": 8
+      },
+      {
+        "name": "Player 6",
+        "number": 9
+      }
+    ]
+  }
+]

@@ -1,4 +1,14 @@
 {
+  "teams/bb-minis-a-wpa": {
+    "width": 1600,
+    "height": 1000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
   "visit/bo-kaap": {
     "width": 1280,
     "height": 786,

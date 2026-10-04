@@ -82,6 +82,15 @@ export function validateContent(content: Content): string[] {
     }
   }
 
+  const squadTeams = new Set<string>()
+  for (const squad of content.squads) {
+    if (!teamById.has(squad.team)) errors.push(`squad: unknown team "${squad.team}"`)
+    if (squadTeams.has(squad.team)) errors.push(`squad: two squads for "${squad.team}"`)
+    if (squad.photo && !(squad.photo in content.images))
+      errors.push(`squad ${squad.team}: photo "${squad.photo}" not in images.json`)
+    squadTeams.add(squad.team)
+  }
+
   for (const item of programme) {
     if (item.venue && !venueById.has(item.venue)) errors.push(`programme ${item.id}: unknown venue "${item.venue}"`)
   }

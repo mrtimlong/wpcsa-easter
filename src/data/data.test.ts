@@ -162,6 +162,7 @@ describe('validateContent', () => {
       ],
       programme: [],
       sponsors: [],
+      squads: [],
       images: {},
     }
     expect(validateContent(content)).toEqual([

@@ -698,3 +698,99 @@ button.button {
   text-align: center;
   padding-top: 20vh;
 }
+
+/* Team names link to team pages without looking like body links. */
+.fixture .fixture-team-name a,
+.standings .team a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.fixture .fixture-team-name a:hover,
+.standings .team a:hover {
+  text-decoration: underline;
+}
+
+/* Team page */
+.team-header h1 {
+  margin-bottom: 0.25rem;
+}
+
+.team-header p {
+  margin: 0.25rem 0;
+}
+
+.team-comp {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.team-comp .sport-icon,
+.teams-sport h2 .sport-icon {
+  flex: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  color: var(--sport);
+}
+
+.follow-button {
+  margin: 0.75rem 0 1rem;
+}
+
+.follow-button[aria-pressed="false"] {
+  background: var(--surface);
+  color: var(--brand);
+  box-shadow: inset 0 0 0 1.5px var(--brand);
+}
+
+.team-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+
+.team-standing {
+  font-weight: 600;
+}
+
+.team-staff {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+.squad {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.4rem 1rem;
+}
+
+.team-page .squad li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.squad-number {
+  min-width: 2ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.teams-sport h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.teams-sport .link-list {
+  margin-bottom: 1rem;
+}

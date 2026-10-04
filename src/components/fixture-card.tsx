@@ -85,7 +85,7 @@ export function FixtureCard({
         {sides.map(({ side, name, known, teamId }) => (
           <div key={side} class={`fixture-team${winner === side ? ' is-winner' : ''}${known ? '' : ' is-tbc'}`}>
             <span class="fixture-team-name">
-              {name}
+              {teamId ? <a href={`/teams/${teamId}`}>{name}</a> : name}
               {teamId && isFavourite(teamId) && (
                 <span class="star-mark" role="img" title={t('myTeams.followed')} aria-label={t('myTeams.followed')}>
                   {' ★'}

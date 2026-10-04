@@ -16,6 +16,7 @@ const required = ['tournament', 'venues', 'associations', 'competitions', 'teams
 /** Files that may be missing, with the value to use instead. */
 const optional = {
   sponsors: [],
+  squads: [],
   'visitor-guide': undefined,
   images: {},
   results: undefined,

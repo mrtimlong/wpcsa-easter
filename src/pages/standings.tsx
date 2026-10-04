@@ -79,7 +79,7 @@ function CompetitionStandings({ competition }: { competition: Competition }) {
                       >
                         {isFavourite(row.team) ? '★' : '☆'}
                       </button>
-                      {teamName.get(row.team) ?? row.team}
+                      <a href={`/teams/${row.team}`}>{teamName.get(row.team) ?? row.team}</a>
                     </td>
                     <td class="num">{row.played}</td>
                     <td class="num">{row.won}</td>
