@@ -78,11 +78,11 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
 | [x] | Pages read results through `useResults()` (`src/results.tsx`), from `/data/results.json`, with the real clock. Demo data (sample-data) still fakes the clock and fills in random results, with real ones from /admin on top, so results entry can be tried on the demo; real 2027 data has no `demo` and shows only real results | Tim | Jan 2027 |
-| [ ] | Refresh every ~30 s while open and when the app comes back to the foreground (done); show "updated x min ago" (not done) | Tim | Jan 2027 |
+| [x] | Refresh every ~30 s while open and when the app comes back to the foreground; "Updated x min ago" on Results and Standings | Tim | Jan 2027 |
 | [x] | Works offline: last known results cached by the service worker (network-first for all data JSON) | Tim | Jan 2027 |
-| [ ] | Friendly states: no results yet, can't reach server, stale data | Tim | Jan 2027 |
+| [x] | Friendly states: "results will appear once the games start on …" before the first game; a warning when results are over 3 minutes old (server unreachable, or the phone's offline copy, judged by the server's Date header) | Tim | Jan 2027 |
 | [ ] | Keep a way to preview with demo data (e.g. `?demo` on staging only) for testing | Tim | Jan 2027 |
-| [ ] | Date-faking for testing: view the app "as if" it's a given tournament time | Tim | Jan 2027 |
+| [x] | Date-faking for testing: `?at=2027-03-27T14:00` (tournament time) on any page shows the app as if it were then, with a "Back to now" banner; kept for the browser tab's session. Works on the live site and with real data | Tim | Jan 2027 |
 
 ## 5. 2027 data
 

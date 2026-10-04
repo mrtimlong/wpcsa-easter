@@ -1,9 +1,10 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
+import { ResultsUpdated } from '../components/results-updated.tsx'
 import { DemoNotice, fixtureSports, NoTeamsYet, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay } from '../data/format.ts'
-import { DEMO } from '../data/live.ts'
+import { currentTime, DEMO } from '../data/live.ts'
 import { fixtureTeams } from '../data/resolve.ts'
 import type { Fixture } from '../data/schema.ts'
 import { useFavourites } from '../favourites.tsx'
@@ -12,6 +13,9 @@ import { useResults } from '../results.tsx'
 
 const timeZone = content.tournament.timezone
 const sportOf = new Map(content.competitions.map((c) => [c.id, c.sport]))
+
+/** When the first game starts: before then, there are no results to expect. */
+const firstStart = Math.min(...content.fixtures.map((f) => Date.parse(f.start)))
 
 export function Results() {
   const { t, locale } = useI18n()
@@ -43,10 +47,19 @@ export function Results() {
     <section>
       <h1>{t('results.title')}</h1>
       {DEMO && <DemoNotice />}
+      <ResultsUpdated />
       <SportFilter value={sport} onChange={setSport} includeMine options={fixtureSports} />
       {sport === 'mine' && favourites.size === 0 && <NoTeamsYet />}
       {withResults.length === 0 && !(sport === 'mine' && favourites.size === 0) && (
-        <p class="muted">{sport === 'mine' ? t('myTeams.noResults') : t('results.empty')}</p>
+        <p class="muted">
+          {sport === 'mine'
+            ? t('myTeams.noResults')
+            : currentTime() < firstStart
+              ? t('results.notStarted', {
+                  day: formatDay(dayKey(new Date(firstStart).toISOString(), timeZone), locale),
+                })
+              : t('results.empty')}
+        </p>
       )}
       {live.length > 0 && (
         <>

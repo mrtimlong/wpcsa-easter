@@ -238,6 +238,15 @@ body {
   color: #5c4500;
 }
 
+.results-updated {
+  margin: -0.25rem 0 0.75rem;
+  font-size: 0.85rem;
+}
+
+.clock-notice {
+  margin: 0 0 1rem;
+}
+
 .lead {
   font-size: 1.1rem;
 }

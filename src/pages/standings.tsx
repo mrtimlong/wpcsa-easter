@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
+import { ResultsUpdated } from '../components/results-updated.tsx'
 import { DemoNotice, fixtureSports, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { DEMO } from '../data/live.ts'
@@ -20,6 +21,7 @@ export function Standings() {
     <section>
       <h1>{t('standings.title')}</h1>
       {DEMO && <DemoNotice />}
+      <ResultsUpdated />
       <SportFilter value={sport} onChange={setSport} includeAll={false} options={fixtureSports} />
       {competitions.map((c) => (
         <CompetitionStandings key={c.id} competition={c} />

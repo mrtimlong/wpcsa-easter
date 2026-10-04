@@ -160,4 +160,10 @@ export const zhHant: Partial<Record<MessageKey, string>> = {
   'admin.news.titleNeeded': '請輸入標題。',
   'admin.changes.title': '最近修改',
   'admin.changes.none': '暫無修改。',
+  'results.updatedNow': '剛剛更新',
+  'results.updated': '{n}分鐘前更新',
+  'results.stale': '無法連接伺服器，賽果可能不是最新（最後更新：{time}）。',
+  'results.notStarted': '比賽於{day}開始後，賽果會在此顯示。',
+  'clock.notice': '以{time}的時間顯示應用程式。',
+  'clock.reset': '返回現在',
 }

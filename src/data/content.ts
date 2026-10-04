@@ -36,9 +36,21 @@ async function fetchJson(name: FileName, isOptional: boolean): Promise<unknown> 
   throw new DataError(`${name}.json: HTTP ${response.status}`)
 }
 
-/** Fetches results.json again, for refreshing while the app is open (undefined until the first result). */
-export async function loadResults(): Promise<Results | undefined> {
-  return (await fetchJson('results', true)) as Results | undefined
+/**
+ * Fetches results.json again, for refreshing while the app is open (results undefined until the first
+ * one is saved). `servedAt` is when the server sent it: offline, the service worker answers with its
+ * last copy, whose time shows how out of date it is.
+ */
+export async function loadResults(): Promise<{ results?: Results; servedAt: number }> {
+  const response = await fetch(`${DATA_URL}results.json`)
+  if (!response.ok && response.status !== 404 && response.status !== 403) {
+    throw new DataError(`results.json: HTTP ${response.status}`)
+  }
+  const date = Date.parse(response.headers.get('date') ?? '')
+  return {
+    results: response.ok ? ((await response.json()) as Results) : undefined,
+    servedAt: Number.isNaN(date) ? Date.now() : date,
+  }
 }
 
 /** Fetches announcements.json again, for refreshing while the app is open. */

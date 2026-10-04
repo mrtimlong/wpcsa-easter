@@ -1,6 +1,7 @@
 import type { ComponentChildren } from 'preact'
 import { LocationProvider, lazy, Route, Router, useLocation } from 'preact-iso'
 import { AnnouncementsProvider } from './announcements.tsx'
+import { ClockNotice } from './components/clock-notice.tsx'
 import { SponsorStrip } from './components/sponsor-strip.tsx'
 import { TabBar } from './components/tab-bar.tsx'
 import { UrgentBanner } from './components/urgent-banner.tsx'
@@ -84,6 +85,7 @@ export function App() {
                 <UrgentBanner />
               </PublicOnly>
               <main class="main">
+                <ClockNotice />
                 <Router>
                   <Route path="/" component={Home} />
                   <Route path="/schedule" component={Schedule} />
