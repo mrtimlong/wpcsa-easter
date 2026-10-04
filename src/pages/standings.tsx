@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
-import { DemoNotice, SportFilter, sports, type SportChoice } from '../components/sport-filter.tsx'
+import { DemoNotice, type SportChoice, SportFilter, sports } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { DEMO, results } from '../data/live.ts'
 import type { Competition } from '../data/schema.ts'
@@ -48,11 +48,21 @@ function CompetitionStandings({ competition }: { competition: Competition }) {
                 <tr>
                   <th class="num">#</th>
                   <th class="team">{t('standings.team')}</th>
-                  <th class="num" title={t('standings.playedLong')}>{t('standings.played')}</th>
-                  <th class="num" title={t('standings.wonLong')}>{t('standings.won')}</th>
-                  <th class="num" title={t('standings.lostLong')}>{t('standings.lost')}</th>
-                  <th class="num" title={t('standings.diffLong')}>{t('standings.diff')}</th>
-                  <th class="num" title={t('standings.pointsLong')}>{t('standings.points')}</th>
+                  <th class="num" title={t('standings.playedLong')}>
+                    {t('standings.played')}
+                  </th>
+                  <th class="num" title={t('standings.wonLong')}>
+                    {t('standings.won')}
+                  </th>
+                  <th class="num" title={t('standings.lostLong')}>
+                    {t('standings.lost')}
+                  </th>
+                  <th class="num" title={t('standings.diffLong')}>
+                    {t('standings.diff')}
+                  </th>
+                  <th class="num" title={t('standings.pointsLong')}>
+                    {t('standings.points')}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -80,9 +90,7 @@ function CompetitionStandings({ competition }: { competition: Competition }) {
                 ))}
               </tbody>
             </table>
-            <p class="table-note muted">
-              {table.complete ? t('standings.complete') : t('standings.inProgress')}
-            </p>
+            <p class="table-note muted">{table.complete ? t('standings.complete') : t('standings.inProgress')}</p>
           </div>
         )
       })}

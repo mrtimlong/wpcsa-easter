@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
-import { DemoNotice, NoTeamsYet, SportFilter, type SportChoice } from '../components/sport-filter.tsx'
+import { DemoNotice, NoTeamsYet, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay } from '../data/format.ts'
 import { DEMO, results } from '../data/live.ts'

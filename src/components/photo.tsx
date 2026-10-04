@@ -1,7 +1,7 @@
 import { content, DATA_URL } from '../data/content.ts'
 import type { Photo as PhotoData } from '../data/schema.ts'
 import { useI18n } from '../i18n/index.tsx'
-import { Picture, type ImageSource } from './picture.tsx'
+import { type ImageSource, Picture } from './picture.tsx'
 
 /** An image from the data's images.json (team photos, guide photos…), if it exists. */
 export function dataImage(name: string): ImageSource | undefined {

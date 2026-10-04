@@ -15,8 +15,7 @@
 
   color-scheme: light;
   font-family:
-    system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang TC', 'Noto Sans TC',
-    'Microsoft JhengHei', sans-serif;
+    system-ui, -apple-system, "Segoe UI", Roboto, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   line-height: 1.5;
   color: var(--text);
   background: var(--bg);
@@ -107,6 +106,10 @@ body {
   padding-bottom: calc(var(--tab-bar-height) + env(safe-area-inset-bottom, 0px) + 1.5rem);
 }
 
+.muted {
+  color: var(--muted);
+}
+
 /* Fixed bottom navigation (thumb-reachable on phones). */
 .tab-bar {
   position: fixed;
@@ -138,7 +141,7 @@ body {
   height: 1.5rem;
 }
 
-.tab-bar a[aria-current='page'] {
+.tab-bar a[aria-current="page"] {
   color: var(--brand);
   font-weight: 600;
 }
@@ -167,7 +170,7 @@ body {
 }
 
 .link-list a::after {
-  content: '›';
+  content: "›";
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -178,10 +181,6 @@ body {
 
 .link-list .muted {
   font-size: 0.9rem;
-}
-
-.muted {
-  color: var(--muted);
 }
 
 .notice {
@@ -280,13 +279,13 @@ body {
   margin: 0;
 }
 
-.card-links {
+.card-body .card-links {
   display: flex;
   gap: 1rem;
-  margin-top: 0.5rem !important;
+  margin-top: 0.5rem;
 }
 
-.card-links a {
+.card-body .card-links a {
   color: var(--brand);
   font-weight: 600;
 }
@@ -343,6 +342,12 @@ body {
 /* Tabs (days) and chips (sport filter) */
 .tabs,
 .chips {
+  /* Also used on <fieldset>: drop its default border and padding. */
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding-inline: 0;
+  padding-top: 0;
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
@@ -370,8 +375,8 @@ body {
   cursor: pointer;
 }
 
-.tab[aria-selected='true'],
-.chip[aria-pressed='true'] {
+.tab[aria-selected="true"],
+.chip[aria-pressed="true"] {
   border-color: var(--brand);
   background: var(--brand);
   color: var(--brand-ink);
@@ -591,7 +596,7 @@ body {
   overflow: visible;
 }
 
-.team-chip[aria-pressed='true'] {
+.team-chip[aria-pressed="true"] {
   border-color: #d9a400;
   background: #fff4cc;
   color: #5c4500;
@@ -638,7 +643,7 @@ body {
   cursor: pointer;
 }
 
-.star-button[aria-pressed='true'],
+.star-button[aria-pressed="true"],
 .standings tr.is-mine .star-button {
   color: #d9a400;
 }

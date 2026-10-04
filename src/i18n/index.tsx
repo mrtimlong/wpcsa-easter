@@ -1,4 +1,4 @@
-import { createContext, type ComponentChildren } from 'preact'
+import { type ComponentChildren, createContext } from 'preact'
 import { useContext, useEffect, useState } from 'preact/hooks'
 import { en, type MessageKey } from './en.ts'
 import { zhHant } from './zh-Hant.ts'
@@ -12,16 +12,10 @@ const messages: Record<Locale, Partial<Record<MessageKey, string>>> = {
   'zh-Hant': zhHant,
 }
 
-export function translate(
-  locale: Locale,
-  key: MessageKey,
-  params?: Record<string, string | number>,
-): string {
+export function translate(locale: Locale, key: MessageKey, params?: Record<string, string | number>): string {
   const template = messages[locale][key] ?? en[key]
   if (!params) return template
-  return template.replace(/\{(\w+)\}/g, (match, name: string) =>
-    name in params ? String(params[name]) : match,
-  )
+  return template.replace(/\{(\w+)\}/g, (match, name: string) => (name in params ? String(params[name]) : match))
 }
 
 function initialLocale(): Locale {
@@ -61,14 +55,11 @@ export function I18nProvider({ children }: { children: ComponentChildren }) {
     }
   }, [locale])
 
-  const t = (key: MessageKey, params?: Record<string, string | number>) =>
-    translate(locale, key, params)
+  const t = (key: MessageKey, params?: Record<string, string | number>) => translate(locale, key, params)
 
   const l = (text: { en: string; zh?: string }) => localize(locale, text)
 
-  return (
-    <I18nContext.Provider value={{ locale, setLocale, t, l }}>{children}</I18nContext.Provider>
-  )
+  return <I18nContext.Provider value={{ locale, setLocale, t, l }}>{children}</I18nContext.Provider>
 }
 
 export function useI18n(): I18nContextValue {

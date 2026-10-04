@@ -49,7 +49,16 @@ describe('format', () => {
 
   it('summarises set scores, ignoring a set in progress', () => {
     expect(
-      scoreSummary({ fixture: 'x', status: 'live', score: { sets: [[25, 20], [10, 8]] } }),
+      scoreSummary({
+        fixture: 'x',
+        status: 'live',
+        score: {
+          sets: [
+            [25, 20],
+            [10, 8],
+          ],
+        },
+      }),
     ).toEqual({ home: 1, away: 0, detail: '25–20, 10–8' })
   })
 })

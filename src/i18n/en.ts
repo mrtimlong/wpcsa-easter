@@ -67,10 +67,12 @@ export const en = {
   'lang.toggle': '中文',
   'logo.sacsa': 'Southern Africa Chinese Sports Association',
   'logo.wpcsa': 'WP Chinese Sports Association',
-  'home.heroAlt': 'A goat on a rock in front of Table Mountain, framed by lanterns, clouds and plum blossom: Year of the Goat',
+  'home.heroAlt':
+    'A goat on a rock in front of Table Mountain, framed by lanterns, clouds and plum blossom: Year of the Goat',
   'home.dates': 'Easter weekend · {dates}',
   'myTeams.title': 'My teams',
-  'myTeams.intro': 'Pick the teams you follow. Their games get a ★, and you can filter the schedule and results to just your teams. Saved on this phone only.',
+  'myTeams.intro':
+    'Pick the teams you follow. Their games get a ★, and you can filter the schedule and results to just your teams. Saved on this phone only.',
   'myTeams.count': 'Following {n}',
   'myTeams.clear': 'Clear all',
   'myTeams.filter': '★ My teams',

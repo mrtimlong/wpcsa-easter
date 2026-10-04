@@ -37,7 +37,17 @@ describe('outcome', () => {
   })
 
   it('counts sets for volleyball/badminton', () => {
-    const o = outcome({ fixture: 'x', status: 'final', score: { sets: [[25, 20], [18, 25], [15, 11]] } })
+    const o = outcome({
+      fixture: 'x',
+      status: 'final',
+      score: {
+        sets: [
+          [25, 20],
+          [18, 25],
+          [15, 11],
+        ],
+      },
+    })
     expect(o).toEqual({ winner: 'home', home: 2, away: 1, forfeit: false })
   })
 
@@ -69,12 +79,7 @@ describe('standings', () => {
     n = 0
     // a and b both finish 1W 1L; b has the far better diff, but a beat b.
     const fixtures = [game('a', 'b'), game('c', 'a'), game('b', 'd'), game('c', 'd')]
-    const results = toMap([
-      final('g1', 51, 50),
-      final('g2', 60, 10),
-      final('g3', 100, 0),
-      final('g4', 30, 20),
-    ])
+    const results = toMap([final('g1', 51, 50), final('g2', 60, 10), final('g3', 100, 0), final('g4', 30, 20)])
     const rows = standings(comp, teams, fixtures, results).rows
     expect(rows.map((r) => r.team)).toEqual(['c', 'a', 'b', 'd'])
   })
@@ -103,7 +108,12 @@ describe('resolveSlot', () => {
   n = 0
   const groupGames = [game('a', 'b'), game('c', 'd'), game('a', 'c'), game('b', 'd')]
   const semi = game('a', 'a', { id: 'semi', stage: 'knockout', home: { position: 1 }, away: { position: 2 } })
-  const fin = game('a', 'a', { id: 'final', stage: 'knockout', home: { winnerOf: 'semi' }, away: { tbc: { en: 'TBC' } } })
+  const fin = game('a', 'a', {
+    id: 'final',
+    stage: 'knockout',
+    home: { winnerOf: 'semi' },
+    away: { tbc: { en: 'TBC' } },
+  })
   const content = {
     competitions: [comp],
     teams,

@@ -38,11 +38,7 @@
     {
       "Sid": "ListAndServiceLinkedRoles",
       "Effect": "Allow",
-      "Action": [
-        "iam:ListOpenIDConnectProviders",
-        "iam:ListRoles",
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:ListOpenIDConnectProviders", "iam:ListRoles", "iam:CreateServiceLinkedRole"],
       "Resource": "*"
     }
   ]

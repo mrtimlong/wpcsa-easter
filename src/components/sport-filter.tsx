@@ -30,7 +30,7 @@ export function SportFilter({
     ...sports,
   ]
   return (
-    <div class="chips" role="group" aria-label={t('filter.sport')}>
+    <fieldset class="chips" aria-label={t('filter.sport')}>
       {options.map((option) => (
         <button
           key={option}
@@ -42,7 +42,7 @@ export function SportFilter({
           {option === 'all' ? t('filter.all') : option === 'mine' ? t('myTeams.filter') : t(`sport.${option}`)}
         </button>
       ))}
-    </div>
+    </fieldset>
   )
 }
 

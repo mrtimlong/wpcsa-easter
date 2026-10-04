@@ -1,5 +1,5 @@
 // "My teams": team ids the viewer follows, saved on this device only (localStorage).
-import { createContext, type ComponentChildren } from 'preact'
+import { type ComponentChildren, createContext } from 'preact'
 import { useContext, useEffect, useMemo, useState } from 'preact/hooks'
 
 const STORAGE_KEY = 'favouriteTeams'
@@ -48,9 +48,7 @@ export function FavouritesProvider({ children }: { children: ComponentChildren }
       favourites,
       isFavourite: (teamId) => favourites.has(teamId),
       toggle: (teamId) =>
-        setIds((current) =>
-          current.includes(teamId) ? current.filter((id) => id !== teamId) : [...current, teamId],
-        ),
+        setIds((current) => (current.includes(teamId) ? current.filter((id) => id !== teamId) : [...current, teamId])),
       clear: () => setIds([]),
     }
   }, [ids])

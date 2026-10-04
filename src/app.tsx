@@ -34,11 +34,7 @@ function Header() {
           <a class="header-icon" href="/my-teams" title={t('myTeams.title')} aria-label={t('myTeams.title')}>
             ★
           </a>
-          <button
-            type="button"
-            class="lang-toggle"
-            onClick={() => setLocale(locale === 'en' ? 'zh-Hant' : 'en')}
-          >
+          <button type="button" class="lang-toggle" onClick={() => setLocale(locale === 'en' ? 'zh-Hant' : 'en')}>
             {t('lang.toggle')}
           </button>
         </div>

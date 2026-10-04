@@ -13,7 +13,9 @@ npm install
 npm run dev        # local dev server
 npm test           # unit tests (Vitest)
 npm run typecheck  # TypeScript
-npm run build      # production build to dist/
+npm run lint       # Biome: lint + formatting check (also runs as part of build)
+npm run format     # Biome: apply formatting, import sorting and safe lint fixes
+npm run build      # lint, typecheck, then production build to dist/
 npm run preview    # serve the production build (service worker active)
 npm run data:check # validate a data folder (DATA_DIR=data npm run data:check)
 npm run data:upload # validate and upload ./data to S3 (no deploy needed)

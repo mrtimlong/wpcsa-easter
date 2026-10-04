@@ -38,9 +38,7 @@ export function standings(
   group?: string,
 ): Standings {
   const rules = { ...DEFAULT_RULES, ...competition.rules }
-  const groupTeams = teams.filter(
-    (t) => t.competition === competition.id && (group === undefined || t.group === group),
-  )
+  const groupTeams = teams.filter((t) => t.competition === competition.id && (group === undefined || t.group === group))
   const games: Game[] = fixtures.flatMap((f) =>
     f.competition === competition.id &&
     f.stage === 'group' &&
@@ -51,7 +49,12 @@ export function standings(
       : [],
   )
 
-  const table = tally(groupTeams.map((t) => t.id), games, results, rules)
+  const table = tally(
+    groupTeams.map((t) => t.id),
+    games,
+    results,
+    rules,
+  )
   const names = new Map(teams.map((t) => [t.id, t.name]))
   const rows = rank(table, games, results, rules, rules.tiebreak, names)
 
@@ -111,27 +114,29 @@ function rank(
   tiebreaks: Required<StandingsRules>['tiebreak'],
   names: Map<string, string>,
 ): StandingRow[] {
-  return breakTies(rows, (r) => r.points, (tied) => {
-    const [tiebreak, ...rest] = tiebreaks
-    if (!tiebreak) {
-      return [...tied].sort((a, b) =>
-        (names.get(a.team) ?? a.team).localeCompare(names.get(b.team) ?? b.team),
-      )
-    }
-    const next = (group: StandingRow[]) => rank(group, games, results, rules, rest, names)
-    if (tiebreak === 'headToHead') {
-      const ids = new Set(tied.map((r) => r.team))
-      const mini = tally(
-        [...ids],
-        games.filter((g) => ids.has(g.home) && ids.has(g.away)),
-        results,
-        rules,
-      )
-      const miniPoints = new Map(mini.map((r) => [r.team, r.points]))
-      return breakTies(tied, (r) => miniPoints.get(r.team) ?? 0, next)
-    }
-    return breakTies(tied, (r) => r[tiebreak], next)
-  })
+  return breakTies(
+    rows,
+    (r) => r.points,
+    (tied) => {
+      const [tiebreak, ...rest] = tiebreaks
+      if (!tiebreak) {
+        return [...tied].sort((a, b) => (names.get(a.team) ?? a.team).localeCompare(names.get(b.team) ?? b.team))
+      }
+      const next = (group: StandingRow[]) => rank(group, games, results, rules, rest, names)
+      if (tiebreak === 'headToHead') {
+        const ids = new Set(tied.map((r) => r.team))
+        const mini = tally(
+          [...ids],
+          games.filter((g) => ids.has(g.home) && ids.has(g.away)),
+          results,
+          rules,
+        )
+        const miniPoints = new Map(mini.map((r) => [r.team, r.points]))
+        return breakTies(tied, (r) => miniPoints.get(r.team) ?? 0, next)
+      }
+      return breakTies(tied, (r) => r[tiebreak], next)
+    },
+  )
 }
 
 /** Sorts rows by key (descending) and hands each run of equal keys to resolve. */

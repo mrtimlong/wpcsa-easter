@@ -6,8 +6,7 @@ import type { Content, Fixture, Slot } from './schema.ts'
  */
 export function validateContent(content: Content): string[] {
   const errors: string[] = []
-  const { tournament, venues, associations, competitions, teams, fixtures, programme, sponsors } =
-    content
+  const { tournament, venues, associations, competitions, teams, fixtures, programme, sponsors } = content
 
   const collections = { venues, associations, competitions, teams, fixtures, programme, sponsors }
   for (const [name, items] of Object.entries(collections)) {
@@ -69,8 +68,7 @@ export function validateContent(content: Content): string[] {
       errors.push(`fixture ${f.id}: group "${f.group}" not in ${competition.id}`)
 
     const start = Date.parse(f.start)
-    if (start < firstDay || start > lastDay)
-      errors.push(`fixture ${f.id}: starts outside the tournament dates`)
+    if (start < firstDay || start > lastDay) errors.push(`fixture ${f.id}: starts outside the tournament dates`)
 
     checkSlot(f, 'home', f.home)
     checkSlot(f, 'away', f.away)
@@ -85,8 +83,7 @@ export function validateContent(content: Content): string[] {
   }
 
   for (const item of programme) {
-    if (item.venue && !venueById.has(item.venue))
-      errors.push(`programme ${item.id}: unknown venue "${item.venue}"`)
+    if (item.venue && !venueById.has(item.venue)) errors.push(`programme ${item.id}: unknown venue "${item.venue}"`)
   }
 
   return errors

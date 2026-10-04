@@ -1,6 +1,6 @@
 import { useLocation } from 'preact-iso'
-import { useI18n } from '../i18n/index.tsx'
 import type { MessageKey } from '../i18n/en.ts'
+import { useI18n } from '../i18n/index.tsx'
 
 // Simple line icons (24×24, currentColor), like sport-icon.tsx. Decorative: labels are always shown.
 const icons = {

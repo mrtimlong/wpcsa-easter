@@ -87,7 +87,7 @@ export function FixtureCard({
             <span class="fixture-team-name">
               {name}
               {teamId && isFavourite(teamId) && (
-                <span class="star-mark" title={t('myTeams.followed')} aria-label={t('myTeams.followed')}>
+                <span class="star-mark" role="img" title={t('myTeams.followed')} aria-label={t('myTeams.followed')}>
                   {' ★'}
                 </span>
               )}

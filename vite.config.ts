@@ -1,8 +1,9 @@
 /// <reference types="vitest/config" />
-import preact from '@preact/preset-vite'
+
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { extname, resolve, sep } from 'node:path'
-import { defineConfig, type Connect, type Plugin } from 'vite'
+import preact from '@preact/preset-vite'
+import { type Connect, defineConfig, type Plugin } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const THEME_COLOR = '#1a2b9b'

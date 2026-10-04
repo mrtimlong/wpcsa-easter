@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
-import { DemoNotice, NoTeamsYet, SportFilter, type SportChoice } from '../components/sport-filter.tsx'
+import { DemoNotice, NoTeamsYet, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay, formatTime } from '../data/format.ts'
 import { DEMO, now, results } from '../data/live.ts'
@@ -66,13 +66,13 @@ export function Schedule() {
         ))}
       </div>
       <SportFilter value={sport} onChange={setSport} includeMine />
-      <div class="chips" role="group" aria-label={t('schedule.period')}>
+      <fieldset class="chips" aria-label={t('schedule.period')}>
         {periods.map((p) => (
           <button key={p} type="button" class="chip" aria-pressed={period === p} onClick={() => setPeriod(p)}>
             {t(`schedule.period.${p}`)}
           </button>
         ))}
-      </div>
+      </fieldset>
       {sport === 'mine' && favourites.size === 0 && <NoTeamsYet />}
       <h2 class="day-heading">{formatDay(day, locale)}</h2>
       {entries.length === 0 && !(sport === 'mine' && favourites.size === 0) && (
