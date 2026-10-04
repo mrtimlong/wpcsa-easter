@@ -77,9 +77,9 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 
 | ✓ | Item | Owner | Target |
 |---|---|---|---|
-| [ ] | Replace `DEMO` in `src/data/live.ts` with a hook that fetches `/data/results.json` and uses the real clock | Tim | Jan 2027 |
-| [ ] | Refresh every ~30 s while open and when the app comes back to the foreground; show "updated x min ago" | Tim | Jan 2027 |
-| [ ] | Works offline: last known results cached by the service worker (network-first for results) | Tim | Jan 2027 |
+| [x] | Pages read results through `useResults()` (`src/results.tsx`), from `/data/results.json`, with the real clock. Demo data (sample-data) still fakes the clock and fills in random results, with real ones from /admin on top, so results entry can be tried on the demo; real 2027 data has no `demo` and shows only real results | Tim | Jan 2027 |
+| [ ] | Refresh every ~30 s while open and when the app comes back to the foreground (done); show "updated x min ago" (not done) | Tim | Jan 2027 |
+| [x] | Works offline: last known results cached by the service worker (network-first for all data JSON) | Tim | Jan 2027 |
 | [ ] | Friendly states: no results yet, can't reach server, stale data | Tim | Jan 2027 |
 | [ ] | Keep a way to preview with demo data (e.g. `?demo` on staging only) for testing | Tim | Jan 2027 |
 | [ ] | Date-faking for testing: view the app "as if" it's a given tournament time | Tim | Jan 2027 |

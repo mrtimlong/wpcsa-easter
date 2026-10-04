@@ -22,6 +22,7 @@ import { Teams } from './pages/teams.tsx'
 import { Vendors } from './pages/vendors.tsx'
 import { Venues } from './pages/venues.tsx'
 import { Visit } from './pages/visit.tsx'
+import { ResultsProvider } from './results.tsx'
 
 // Only committee members open /admin, so it's a separate download.
 const Admin = lazy(() => import('./admin/admin.tsx').then((m) => m.Admin))
@@ -75,40 +76,42 @@ export function App() {
     <I18nProvider>
       <FavouritesProvider>
         <AnnouncementsProvider>
-          <LocationProvider>
-            <Logos />
-            <Header />
-            <PublicOnly>
-              <UrgentBanner />
-            </PublicOnly>
-            <main class="main">
-              <Router>
-                <Route path="/" component={Home} />
-                <Route path="/schedule" component={Schedule} />
-                <Route path="/results" component={Results} />
-                <Route path="/standings" component={Standings} />
-                <Route path="/visit" component={Visit} />
-                <Route path="/my-teams" component={MyTeams} />
-                <Route path="/more" component={More} />
-                <Route path="/news" component={News} />
-                <Route path="/teams" component={Teams} />
-                <Route path="/teams/:id" component={TeamPage} />
-                <Route path="/venues" component={Venues} />
-                <Route path="/vendors" component={Vendors} />
-                <Route path="/info" component={Info} />
-                <Route path="/rules" component={Rules} />
-                <Route path="/sponsors" component={Sponsors} />
-                <Route path="/admin/:page*" component={Admin} />
-                <Route default component={NotFound} />
-              </Router>
+          <ResultsProvider>
+            <LocationProvider>
+              <Logos />
+              <Header />
               <PublicOnly>
-                <Sponsorship />
+                <UrgentBanner />
               </PublicOnly>
-            </main>
-            <PublicOnly>
-              <TabBar />
-            </PublicOnly>
-          </LocationProvider>
+              <main class="main">
+                <Router>
+                  <Route path="/" component={Home} />
+                  <Route path="/schedule" component={Schedule} />
+                  <Route path="/results" component={Results} />
+                  <Route path="/standings" component={Standings} />
+                  <Route path="/visit" component={Visit} />
+                  <Route path="/my-teams" component={MyTeams} />
+                  <Route path="/more" component={More} />
+                  <Route path="/news" component={News} />
+                  <Route path="/teams" component={Teams} />
+                  <Route path="/teams/:id" component={TeamPage} />
+                  <Route path="/venues" component={Venues} />
+                  <Route path="/vendors" component={Vendors} />
+                  <Route path="/info" component={Info} />
+                  <Route path="/rules" component={Rules} />
+                  <Route path="/sponsors" component={Sponsors} />
+                  <Route path="/admin/:page*" component={Admin} />
+                  <Route default component={NotFound} />
+                </Router>
+                <PublicOnly>
+                  <Sponsorship />
+                </PublicOnly>
+              </main>
+              <PublicOnly>
+                <TabBar />
+              </PublicOnly>
+            </LocationProvider>
+          </ResultsProvider>
         </AnnouncementsProvider>
       </FavouritesProvider>
     </I18nProvider>

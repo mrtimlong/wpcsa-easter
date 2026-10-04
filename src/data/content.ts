@@ -36,6 +36,11 @@ async function fetchJson(name: FileName, isOptional: boolean): Promise<unknown> 
   throw new DataError(`${name}.json: HTTP ${response.status}`)
 }
 
+/** Fetches results.json again, for refreshing while the app is open (undefined until the first result). */
+export async function loadResults(): Promise<Results | undefined> {
+  return (await fetchJson('results', true)) as Results | undefined
+}
+
 /** Fetches announcements.json again, for refreshing while the app is open. */
 export async function loadAnnouncements(): Promise<Content['announcements']> {
   return (await fetchJson('announcements', true)) as Content['announcements']

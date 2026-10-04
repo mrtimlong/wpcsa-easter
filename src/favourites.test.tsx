@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/preact'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { content } from './data/content.ts'
-import { results } from './data/live.ts'
+import { initialResults as results } from './data/live.ts'
 import { fixtureTeams } from './data/resolve.ts'
 import { FavouritesProvider, loadFavourites } from './favourites.tsx'
 import { I18nProvider } from './i18n/index.tsx'

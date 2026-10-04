@@ -5,12 +5,13 @@ import { Picture } from '../components/picture.tsx'
 import { DemoNotice } from '../components/sport-filter.tsx'
 import { SportIcon } from '../components/sport-icon.tsx'
 import { content } from '../data/content.ts'
-import { DEMO, results } from '../data/live.ts'
+import { DEMO } from '../data/live.ts'
 import { fixtureTeams } from '../data/resolve.ts'
 import type { Team } from '../data/schema.ts'
 import { standings } from '../data/standings.ts'
 import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
+import { useResults } from '../results.tsx'
 import { NotFound } from './not-found.tsx'
 
 const teamById = new Map(content.teams.map((t) => [t.id, t]))
@@ -27,6 +28,7 @@ export function TeamPage() {
 function TeamDetails({ team }: { team: Team }) {
   const { t, l } = useI18n()
   const { isFavourite, toggle } = useFavourites()
+  const results = useResults()
   const competition = competitionById.get(team.competition)
   const association = team.association ? associationById.get(team.association) : undefined
   const squad = squadByTeam.get(team.id)

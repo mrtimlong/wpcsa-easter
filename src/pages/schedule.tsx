@@ -3,11 +3,12 @@ import { FixtureCard } from '../components/fixture-card.tsx'
 import { DemoNotice, NoTeamsYet, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay, formatTime } from '../data/format.ts'
-import { DEMO, now, results } from '../data/live.ts'
+import { DEMO, now } from '../data/live.ts'
 import { fixtureTeams } from '../data/resolve.ts'
 import type { Fixture, ProgrammeItem } from '../data/schema.ts'
 import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
+import { useResults } from '../results.tsx'
 
 const timeZone = content.tournament.timezone
 const sportOf = new Map(content.competitions.map((c) => [c.id, c.sport]))
@@ -28,6 +29,7 @@ function periodOf(iso: string): Exclude<Period, 'all'> {
 
 export function Schedule() {
   const { t, l, locale } = useI18n()
+  const results = useResults()
   const today = dayKey(new Date(now).toISOString(), timeZone)
   const [day, setDay] = useState(days.includes(today) ? today : days[0])
   const [sport, setSport] = useState<SportChoice>('all')

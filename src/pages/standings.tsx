@@ -2,11 +2,12 @@ import { useState } from 'preact/hooks'
 import { FixtureCard } from '../components/fixture-card.tsx'
 import { DemoNotice, fixtureSports, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
-import { DEMO, results } from '../data/live.ts'
+import { DEMO } from '../data/live.ts'
 import type { Competition } from '../data/schema.ts'
 import { standings } from '../data/standings.ts'
 import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
+import { useResults } from '../results.tsx'
 
 const teamName = new Map(content.teams.map((t) => [t.id, t.name]))
 
@@ -30,6 +31,7 @@ export function Standings() {
 function CompetitionStandings({ competition }: { competition: Competition }) {
   const { t, l } = useI18n()
   const { isFavourite, toggle } = useFavourites()
+  const results = useResults()
   const groups: (string | undefined)[] = competition.groups ?? [undefined]
   const knockouts = content.fixtures
     .filter((f) => f.competition === competition.id && f.stage === 'knockout')

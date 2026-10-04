@@ -3,17 +3,19 @@ import { FixtureCard } from '../components/fixture-card.tsx'
 import { DemoNotice, fixtureSports, NoTeamsYet, type SportChoice, SportFilter } from '../components/sport-filter.tsx'
 import { content } from '../data/content.ts'
 import { dayKey, formatDay } from '../data/format.ts'
-import { DEMO, results } from '../data/live.ts'
+import { DEMO } from '../data/live.ts'
 import { fixtureTeams } from '../data/resolve.ts'
 import type { Fixture } from '../data/schema.ts'
 import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
+import { useResults } from '../results.tsx'
 
 const timeZone = content.tournament.timezone
 const sportOf = new Map(content.competitions.map((c) => [c.id, c.sport]))
 
 export function Results() {
   const { t, locale } = useI18n()
+  const results = useResults()
   const [sport, setSport] = useState<SportChoice>('all')
   const { favourites } = useFavourites()
 

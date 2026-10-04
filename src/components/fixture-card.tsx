@@ -1,11 +1,11 @@
 import { content } from '../data/content.ts'
 import { dayKey, formatDay, formatTime, scoreSummary } from '../data/format.ts'
-import { results } from '../data/live.ts'
 import { outcome } from '../data/outcome.ts'
 import { resolveSlot } from '../data/resolve.ts'
 import type { Fixture, Result, Slot } from '../data/schema.ts'
 import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
+import { useResults } from '../results.tsx'
 import { SportIcon } from './sport-icon.tsx'
 
 const fixtureById = new Map(content.fixtures.map((f) => [f.id, f]))
@@ -17,10 +17,11 @@ const venueById = new Map(content.venues.map((v) => [v.id, v]))
  * Team name for a slot, or a description of who it will be ("Winner of Game 49").
  * Resolves against the published results unless given others (the admin screens' latest).
  */
-export function useSlotName(resultMap: Map<string, Result> = results) {
+export function useSlotName(resultMap?: Map<string, Result>) {
   const { t, l } = useI18n()
+  const published = useResults()
   return (slot: Slot, fixture: Fixture): { name: string; known: boolean; teamId?: string } => {
-    const teamId = resolveSlot(slot, fixture, content, resultMap)
+    const teamId = resolveSlot(slot, fixture, content, resultMap ?? published)
     if (teamId) return { name: teamById.get(teamId)?.name ?? teamId, known: true, teamId }
     if ('tbc' in slot) return { name: l(slot.tbc), known: false }
     if ('winnerOf' in slot || 'loserOf' in slot) {
@@ -50,6 +51,7 @@ export function FixtureCard({
 }) {
   const { t, l, locale } = useI18n()
   const slotName = useSlotName()
+  const results = useResults()
   const { isFavourite } = useFavourites()
   const competition = competitionById.get(fixture.competition)
   const venue = venueById.get(fixture.venue)

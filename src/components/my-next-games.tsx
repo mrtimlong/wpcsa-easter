@@ -1,8 +1,9 @@
 import { content } from '../data/content.ts'
-import { now, results } from '../data/live.ts'
+import { now } from '../data/live.ts'
 import { fixtureTeams } from '../data/resolve.ts'
 import { useFavourites } from '../favourites.tsx'
 import { useI18n } from '../i18n/index.tsx'
+import { useResults } from '../results.tsx'
 import { FixtureCard } from './fixture-card.tsx'
 
 const SHOW = 3
@@ -10,6 +11,7 @@ const SHOW = 3
 /** Home page block: live and upcoming games for the teams this viewer follows. */
 export function MyNextGames() {
   const { t } = useI18n()
+  const results = useResults()
   const { favourites } = useFavourites()
 
   if (favourites.size === 0) {
