@@ -60,9 +60,11 @@ function dependents(fixture: Fixture): Fixture[] {
 
 export function GameEntry({ id }: { id: string }) {
   const { t } = useI18n()
+  const { maySport } = useAdmin()
   const fixture = content.fixtures.find((f) => f.id === id)
   const sport = fixture && content.competitions.find((c) => c.id === fixture.competition)?.sport
   if (!fixture || !sport) return <p class="notice">{t('admin.game.notFound', { id })}</p>
+  if (!maySport(sport)) return <p class="notice">{t('admin.game.notYourSport', { sport: t(`sport.${sport}`) })}</p>
   return <Entry fixture={fixture} sport={sport} />
 }
 

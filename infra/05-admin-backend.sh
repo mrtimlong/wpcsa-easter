@@ -63,7 +63,7 @@ else
 fi
 aws cognito-idp get-group --user-pool-id "$POOL_ID" --group-name admin >/dev/null 2>&1 ||
   aws cognito-idp create-group --user-pool-id "$POOL_ID" --group-name admin \
-    --description "Enter results and post announcements" >/dev/null
+    --description "Super users: results for every sport, and announcements" >/dev/null
 
 # The site signs in with email + password straight to Cognito (no hosted login page, so the login
 # form can be bilingual). Signed in for 30 days on a phone; ID tokens last an hour and are refreshed.

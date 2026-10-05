@@ -46,7 +46,7 @@ Every push to `main` runs typecheck, tests and build, then deploys to https://ea
 
 Infrastructure is created by the numbered scripts in `infra/` (AWS CLI, profile `wpcsa`), in order: bucket, certificate, CloudFront, GitHub deploy role, admin backend. `infra/deploy.sh` can also be run locally after `npm run build`.
 
-**/admin** (results and announcements) uses a DynamoDB table, a Cognito user pool and a Lambda behind an HTTP API, all created by `infra/05-admin-backend.sh`, which also deploys new API code when re-run and writes the site's public settings to `src/generated/backend.json`. Add or disable committee logins with `infra/admin-users.sh`. Saves republish `data/results.json` and `data/announcements.json` (30 s cache), so `data:upload` leaves those two alone.
+**/admin** (results and announcements) uses a DynamoDB table, a Cognito user pool and a Lambda behind an HTTP API, all created by `infra/05-admin-backend.sh`, which also deploys new API code when re-run and writes the site's public settings to `src/generated/backend.json`. Add or disable committee logins with `infra/admin-users.sh`: super users (`super`) enter results for every sport and post announcements; scorers enter results only for the sports they're given (`add someone@example.com volleyball badminton`, then `grant`/`revoke`). Saves republish `data/results.json` and `data/announcements.json` (30 s cache), so `data:upload` leaves those two alone.
 
 ## Translations
 

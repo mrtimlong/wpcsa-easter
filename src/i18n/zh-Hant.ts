@@ -95,7 +95,6 @@ export const zhHant: Partial<Record<MessageKey, string>> = {
   'admin.error.TooManyRequestsException': '嘗試次數太多，請等幾分鐘再試。',
   'admin.error.network': '沒有網絡連線，請檢查訊號後再試。',
   'admin.error.signedOut': '你已被登出，請重新登入。',
-  'admin.error.forbidden': '此帳戶無權修改，請聯絡 Tim 加入管理組別。',
   'admin.error.other': '出現問題，請再試一次。',
   'admin.nav.games': '賽果',
   'admin.nav.news': '公告',

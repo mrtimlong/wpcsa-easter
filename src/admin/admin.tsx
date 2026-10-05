@@ -1,10 +1,12 @@
-// /admin: committee members sign in to enter results and post announcements. Loaded on demand, so
+// /admin: committee members sign in to enter results and post announcements. Super users do both,
+// for every sport; scorers enter results for their sports only (the API enforces it; these pages
+// just leave out what they can't change). Loaded on demand, so
 // none of this is in the public app's download. Talks to the admin API (api/app.ts), never to S3.
 import './admin.css'
 import { type ComponentChildren, createContext } from 'preact'
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { useLocation, useRoute } from 'preact-iso'
-import type { Result } from '../data/schema.ts'
+import type { Result, Sport } from '../data/schema.ts'
 import { en, type MessageKey } from '../i18n/en.ts'
 import { useI18n } from '../i18n/index.tsx'
 import { ApiError, type Client, createClient, type State } from './api.ts'
@@ -25,6 +27,10 @@ type AdminContextValue = {
   /** Saved results by fixture id, for resolving "Winner of game 49". */
   results: Map<string, Result>
   refresh: () => Promise<void>
+  /** Whether this user may enter results for a sport. */
+  maySport: (sport: Sport) => boolean
+  /** Super users: every sport, and announcements. */
+  isSuper: boolean
 }
 
 const AdminContext = createContext<AdminContextValue | null>(null)
@@ -127,15 +133,16 @@ function SignedIn({
   }, [refresh])
 
   const results = useMemo(() => new Map(state?.results.map((i) => [i.id, i.data])), [state])
-  const value = useMemo(
-    () => ({ session, client, state, results, refresh }),
-    [session, client, state, results, refresh],
-  )
+  const value = useMemo(() => {
+    const access = state?.access ?? { all: false, sports: [] }
+    const maySport = (sport: Sport) => access.all || access.sports.includes(sport)
+    return { session, client, state, results, refresh, maySport, isSuper: access.all }
+  }, [session, client, state, results, refresh])
 
   return (
     <AdminContext.Provider value={value}>
       <section class="admin">
-        <AdminNav />
+        <AdminNav isSuper={value.isSuper} />
         {error !== null && <p class="notice">{errorMessage(error)}</p>}
         {state ? children : error === null && <p class="muted">{t('admin.loading')}</p>}
         <p class="admin-account muted">
@@ -156,12 +163,12 @@ function SignedIn({
   )
 }
 
-function AdminNav() {
+function AdminNav({ isSuper }: { isSuper: boolean }) {
   const { t } = useI18n()
   const { path } = useLocation()
   const links = [
     { href: '/admin', label: t('admin.nav.games'), active: path === '/admin' || path.startsWith('/admin/game') },
-    { href: '/admin/news', label: t('admin.nav.news'), active: path.startsWith('/admin/news') },
+    ...(isSuper ? [{ href: '/admin/news', label: t('admin.nav.news'), active: path.startsWith('/admin/news') }] : []),
     { href: '/admin/changes', label: t('admin.nav.changes'), active: path === '/admin/changes' },
   ]
   return (
@@ -178,8 +185,11 @@ function AdminNav() {
 /** Sub-pages, from the part of the path after /admin/. */
 function Page() {
   const { params } = useRoute()
+  const { t } = useI18n()
+  const { isSuper } = useAdmin()
   const [section, id] = (params.page ?? '').split('/')
   if (section === 'game' && id) return <GameEntry key={id} id={id} />
+  if (section === 'news' && !isSuper) return <p class="notice">{t('admin.error.superOnly')}</p>
   if (section === 'news' && id) return <AnnouncementEditor key={id} id={id} />
   if (section === 'news') return <Announcements />
   if (section === 'changes') return <Changes />

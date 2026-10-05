@@ -1,9 +1,10 @@
 // The admin API: results and announcements entered in /admin. Runs as one Lambda behind an HTTP API
-// whose JWT authorizer has already checked the Cognito sign-in; this checks the admin group, validates
+// whose JWT authorizer has already checked the Cognito sign-in; this checks what the user may change
+// (super users: everything; scorers: results for their sports), validates
 // each change against the published fixtures, saves it (refusing it if someone else changed the same
 // thing meanwhile), records who did what, and republishes results.json or announcements.json.
 //
-//   GET    /state                       everything saved, with versions
+//   GET    /state                       everything saved, with versions, and what this user may change
 //   PUT    /results/{fixture}           body { data: Result, version }  (version 0 = new)
 //   DELETE /results/{fixture}?version=n
 //   PUT    /announcements/{id}          body { data: Announcement, version }
@@ -13,7 +14,7 @@
 // AWS access is in deps (aws.ts), so this file is tested with in-memory fakes (app.test.ts).
 import type { APIGatewayProxyEventV2WithJWTAuthorizer, APIGatewayProxyStructuredResultV2 } from 'aws-lambda'
 import { checkResult } from '../src/data/check-result.ts'
-import { Announcement, type Competition, type Fixture, Result } from '../src/data/schema.ts'
+import { Announcement, type Competition, type Fixture, Result, Sport } from '../src/data/schema.ts'
 
 export type Kind = 'result' | 'announcement'
 
@@ -69,7 +70,13 @@ const json = (statusCode: number, body: unknown): Response => ({
 const fail = (statusCode: number, code: string, message: string, extra?: object) =>
   json(statusCode, { error: code, message, ...extra })
 
-const ADMIN_GROUP = 'admin'
+/** Super users: results for every sport, and announcements. */
+const SUPER_GROUP = 'admin'
+/** Scorers: results for one sport each (scorer-basketball, scorer-volleyball…). */
+const SCORER_GROUP = 'scorer-'
+
+/** What a user may change: everything (`all`), or results for some sports. */
+export type Access = { all: boolean; sports: Sport[] }
 
 /** Claims arrive as strings; a list looks like "[admin scorer]" or "[admin, scorer]". */
 function groups(claims: Record<string, unknown>): string[] {
@@ -79,7 +86,26 @@ function groups(claims: Record<string, unknown>): string[] {
     .filter(Boolean)
 }
 
+export function accessFrom(claims: Record<string, unknown>): Access {
+  const names = groups(claims)
+  const sports = names.flatMap((g) => {
+    const sport = Sport.safeParse(g.startsWith(SCORER_GROUP) ? g.slice(SCORER_GROUP.length) : undefined)
+    return sport.success ? [sport.data] : []
+  })
+  return { all: names.includes(SUPER_GROUP), sports }
+}
+
+/** Whether `access` lets a user change results for `sport`. */
+export const maySport = (access: Access, sport: Sport) => access.all || access.sports.includes(sport)
+
 export function createApi(deps: Deps) {
+  /** The sport a fixture is played in (undefined for an unknown fixture: save() reports that). */
+  async function sportOf(fixtureId: string): Promise<Sport | undefined> {
+    const { fixtures, competitions } = await deps.tournament()
+    const fixture = fixtures.find((f) => f.id === fixtureId)
+    return competitions.find((c) => c.id === fixture?.competition)?.sport
+  }
+
   async function republish(year: number, kind: Kind) {
     const items = await deps.list(year, kind)
     if (kind === 'result') {
@@ -164,7 +190,8 @@ export function createApi(deps: Deps) {
     // CORS preflight (no token, no authorizer): API Gateway adds the allowed origins and headers.
     if (event.requestContext.http.method === 'OPTIONS') return { statusCode: 204 }
     const claims = event.requestContext.authorizer?.jwt?.claims ?? {}
-    if (!groups(claims).includes(ADMIN_GROUP)) return fail(403, 'forbidden', 'not in the admin group')
+    const access = accessFrom(claims)
+    if (!access.all && !access.sports.length) return fail(403, 'forbidden', 'not in an admin or scorer group')
     const by = String(claims.email ?? claims['cognito:username'] ?? claims.sub ?? 'unknown')
 
     const method = event.requestContext.http.method
@@ -174,14 +201,22 @@ export function createApi(deps: Deps) {
     if (method === 'GET' && collection === 'state' && !id) {
       const { year } = await deps.tournament()
       const [results, announcements] = await Promise.all([deps.list(year, 'result'), deps.list(year, 'announcement')])
-      return json(200, { year, results, announcements })
+      return json(200, { year, results, announcements, access })
     }
     if (method === 'GET' && collection === 'changes' && !id) {
       const { year } = await deps.tournament()
       const limit = Math.min(Number(event.queryStringParameters?.limit) || 100, 500)
       return json(200, { changes: await deps.changes(year, limit) })
     }
-    if (kind && id && !rest.length) {
+    if (kind && id && !rest.length && (method === 'PUT' || method === 'DELETE')) {
+      if (kind === 'announcement' && !access.all) {
+        return fail(403, 'superOnly', 'only super users can change announcements')
+      }
+      // Super users may also clear results of games no longer in the fixtures.
+      const sport = kind === 'result' && !access.all ? await sportOf(id) : undefined
+      if (kind === 'result' && !access.all && !(sport && maySport(access, sport))) {
+        return fail(403, 'notYourSport', `can’t change results of ${sport ?? 'unknown'} games`)
+      }
       if (method === 'PUT') {
         let body: unknown
         try {
@@ -191,7 +226,7 @@ export function createApi(deps: Deps) {
         }
         return save(kind, id, body, by)
       }
-      if (method === 'DELETE') return remove(kind, id, Number(event.queryStringParameters?.version), by)
+      return remove(kind, id, Number(event.queryStringParameters?.version), by)
     }
     return fail(404, 'notFound', `${method} ${event.rawPath} isn’t an API route`)
   }

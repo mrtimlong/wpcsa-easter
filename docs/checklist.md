@@ -45,7 +45,7 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [ ] | Run `infra/05-admin-backend.sh`, commit the `src/generated/backend.json` it writes, add your own login with `infra/admin-users.sh add`, and try /admin on a phone | Tim | Oct 2026 |
 | [x] | **DynamoDB**: one table for results, announcements and the audit trail (key: year + `RESULT#<fixture id>` / `ANN#<id>` / `AUDIT#…`), on-demand billing, point-in-time recovery on. Table `wpcsa-easter`, created by `infra/05-admin-backend.sh` | Tim | Oct 2026 |
 | [x] | Audit trail: every save/change/delete recorded with who, when, before and after (separate items or table). Written in the same transaction as the change (`AUDIT#<time>` items) | Tim | Oct 2026 |
-| [x] | **Cognito user pool**: admin-created users only (no self sign-up), email + password, password reset by email, optional MFA; one `admin` group (results entry isn't restricted by sport or court). Pool `wpcsa-easter-admins` (Lite tier, 10-character passwords); MFA not turned on | Tim | Oct 2026 |
+| [x] | **Cognito user pool**: admin-created users only (no self sign-up), email + password, password reset by email, optional MFA; an `admin` group for super users (every sport, and announcements) and a `scorer-<sport>` group per sport (results for that sport only). Pool `wpcsa-easter-admins` (Lite tier, 10-character passwords); MFA not turned on | Tim | Oct 2026 |
 | [x] | **API Gateway HTTP API** with a Cognito JWT authorizer; CORS limited to `easter.wpcsa.org.za` (+ localhost for dev); throttling. One `ANY /{proxy+}` route, 10 req/s, bursts of 20 | Tim | Nov 2026 |
 | [x] | **Lambda: save result**: validate with the shared zod schema, check the fixture exists, check the score makes sense for the sport/best-of, conditional write (reject if someone else changed it meanwhile), write audit record | Tim | Nov 2026 |
 | [x] | Lambda: delete/clear a result (for mistakes), admin only | Tim | Nov 2026 |
@@ -53,7 +53,7 @@ All in `af-south-1`, set up with AWS CLI scripts in `infra/` (05+), IAM roles na
 | [x] | Lambda execution role: least privilege (this table, `data/results.json` only, this invalidation) | Tim | Nov 2026 |
 | [ ] | CloudWatch logs (with retention), alarms for errors/throttles emailed to Tim | Tim | Nov 2026 |
 | [x] | Unit tests for the Lambda (validation, conflicts, auth) and an integration test against a test table. Unit tests with an in-memory store (`api/app.test.ts`) and the admin screens end to end (`src/admin/admin.test.tsx`); no integration test against a real table yet | Tim | Nov 2026 |
-| [x] | Script to create/disable organiser accounts from a list (not committed: emails are personal data). `infra/admin-users.sh add|resend|disable|enable|list <email>` | Tim | Jan 2027 |
+| [x] | Script to create/disable organiser accounts from a list (not committed: emails are personal data). `infra/admin-users.sh add|grant|revoke <email> super|<sport>…`, `resend|disable|enable <email>`, `list` | Tim | Jan 2027 |
 | [x] | Announcements API: create/edit/delete posts (Lambda + same table or a second one), audit trail, regenerates `data/announcements.json` in S3 with a short cache | Tim | Dec 2026 |
 | [ ] | Cost check: expected well under $5/month; AWS budget alert set | Tim | Nov 2026 |
 

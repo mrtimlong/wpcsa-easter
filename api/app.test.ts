@@ -122,13 +122,45 @@ describe('admin API', () => {
     expect(published.announcements).toEqual([post])
   })
 
-  it('only lets the admin group in', async () => {
+  it('only lets super users and scorers in', async () => {
     const api = createApi(fakeDeps(fixtures, competitions).deps)
     expect((await call(api, 'GET', '/state', { groups: '' })).status).toBe(403)
-    expect((await call(api, 'GET', '/state', { groups: '[scorer admin]' })).status).toBe(200)
+    expect((await call(api, 'GET', '/state', { groups: '[scorer-chess]' })).status).toBe(403)
+    expect((await call(api, 'GET', '/state', { groups: '[scorer-padel admin]' })).body.access).toEqual({
+      all: true,
+      sports: ['padel'],
+    })
     expect((await call(api, 'GET', '/nowhere')).status).toBe(404)
     // CORS preflight carries no token.
     expect(await api(request('OPTIONS', '/state', { groups: '' }))).toEqual({ statusCode: 204 })
+  })
+
+  it('lets scorers change results for their sports only, and not announcements', async () => {
+    const { deps } = fakeDeps(fixtures, competitions)
+    const api = createApi(deps)
+    const groups = '[scorer-volleyball, scorer-badminton]'
+    expect((await call(api, 'GET', '/state', { groups })).body.access).toEqual({
+      all: false,
+      sports: ['volleyball', 'badminton'],
+    })
+    expect(await call(api, 'PUT', '/results/bb-001', { groups, body: { data: final, version: 0 } })).toMatchObject({
+      status: 403,
+      body: { error: 'notYourSport' },
+    })
+    const sets = { fixture: 'vb-001', status: 'live', score: { sets: [[25, 20]] } }
+    expect((await call(api, 'PUT', '/results/vb-001', { groups, body: { data: sets, version: 0 } })).status).toBe(200)
+    expect((await call(api, 'DELETE', '/results/vb-001', { groups, query: { version: '1' } })).status).toBe(200)
+
+    // A super user's basketball result can't be cleared by a volleyball scorer.
+    await call(api, 'PUT', '/results/bb-001', { body: { data: final, version: 0 } })
+    expect((await call(api, 'DELETE', '/results/bb-001', { groups, query: { version: '1' } })).status).toBe(403)
+    expect((await call(api, 'DELETE', '/results/nowhere', { groups, query: { version: '1' } })).status).toBe(403)
+
+    const post = { id: 'p', posted: '2027-03-26T11:00+02:00', title: { en: 'Hi' } }
+    expect(await call(api, 'PUT', '/announcements/p', { groups, body: { data: post, version: 0 } })).toMatchObject({
+      status: 403,
+      body: { error: 'superOnly' },
+    })
   })
 
   it('imports announcements when invoked directly', async () => {

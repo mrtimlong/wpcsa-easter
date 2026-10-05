@@ -16,6 +16,8 @@ const COGNITO = 'https://cognito-idp.af-south-1.amazonaws.com/'
 const token = `x.${btoa(JSON.stringify({ email: 'scorer@example.com' })).replace(/=+$/, '')}.x`
 
 let fake: ReturnType<typeof fakeDeps>
+/** The signed-in user's Cognito groups, as the API's authorizer passes them on. */
+let groups = '[admin]'
 const dataFetch = globalThis.fetch
 
 beforeEach(() => {
@@ -38,7 +40,7 @@ beforeEach(() => {
         isBase64Encoded: false,
         requestContext: {
           http: { method: init.method ?? 'GET' },
-          authorizer: { jwt: { claims: { email: 'scorer@example.com', 'cognito:groups': '[admin]' }, scopes: [] } },
+          authorizer: { jwt: { claims: { email: 'scorer@example.com', 'cognito:groups': groups }, scopes: [] } },
         },
       } as unknown as APIGatewayProxyEventV2WithJWTAuthorizer)) as { statusCode: number; body: string }
       return new Response(response.body, { status: response.statusCode })
@@ -50,6 +52,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup()
   localStorage.clear()
+  groups = '[admin]'
   vi.stubGlobal('fetch', dataFetch)
   history.replaceState(null, '', '/')
 })
@@ -157,5 +160,20 @@ describe('admin', () => {
 
     fireEvent.click(screen.getByRole('link', { name: 'Changes' }))
     expect(await screen.findByText('Announcement “Game 12 moved to Court B”')).toBeTruthy()
+  })
+
+  it('shows a volleyball scorer only volleyball games, and no announcements', async () => {
+    groups = '[scorer-volleyball]'
+    await signIn()
+    await screen.findByRole('heading', { name: 'Enter results' })
+    expect(screen.queryByRole('link', { name: 'Announcements' })).toBeNull()
+    // Game 1 of each sport.
+    fireEvent.input(screen.getByPlaceholderText('Game number or team'), { target: { value: '1' } })
+    expect(document.querySelector('a[href="/admin/game/vb-fri-1"]')).toBeTruthy()
+    expect(document.querySelector('a[href^="/admin/game/bb-"]')).toBeNull()
+
+    history.pushState(null, '', '/admin/game/bb-001')
+    dispatchEvent(new PopStateEvent('popstate'))
+    expect(await screen.findByText('You can’t enter Basketball results. Ask Tim if you need to.')).toBeTruthy()
   })
 })

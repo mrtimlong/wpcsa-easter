@@ -23,9 +23,10 @@ export function needsResult(fixture: Fixture, result: Result | undefined, time: 
 /** Pick a game: by day, by sport, by game number or team, or every game still needing a result. */
 export function Games() {
   const { t, locale } = useI18n()
-  const { results } = useAdmin()
+  const { results, maySport } = useAdmin()
   const slotName = useSlotName(results)
   const time = currentTime()
+  const mySports = fixtureSports.filter(maySport)
   const today = dayKey(new Date(time).toISOString(), timeZone)
   const [day, setDay] = useState(days.includes(today) ? today : days[0])
   const [due, setDue] = useState(false)
@@ -41,7 +42,12 @@ export function Games() {
     .filter((f) =>
       query ? matches(f) : due ? needsResult(f, results.get(f.id), time) : dayKey(f.start, timeZone) === day,
     )
-    .filter((f) => sport === 'all' || sportOf.get(f.competition) === sport)
+    .filter((f) => {
+      const s = sportOf.get(f.competition)
+      return s && maySport(s) && (sport === 'all' || s === sport)
+    })
+
+  if (!mySports.length) return <p class="notice">{t('admin.error.forbidden')}</p>
 
   return (
     <>
@@ -76,7 +82,7 @@ export function Games() {
           ))}
         </div>
       )}
-      {fixtureSports.length > 1 && <SportFilter value={sport} onChange={setSport} options={fixtureSports} />}
+      {mySports.length > 1 && <SportFilter value={sport} onChange={setSport} options={mySports} />}
       {shown.length === 0 && <p class="muted">{due && !query ? t('admin.games.dueNone') : t('admin.games.none')}</p>}
       <ul class="admin-games">
         {shown.map((f) => (

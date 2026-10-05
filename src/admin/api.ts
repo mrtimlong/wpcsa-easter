@@ -1,13 +1,19 @@
 // Client for the admin API (api/app.ts). Every call sends the signed-in user's ID token.
-import type { Change, Item } from '../../api/app.ts'
+import type { Access, Change, Item } from '../../api/app.ts'
 import type { ResultProblem } from '../data/check-result.ts'
 import type { Announcement, Result } from '../data/schema.ts'
 import backend from '../generated/backend.json'
 import { idToken, type Session } from './auth.ts'
 
-export type { Change, Item }
+export type { Access, Change, Item }
 
-export type State = { year: number; results: Item<Result>[]; announcements: Item<Announcement>[] }
+export type State = {
+  year: number
+  results: Item<Result>[]
+  announcements: Item<Announcement>[]
+  /** What the signed-in user may change. */
+  access: Access
+}
 
 /** A refused or failed call. `code` is the API's error code, or "network" when there was no answer. */
 export class ApiError extends Error {
