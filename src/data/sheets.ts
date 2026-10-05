@@ -15,6 +15,7 @@ import type {
   Vendor,
   Venue,
 } from './schema.ts'
+import { webAddress } from './schema.ts'
 
 /** One spreadsheet: its file name and each tab as rows of cell text, header row first. */
 export type SheetFile = { name: string; tabs: Record<string, string[][]> }
@@ -319,6 +320,12 @@ export function importSheets(files: SheetFile[], base: Base): Imported {
       const officials = slot('Officials')
       if (officials) fixture.officials = officials
       if (get('Best of')) fixture.format = { bestOf: Number(get('Best of')) }
+      for (const column of ['Stream', 'Replay'] as const) {
+        const link = get(column)
+        if (!link) continue
+        if (webAddress.safeParse(link).success) fixture[column === 'Stream' ? 'stream' : 'replay'] = link
+        else errors.push(`${at}: ${column.toLowerCase()} "${link}" should be a web address starting https://`)
+      }
       if (get('Tie')) fixture.tie = `${sportPrefix[competition.sport]}-${slug(get('Tie'))}`
       if (fixtures.some((f) => f.id === fixture.id))
         errors.push(`${at}: game ${number} appears twice in ${competition.sport}`)

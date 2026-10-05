@@ -505,6 +505,25 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.stream-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-left: auto;
+  color: var(--brand);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.stream-link.is-live {
+  color: #d93025;
+}
+
+.stream-link svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
 .fixture-comp {
   margin: 0.15rem 0 0.4rem;
   color: var(--muted);

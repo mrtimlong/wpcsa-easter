@@ -53,6 +53,8 @@ const fixturesHeader = [
   'Officials',
   'Best of',
   'Tie',
+  'Stream',
+  'Replay',
 ]
 const fixtures = (...rows: string[][]): SheetFile => ({
   name: 'Fixtures',
@@ -162,6 +164,8 @@ describe('importSheets', () => {
             'WP',
             '',
             '',
+            'https://example.com/live/2',
+            'https://example.com/replay/2',
           ],
           [
             '1',
@@ -212,6 +216,8 @@ describe('importSheets', () => {
         away: { team: 'bb-mens-hisense' },
         // Officials can come from another competition.
         officials: { team: 'vb-wp' },
+        stream: 'https://example.com/live/2',
+        replay: 'https://example.com/replay/2',
       },
       {
         id: 'bb-049',
@@ -269,6 +275,30 @@ describe('importSheets', () => {
       'Fixtures › Fixtures row 2: away "NG" isn\'t a team in Basketball: Mens or a slot like "Winner 49"',
       'Fixtures › Fixtures row 3: stage must be Group or Knockout',
       'Fixtures › Fixtures row 3: unknown venue "Nowhere"',
+    ])
+  })
+
+  it('only takes web addresses for streams and replays', () => {
+    const row = [
+      '2',
+      'Basketball: Mens',
+      'Group',
+      'A',
+      '',
+      '2027-03-26',
+      '9:30',
+      'UCT Sports Centre',
+      '',
+      'WPA',
+      'Hisense',
+    ]
+    const { errors } = importSheets(
+      [wp, clubs, fixtures([...row, '', '', '', 'youtube.com/live/x', 'javascript:alert(1)'])],
+      base,
+    )
+    expect(errors).toEqual([
+      'Fixtures › Fixtures row 2: stream "youtube.com/live/x" should be a web address starting https://',
+      'Fixtures › Fixtures row 2: replay "javascript:alert(1)" should be a web address starting https://',
     ])
   })
 })

@@ -44,6 +44,8 @@ Teams, squads, vendors and fixtures are collected from organisers in Google Shee
 
 Fixture slots in Home/Away/Officials: a team name, `Winner 49` / `Loser 49`, `1st` / `2nd Pool A`, or `TBC` / `TBC: Losers of the semi-finals`.
 
+Optional Fixtures columns `Stream` and `Replay` take web addresses (`https://…`). The game's card links to the stream ("Stream", then a red "Watch live" from the start time or while its result is live) until the game is over, then to the replay if there is one.
+
 Standings and knockout progression are **derived** from fixtures + results (`standings.ts`, `resolve.ts`), never stored.
 
 ## Entities
@@ -53,7 +55,7 @@ Standings and knockout progression are **derived** from fixtures + results (`sta
 - **Association**: province/region (WP, SG, NG, Swazi). Club teams (Hisense, Misfits…) have none.
 - **Competition**: one per sport + division (`bb-mens`, `vb`, `bd`, `golf`). A competition can have no fixtures (golf, for now): its teams and squads still show, but it has no standings or results. Optional `groups` (pools), standings `rules` and a `format` description (team and game counts are derived).
 - **Team**: belongs to one competition (WPA in Minis A ≠ WPA in Mens), optionally a group.
-- **Fixture**: unique `id` plus display `number` ("Game 49"; numbers restart per day in volleyball), `stage` (`group`/`knockout`), optional `label` ("Cup final"), `start` with UTC offset, venue/court, `home`/`away`/`officials` **slots**, optional `format.bestOf`, and `tie` to group badminton rubbers.
+- **Fixture**: unique `id` plus display `number` ("Game 49"; numbers restart per day in volleyball), `stage` (`group`/`knockout`), optional `label` ("Cup final"), `start` with UTC offset, venue/court, `home`/`away`/`officials` **slots**, optional `format.bestOf`, and `tie` to group badminton rubbers, and optional `stream` / `replay` links.
 - **Slot**: `{team}` | `{winnerOf}` | `{loserOf}` | `{position, group?}` | `{tbc}`. Position/winner slots resolve to a team once the group is complete or the referenced game has a result.
 - **ProgrammeItem**: schedule of events (AGM, march past, social…) and blocks of games ("Basketball and volleyball games", "Golf: round 1"), one line each. Shown interleaved with the games on Schedule, and on their own as the Programme overview on Home (days that are over drop off), so keep them to a tight weekend-at-a-glance list.
 - **Sponsor**: name, tier (`headline`/`gold`/`supporter`: headline logos rotate three times as often as supporters, gold twice), logo, description, link.

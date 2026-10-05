@@ -485,7 +485,9 @@
     },
     "away": {
       "team": "bb-minis-a-sgb"
-    }
+    },
+    "stream": "https://example.com/stream/bb-033",
+    "replay": "https://example.com/replay/bb-033"
   },
   {
     "id": "bb-034",
@@ -680,7 +682,9 @@
     },
     "away": {
       "team": "bb-mens-wpc"
-    }
+    },
+    "stream": "https://example.com/stream/bb-045",
+    "replay": "https://example.com/replay/bb-045"
   },
   {
     "id": "bb-046",
@@ -1460,7 +1464,8 @@
     },
     "format": {
       "bestOf": 3
-    }
+    },
+    "stream": "https://example.com/stream/vb-sun-6"
   },
   {
     "id": "vb-sun-7",

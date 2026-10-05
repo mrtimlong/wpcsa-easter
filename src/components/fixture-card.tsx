@@ -1,5 +1,6 @@
 import { content } from '../data/content.ts'
 import { dayKey, formatDay, formatTime, scoreSummary } from '../data/format.ts'
+import { currentTime } from '../data/live.ts'
 import { outcome } from '../data/outcome.ts'
 import { resolveSlot } from '../data/resolve.ts'
 import type { Fixture, Result, Slot } from '../data/schema.ts'
@@ -39,6 +40,23 @@ export function useSlotName(resultMap?: Map<string, Result>) {
   }
 }
 
+/** How long after its start a game with no result yet counts as on (for its stream link). */
+const PLAYING_MS = 3 * 60 * 60 * 1000
+
+/** The stream before and during a game, then the replay once it's over (if there is one). */
+export function streamLink(
+  fixture: Fixture,
+  result: Result | undefined,
+  time: number,
+): { href: string; state: 'upcoming' | 'live' | 'replay' } | undefined {
+  const start = Date.parse(fixture.start)
+  const over = result ? result.status !== 'live' : time >= start + PLAYING_MS
+  if (over) return fixture.replay ? { href: fixture.replay, state: 'replay' } : undefined
+  if (!fixture.stream) return undefined
+  const live = result?.status === 'live' || time >= start
+  return { href: fixture.stream, state: live ? 'live' : 'upcoming' }
+}
+
 export function FixtureCard({
   fixture,
   showTime = true,
@@ -59,6 +77,7 @@ export function FixtureCard({
   const result = results.get(fixture.id)
   const score = scoreSummary(result)
   const winner = outcome(result)?.winner
+  const stream = streamLink(fixture, result, currentTime())
   const timeZone = content.tournament.timezone
 
   const sides = (['home', 'away'] as const).map((side) => ({ side, ...slotName(fixture[side], fixture) }))
@@ -77,6 +96,19 @@ export function FixtureCard({
         {court && <span>{l(court.name)}</span>}
         {fixture.number !== undefined && <span>{t('fixture.game', { n: fixture.number })}</span>}
         {result && <span class={`badge badge-${result.status}`}>{t(`status.${result.status}`)}</span>}
+        {stream && (
+          <a
+            class={`stream-link${stream.state === 'live' ? ' is-live' : ''}`}
+            href={stream.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M8 5v14l11-7z" />
+            </svg>
+            {t(`fixture.stream.${stream.state}`)}
+          </a>
+        )}
       </div>
       <div class="fixture-comp">
         {competition && <SportIcon sport={competition.sport} />}

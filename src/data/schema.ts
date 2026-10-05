@@ -129,6 +129,9 @@ export const Slot = z.union([
   z.object({ tbc: Text }),
 ])
 
+/** An http(s) link (z.url() alone also allows javascript: and others). */
+export const webAddress = z.url({ protocol: /^https?$/ })
+
 export const Fixture = z.object({
   id,
   /** Number shown to people ("Game 49"). Not unique across sports/days. */
@@ -146,6 +149,10 @@ export const Fixture = z.object({
   format: z.object({ bestOf: z.number().int().positive() }).optional(),
   /** Groups individual rubbers into a team tie (badminton). */
   tie: id.optional(),
+  /** Live stream, shown until the game is over. */
+  stream: webAddress.optional(),
+  /** Recording, shown once the game is over. */
+  replay: webAddress.optional(),
 })
 
 export const ProgrammeItem = z.object({
