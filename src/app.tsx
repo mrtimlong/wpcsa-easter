@@ -1,7 +1,9 @@
 import type { ComponentChildren } from 'preact'
+import { useEffect } from 'preact/hooks'
 import { LocationProvider, lazy, Route, Router, useLocation } from 'preact-iso'
 import { AnnouncementsProvider } from './announcements.tsx'
 import { ClockNotice } from './components/clock-notice.tsx'
+import { Splash } from './components/splash.tsx'
 import { SponsorStrip } from './components/sponsor-strip.tsx'
 import { TabBar } from './components/tab-bar.tsx'
 import { UrgentBanner } from './components/urgent-banner.tsx'
@@ -9,11 +11,9 @@ import { FavouritesProvider } from './favourites.tsx'
 import { I18nProvider, useI18n } from './i18n/index.tsx'
 import { Home } from './pages/home.tsx'
 import { Info } from './pages/info.tsx'
-import { More } from './pages/more.tsx'
 import { MyTeams } from './pages/my-teams.tsx'
 import { News } from './pages/news.tsx'
 import { NotFound } from './pages/not-found.tsx'
-import { Results } from './pages/results.tsx'
 import { Rules } from './pages/rules.tsx'
 import { Schedule } from './pages/schedule.tsx'
 import { Sponsors } from './pages/sponsors.tsx'
@@ -33,6 +33,15 @@ function PublicOnly({ children }: { children: ComponentChildren }) {
   const { path } = useLocation()
   return path === '/admin' || path.startsWith('/admin/') ? null : children
 }
+
+/** Old addresses (bookmarks, shared links): results are on the schedule now, and More's links on Home. */
+function Redirect({ to }: { to: string }) {
+  const { route } = useLocation()
+  useEffect(() => route(to + location.search, true), [route, to])
+  return null
+}
+const ToSchedule = () => <Redirect to="/schedule" />
+const ToHome = () => <Redirect to="/" />
 
 function Logos() {
   const { t } = useI18n()
@@ -82,6 +91,7 @@ export function App() {
               <Logos />
               <Header />
               <PublicOnly>
+                <Splash />
                 <UrgentBanner />
               </PublicOnly>
               <main class="main">
@@ -89,11 +99,11 @@ export function App() {
                 <Router>
                   <Route path="/" component={Home} />
                   <Route path="/schedule" component={Schedule} />
-                  <Route path="/results" component={Results} />
+                  <Route path="/results" component={ToSchedule} />
                   <Route path="/standings" component={Standings} />
                   <Route path="/visit" component={Visit} />
                   <Route path="/my-teams" component={MyTeams} />
-                  <Route path="/more" component={More} />
+                  <Route path="/more" component={ToHome} />
                   <Route path="/news" component={News} />
                   <Route path="/teams" component={Teams} />
                   <Route path="/teams/:id" component={TeamPage} />

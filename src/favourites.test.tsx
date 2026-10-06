@@ -39,24 +39,27 @@ const app = (page: preact.ComponentChild) =>
     </I18nProvider>,
   )
 
-describe('Time-of-day filter', () => {
-  const times = () => [...document.querySelectorAll('.time-heading')].map((el) => el.textContent ?? '')
+describe('Schedule', () => {
+  const headings = () => [...document.querySelectorAll('.time-heading, .now-marker')].map((el) => el.textContent ?? '')
 
-  it('splits the day into morning, afternoon and evening', () => {
-    app(<Schedule />) // demo "today" is Sunday
-    const all = times()
-    fireEvent.click(screen.getByRole('button', { name: 'Morning' }))
-    const morning = times()
-    fireEvent.click(screen.getByRole('button', { name: 'Afternoon' }))
-    const afternoon = times()
-    fireEvent.click(screen.getByRole('button', { name: 'Evening' }))
-    const evening = times()
+  it('marks Now today: games over above it, games on or to come below', () => {
+    app(<Schedule />) // demo "now" is Sunday 15:00
+    const order = headings()
+    const now = order.indexOf('Now · 15:00')
+    expect(now).toBeGreaterThan(0)
+    expect(order.slice(0, now).every((t) => t < '15:00')).toBe(true)
+    // Games 45 and 46 (14:30) are still being played.
+    expect(order[now + 1]).toBe('14:30')
+    expect(screen.queryByRole('button', { name: 'Jump to now' })).toBeNull()
+  })
 
-    expect(morning.every((t) => t < '12:00')).toBe(true)
-    expect(afternoon.every((t) => t >= '12:00' && t < '18:00')).toBe(true)
-    expect(evening.every((t) => t >= '18:00')).toBe(true)
-    expect([...morning, ...afternoon, ...evening]).toEqual(all)
-    expect(morning.length && afternoon.length && evening.length).toBeTruthy()
+  it('brings you back to today from another day', () => {
+    app(<Schedule />)
+    fireEvent.click(screen.getByRole('tab', { name: 'Sat 19' }))
+    expect(headings()).not.toContain('Now · 15:00')
+    fireEvent.click(screen.getByRole('button', { name: 'Jump to now' }))
+    expect(screen.getByRole('tab', { name: 'Today' }).getAttribute('aria-selected')).toBe('true')
+    expect(headings()).toContain('Now · 15:00')
   })
 })
 
@@ -76,14 +79,6 @@ describe('My teams filter', () => {
     )
     expect(games).toEqual([expect.stringContaining('Game 34'), expect.stringContaining('Game 49')])
     expect(document.querySelectorAll('.star-mark').length).toBe(2)
-  })
-
-  it('combines with the time-of-day filter', () => {
-    localStorage.setItem('favouriteTeams', JSON.stringify(['bb-minis-a-wpa']))
-    app(<Schedule />)
-    fireEvent.click(screen.getByRole('button', { name: '★ My teams' }))
-    fireEvent.click(screen.getByRole('button', { name: 'Evening' }))
-    expect(screen.getByText('Nothing scheduled for this part of the day.')).toBeTruthy()
   })
 
   it('follows a team from the standings table and remembers it', () => {

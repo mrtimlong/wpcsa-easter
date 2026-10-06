@@ -73,12 +73,14 @@ describe('results', () => {
   })
 
   it('shows the app as if it were another time with ?at=, until Back to now', async () => {
-    history.replaceState(null, '', '/results?at=2025-04-17T12:00')
+    history.replaceState(null, '', '/schedule?at=2025-04-17T12:00')
     vi.resetModules()
     const { App } = await import('./app.tsx')
     render(<App />)
-    // The day before the sample tournament: no demo results yet.
-    expect(await screen.findByText('Results will appear here once the games start on Friday, 18 April.')).toBeTruthy()
+    // The day before the sample tournament: no demo results yet, so no scores and no Now.
+    expect(await screen.findByRole('heading', { name: 'Friday, 18 April' })).toBeTruthy()
+    expect(document.querySelector('.fixture-score')).toBeNull()
+    expect(document.querySelector('.now-marker')).toBeNull()
     expect(screen.getByText(/^Showing the app as if it were Thursday, 17 April/)).toBeTruthy()
     expect(sessionStorage.getItem('clockAt')).toBe('2025-04-17T12:00')
   })

@@ -11,17 +11,26 @@ afterEach(() => {
 const tabBar = () => within(screen.getByRole('navigation', { name: 'Main' }))
 
 describe('tab bar', () => {
-  it('marks the current page, with More standing in for pages outside the tab bar', async () => {
+  it('marks the current page, with Home standing in for the pages it links to', async () => {
     render(<App />)
-    expect(tabBar().getByRole('link', { name: 'Home' }).getAttribute('aria-current')).toBe('page')
+    expect(tabBar().getByRole('link', { name: /^Home/ }).getAttribute('aria-current')).toBe('page')
 
-    fireEvent.click(tabBar().getByRole('link', { name: /^More/ }))
-    expect(await screen.findByRole('heading', { name: 'More', level: 1 })).toBeTruthy()
+    fireEvent.click(tabBar().getByRole('link', { name: 'Teams' }))
+    expect(await screen.findByRole('heading', { name: 'Teams', level: 1 })).toBeTruthy()
+    expect(tabBar().getByRole('link', { name: /^Home/ }).getAttribute('aria-current')).toBeNull()
 
-    fireEvent.click(within(screen.getByRole('main')).getByRole('link', { name: /My teams/ }))
+    fireEvent.click(tabBar().getByRole('link', { name: /^Home/ }))
+    const explore = within((await screen.findByRole('heading', { name: 'Find your way around' })).closest('section')!)
+    fireEvent.click(explore.getByRole('link', { name: /My teams/ }))
     expect(await screen.findByRole('heading', { name: 'My teams', level: 1 })).toBeTruthy()
-    expect(tabBar().getByRole('link', { name: /^More/ }).getAttribute('aria-current')).toBe('page')
-    expect(tabBar().getByRole('link', { name: 'Home' }).getAttribute('aria-current')).toBeNull()
+    expect(tabBar().getByRole('link', { name: /^Home/ }).getAttribute('aria-current')).toBe('page')
+  })
+
+  it('sends the old Results and More pages to Schedule and Home', async () => {
+    history.replaceState(null, '', '/results')
+    render(<App />)
+    expect(await screen.findByRole('heading', { name: 'Schedule', level: 1 })).toBeTruthy()
+    expect(location.pathname).toBe('/schedule')
   })
 })
 
@@ -191,7 +200,7 @@ describe('announcements', () => {
     expect(JSON.parse(localStorage.getItem('announcementsSeen')!)).toHaveLength(3)
   })
 
-  it('shows the urgent banner until dismissed, and an unread count under More', async () => {
+  it('shows the urgent banner until dismissed, and an unread count on Home', async () => {
     render(<App />)
     const banner = await screen.findByRole('status')
     expect(banner.textContent).toContain('Minis semi-finals moved to Court B')

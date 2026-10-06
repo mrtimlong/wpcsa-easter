@@ -349,26 +349,36 @@ body {
 
 /* Landing hero: the artwork plus a title block in the artwork's own background blue. */
 .home-hero {
-  --hero-blue: #153395;
+  position: relative;
+  overflow: hidden;
   margin: -1rem -1rem 1.5rem;
-  background: var(--hero-blue);
+  padding: 1.5rem 1rem;
+  background: #153395;
   color: #fff;
+  text-align: center;
+}
+
+/* The artwork as a watermark: faint, behind the text. */
+.home-hero picture {
+  position: absolute;
+  inset: 0;
 }
 
 .home-hero img {
-  display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+  opacity: 0.3;
 }
 
 .home-hero-text {
-  padding: 0.25rem 1rem 1.5rem;
-  text-align: center;
+  position: relative;
 }
 
 .home-hero-text h1 {
   margin: 0;
-  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  font-size: clamp(1.6rem, 6vw, 2.25rem);
   line-height: 1.2;
 }
 
@@ -377,27 +387,61 @@ body {
   opacity: 0.9;
 }
 
-.home-hero-text .motto {
+.home-hero-text .motto,
+.splash .motto {
   margin-top: 0.2rem;
   font-style: italic;
 }
 
-/* Phones: portrait artwork with the title inside its empty top panel. */
-@media (max-width: 40rem) {
-  .home-hero {
-    position: relative;
-  }
+/* First visit only: the artwork full screen, then it fades. */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  background: #153395;
+  color: #fff;
+  text-align: center;
+  transition: opacity 0.6s ease;
+}
 
-  .home-hero-text {
-    position: absolute;
-    top: 8%;
-    left: 12%;
-    right: 12%;
-    padding: 0;
-  }
+.splash.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
 
-  .home-hero-text h1 {
-    font-size: clamp(1.6rem, 8.5vw, 2.25rem);
+.splash picture,
+.splash-text {
+  grid-area: 1 / 1;
+}
+
+.splash img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+/* Over the artwork's empty top panel. */
+.splash-text {
+  align-self: start;
+  margin: calc(env(safe-area-inset-top, 0px) + 12vh) 12% 0;
+}
+
+.splash-text p {
+  margin: 0.4rem 0 0;
+}
+
+.splash-text .splash-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 9vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash {
+    transition: none;
   }
 }
 
@@ -451,6 +495,45 @@ body {
 .day-heading {
   margin: 1.5rem 0 0.75rem;
   font-size: 1.15rem;
+}
+
+/* Schedule: where "now" is in today's list, and a button back to it. */
+.now-marker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
+  scroll-margin-top: 4.5rem;
+  color: #d93025;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.now-marker::before,
+.now-marker::after {
+  content: "";
+  flex: 1;
+  border-top: 2px solid #d93025;
+}
+
+.now-marker::before {
+  flex: 0 0 0.75rem;
+}
+
+.jump-now {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(var(--tab-bar-height) + env(safe-area-inset-bottom, 0px) + 1rem);
+  z-index: 5;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.65rem 1.1rem;
+  background: #d93025;
+  color: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .time-group {
@@ -1319,4 +1402,38 @@ article[id] {
 
 .rules .oath blockquote p[lang="zh-Hant"] {
   font-style: normal;
+}
+
+/* Home: the pages that aren't in the tab bar, as tiles. */
+.explore {
+  margin: 1.5rem 0;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.explore .link-grid a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.75rem;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.explore .link-grid .muted {
+  font-size: 0.8rem;
+  line-height: 1.3;
 }

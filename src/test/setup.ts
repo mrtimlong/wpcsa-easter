@@ -3,7 +3,7 @@
 // by answering its fetch('/data/…') calls from disk.
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { vi } from 'vitest'
+import { beforeEach, vi } from 'vitest'
 
 const dataDir = process.env.DATA_DIR!
 
@@ -17,3 +17,16 @@ vi.stubGlobal('fetch', async (input: string | URL | Request) => {
     return new Response(null, { status: 404 })
   }
 })
+
+// The full-screen artwork shows on a first visit only: start every test as a returning visitor.
+beforeEach(() => localStorage.setItem('splashSeen', '1'))
+
+// Browser APIs jsdom lacks, used by the schedule to open at "Now".
+Element.prototype.scrollIntoView = () => {}
+vi.stubGlobal(
+  'IntersectionObserver',
+  class {
+    observe() {}
+    disconnect() {}
+  },
+)

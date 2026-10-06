@@ -43,6 +43,11 @@ export function useSlotName(resultMap?: Map<string, Result>) {
 /** How long after its start a game with no result yet counts as on (for its stream link). */
 const PLAYING_MS = 3 * 60 * 60 * 1000
 
+/** Finished (or forfeited, or cancelled), or started long enough ago with no result entered. */
+export function isOver(fixture: Fixture, result: Result | undefined, time: number): boolean {
+  return result ? result.status !== 'live' : time >= Date.parse(fixture.start) + PLAYING_MS
+}
+
 /** The stream before and during a game, then the replay once it's over (if there is one). */
 export function streamLink(
   fixture: Fixture,
@@ -50,8 +55,7 @@ export function streamLink(
   time: number,
 ): { href: string; state: 'upcoming' | 'live' | 'replay' } | undefined {
   const start = Date.parse(fixture.start)
-  const over = result ? result.status !== 'live' : time >= start + PLAYING_MS
-  if (over) return fixture.replay ? { href: fixture.replay, state: 'replay' } : undefined
+  if (isOver(fixture, result, time)) return fixture.replay ? { href: fixture.replay, state: 'replay' } : undefined
   if (!fixture.stream) return undefined
   const live = result?.status === 'live' || time >= start
   return { href: fixture.stream, state: live ? 'live' : 'upcoming' }

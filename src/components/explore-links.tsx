@@ -17,14 +17,14 @@ const links: Link[] = [
   { href: '/visit', title: 'nav.visit', description: 'more.visit', show: content.guide !== undefined },
 ]
 
-/** Everything that doesn't fit in the tab bar. */
-export function More() {
+/** Home page: everything that isn't in the tab bar. */
+export function ExploreLinks() {
   const { t, l } = useI18n()
   const { unread } = useAnnouncements()
   return (
-    <section>
-      <h1>{t('more.title')}</h1>
-      <ul class="link-list">
+    <section class="explore">
+      <h2>{t('home.explore')}</h2>
+      <ul class="link-grid">
         {links
           .filter((link) => link.show !== false)
           .map((link) => (
