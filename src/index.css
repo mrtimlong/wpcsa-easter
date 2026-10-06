@@ -1280,6 +1280,52 @@ article[id] {
   background: #d93025;
 }
 
+/* Home: the pages that aren't in the tab bar, as tiles. */
+.explore {
+  margin: 1.5rem 0 2rem;
+}
+
+.explore h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.explore strong {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.4rem;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.explore .link-grid a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.75rem;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.explore .link-grid .muted {
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
 /* Programme overview on the home page */
 .programme {
   margin-top: 1.75rem;
@@ -1402,38 +1448,4 @@ article[id] {
 
 .rules .oath blockquote p[lang="zh-Hant"] {
   font-style: normal;
-}
-
-/* Home: the pages that aren't in the tab bar, as tiles. */
-.explore {
-  margin: 1.5rem 0;
-}
-
-.link-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
-  gap: 0.6rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.explore .link-grid a {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 0.75rem 0.85rem;
-  border-radius: 0.75rem;
-  background: var(--surface);
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
-  color: inherit;
-  font-weight: inherit;
-  text-decoration: none;
-}
-
-.explore .link-grid .muted {
-  font-size: 0.8rem;
-  line-height: 1.3;
 }

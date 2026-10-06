@@ -10,7 +10,6 @@ export const en = {
   'nav.teams': 'Teams',
   'nav.label': 'Main',
   'home.explore': 'Find your way around',
-  'more.teams': 'Squads, coaches and every team’s games',
   'more.news': 'Updates from the organisers during the weekend',
   'more.info': 'Contacts, format, rules and code of conduct',
   'more.rules': 'The tournament oath and the rules of play for each sport',

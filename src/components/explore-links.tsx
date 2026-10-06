@@ -9,7 +9,6 @@ const links: Link[] = [
   { href: '/news', title: 'news.title', description: 'more.news' },
   { href: '/info', title: 'info.title', description: 'more.info' },
   { href: '/rules', title: 'rules.title', description: 'more.rules' },
-  { href: '/teams', title: 'teams.title', description: 'more.teams' },
   { href: '/my-teams', title: 'myTeams.title', description: 'more.myTeams' },
   { href: '/venues', title: 'venues.title', description: 'more.venues' },
   { href: '/vendors', title: 'vendors.title', description: 'more.vendors', show: content.vendors.length > 0 },
