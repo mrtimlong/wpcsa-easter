@@ -44,11 +44,20 @@ export function Venues() {
 function VenueDetails({ venue }: { venue: Venue }) {
   const { t, l } = useI18n()
   const here = venueSports(venue)
+  const picture = venue.picture && dataImage(venue.picture.image)
   const plan = venue.plan ? dataImage(venue.plan) : undefined
   const vendors = content.vendors.filter((v) => v.venue === venue.id)
 
   return (
     <article id={venue.id} class="venue card">
+      {picture && venue.picture && (
+        <Picture
+          image={picture}
+          alt={l(venue.picture.alt)}
+          sizes="(min-width: 48rem) 46rem, 100vw"
+          class="venue-picture"
+        />
+      )}
       <div class="card-body">
         <h2>{l(venue.name)}</h2>
         {here.length > 0 && (

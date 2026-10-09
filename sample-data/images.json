@@ -9,6 +9,16 @@
       1600
     ]
   },
+  "venues/uct": {
+    "width": 1488,
+    "height": 720,
+    "widths": [
+      480,
+      800,
+      1200,
+      1488
+    ]
+  },
   "visit/bo-kaap": {
     "width": 1280,
     "height": 786,

@@ -54,6 +54,8 @@ export const Venue = z.object({
   /** Getting there, entrances, rules (no food in the hall…). */
   notes: Text.optional(),
   courts: z.array(z.object({ id, name: Text })),
+  /** Picture (photo or artwork) at the top of the venue's card: a name in images.json. */
+  picture: z.object({ image: z.string(), alt: Text }).optional(),
   /** Where to find things on site. */
   facilities: z
     .array(

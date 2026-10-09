@@ -1031,6 +1031,11 @@ button.button {
   border-radius: 0.5rem;
 }
 
+/* The card's own corners round the top of its picture. */
+.venue .venue-picture img {
+  border-radius: 0;
+}
+
 .vendor-heading {
   display: flex;
   align-items: center;

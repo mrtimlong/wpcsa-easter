@@ -5,6 +5,13 @@
       "en": "UCT Sports Centre"
     },
     "mapUrl": "https://www.google.com/maps/search/?api=1&query=UCT%20Sports%20Centre%2C%20Cape%20Town",
+    "picture": {
+      "image": "venues/uct",
+      "alt": {
+        "en": "Watercolour of the UCT Sports Centre from the air: the long green-roofed hall among trees, beside the rugby fields",
+        "zh-Hant": "UCT體育中心鳥瞰水彩畫：綠色屋頂的長形體育館，位於樹林與橄欖球場旁"
+      }
+    },
     "courts": [
       {
         "id": "a",

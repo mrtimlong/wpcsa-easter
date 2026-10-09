@@ -20,7 +20,9 @@ describe(`data in ${process.env.DATA_DIR}`, () => {
   it('only uses generated images (run `npm run images -- --data <dir>` after adding originals)', () => {
     const guide = content.guide
     const photos = [guide?.hero, ...(guide?.sections.flatMap((s) => s.items.map((i) => i.photo)) ?? [])]
-    const missing = photos.filter((p) => p && !(p.image in content.images)).map((p) => p!.image)
+    const venues = content.venues.flatMap((v) => [v.picture?.image, v.plan])
+    const names = [...photos.map((p) => p?.image), ...venues].filter((name) => name !== undefined)
+    const missing = names.filter((name) => !(name in content.images))
     expect(missing).toEqual([])
   })
 

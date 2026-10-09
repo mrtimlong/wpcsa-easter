@@ -51,7 +51,7 @@ Standings and knockout progression are **derived** from fixtures + results (`sta
 ## Entities
 
 - **Tournament**: year, edition, host city, dates, timezone.
-- **Venue**: with courts (`uct` → `a`, `b`, `hall2-1`…), optional notes, `facilities` (`toilets`, `firstAid`, `merchandise`, `food`, `water`, `parking`, `lostProperty`, `info`, `other`, each with where/notes) and a site `plan` image.
+- **Venue**: with courts (`uct` → `a`, `b`, `hall2-1`…), optional notes, `facilities` (`toilets`, `firstAid`, `merchandise`, `food`, `water`, `parking`, `lostProperty`, `info`, `other`, each with where/notes), a `picture` (image and alt text) shown at the top of its card, and a site `plan` image.
 - **Association**: province/region (WP, SG, NG, Swazi). Club teams (Hisense, Misfits…) have none.
 - **Competition**: one per sport + division (`bb-mens`, `vb`, `bd`, `golf`). A competition can have no fixtures (golf, for now): its teams and squads still show, but it has no standings or results. Optional `groups` (pools), standings `rules` and a `format` description (team and game counts are derived).
 - **Team**: belongs to one competition (WPA in Minis A ≠ WPA in Mens), optionally a group.
